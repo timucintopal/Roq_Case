@@ -1084,6 +1084,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 21ea007a9f4e340fb8ca56134d43f72b, type: 2}
+    - target: {fileID: 3964717993779556317, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4918666422125016665, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5
@@ -1131,7 +1135,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8359449895366311928, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 701587502}
+    - targetCorrespondingSourceObject: {fileID: 8359449895366311928, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 701587503}
   m_SourcePrefab: {fileID: 100100000, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
 --- !u!4 &246839756 stripped
 Transform:
@@ -2024,6 +2034,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582676551}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &605982791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1693279212646787575, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
+  m_PrefabInstance: {fileID: 1825520753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619790253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,6 +2219,47 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680555194}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &701587499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8359449895366311928, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+  m_PrefabInstance: {fileID: 246839755}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &701587502
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701587499}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6395806821857417215, guid: cce4ce9cc9c53ae49b6cba393a94030f, type: 3}
+--- !u!114 &701587503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701587499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e464261d24c4bfda7461cf0556c15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.HoleController
+  targetPos: {fileID: 1115346903}
+  currentColor: 0
 --- !u!1 &739987546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3719,6 +3775,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089731978}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1115346903 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5802457560725290850, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+  m_PrefabInstance: {fileID: 246839755}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1180362928
 GameObject:
   m_ObjectHideFlags: 0
@@ -5501,15 +5562,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3276481487074523901, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.9998446
+      value: 3.051
       objectReference: {fileID: 0}
     - target: {fileID: 3276481487074523901, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.030372076
+      value: -0.938
       objectReference: {fileID: 0}
     - target: {fileID: 3276481487074523901, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 4.039
       objectReference: {fileID: 0}
     - target: {fileID: 3276481487074523901, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5595,6 +5656,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1693279212646787575, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1825520757}
     - targetCorrespondingSourceObject: {fileID: 8395114149649257963, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1825520756}
@@ -5631,6 +5695,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3328007558244423297, guid: 00dfcd32817cf624b8199a481609386c, type: 3}
+--- !u!114 &1825520757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605982791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8d7ac720364633b3ec1d671887790b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.BlockController
+  holeColor: 0
 --- !u!1 &1828486785
 GameObject:
   m_ObjectHideFlags: 0
