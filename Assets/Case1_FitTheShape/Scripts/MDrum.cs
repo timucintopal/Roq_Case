@@ -31,8 +31,8 @@ namespace Case1_FitTheShape.Scripts
         public List<SegmentController> activeSegments = new List<SegmentController>();
 
         [Header("Wave Settings")]
-        [Tooltip("Dalganın merkezden dışarıya doğru toplam kaç segmente ulaşacağını belirler. (Dairesel etki alanı)")]
-        [SerializeField] private int waveReachCount = 15;
+        [Tooltip("Dalganın merkezden dışarıya doğru kaç adım (ızgara karesi) ilerleyeceğini belirler. (Örn: 2 adım = Elmas şekli)")]
+        [SerializeField] private int waveRadius = 2;
 
         [Tooltip("Dalganın komşulara yayılma hızı (Değer küçüldükçe dalga daha hızlı yayılır).")]
         [SerializeField] private float waveSpreadSpeed = 0.05f;
@@ -70,8 +70,8 @@ namespace Case1_FitTheShape.Scripts
             return bestMatch; // Eşleşen hedef yoksa null döner
         }
 
-        // Grid (2D) ve Silindir (Wrap) matematiği ile kusursuz dairesel mesafe hesaplama
-        private float CalculateGridDistance(SegmentController center, SegmentController target)
+        // Grid (2D) ve Silindir (Wrap) matematiği ile kusursuz MANHATTAN (Elmas) mesafe hesaplama
+        private int CalculateGridDistance(SegmentController center, SegmentController target)
         {
             int cX = -1, cY = -1;
             int tX = -1, tY = -1;
@@ -87,21 +87,21 @@ namespace Case1_FitTheShape.Scripts
             }
 
             // Objelerden biri listelerde yoksa (atanmamışsa) çok uzak say
-            if (cX == -1 || tX == -1) return 999f; 
+            if (cX == -1 || tX == -1) return 999; 
 
             int numCols = columns.Count;
             // İlk kolonun eleman sayısını silindirin çevresi (satır sayısı) kabul ediyoruz
             int numRows = columns[0].rowSegments.Count; 
 
             // X ekseninde normal mesafe (Sütunlar arası)
-            float diffX = Mathf.Abs(cX - tX);
+            int diffX = Mathf.Abs(cX - tX);
             
             // Y ekseninde silindir etrafında döndüğü için "başa sarma (wrap-around)" mesafesi
             // Örneğin 0. satır ile 14. satır birbirine komşudur.
-            float diffY = Mathf.Min(Mathf.Abs(cY - tY), numRows - Mathf.Abs(cY - tY));
+            int diffY = Mathf.Min(Mathf.Abs(cY - tY), numRows - Mathf.Abs(cY - tY));
 
-            // Pisagor teoremi ile 2D Grid üzerindeki dairesel kuş uçuşu mesafesi
-            return Mathf.Sqrt(diffX * diffX + diffY * diffY);
+            // Manhattan Distance (Pisagor/Yuvarlak yerine Grid/Elmas adımlaması)
+            return diffX + diffY;
         }
 
         public void PlayWaveEffect(SegmentController centerSegment)
@@ -109,13 +109,12 @@ namespace Case1_FitTheShape.Scripts
             // Tüm kolonlardaki tüm segmentleri tek bir düz listeye (flat list) çevir
             var allSegments = columns.SelectMany(c => c.rowSegments).ToList();
 
-            // Segmentleri artık fiziksel 3D mesafeye göre değil, Sizin Inspector'dan atadığınız
-            // Sanal 2D Silindir Grid mesafesine göre sıralıyoruz!
+            // Segmentleri artık fiziksel 3D mesafeye göre değil, Sanal 2D Silindir Manhattan Grid mesafesine göre sıralıyoruz!
             var orderedSegments = allSegments
                 .Where(s => s != null)
-                .Select(s => new { Seg = s, Dist = CalculateGridDistance(centerSegment, s) })
+                .Select(s => new { Seg = s, Dist = (float)CalculateGridDistance(centerSegment, s) })
+                .Where(x => x.Dist <= waveRadius) // Sadece ayarladığımız adım (yarıçap) içindeki objeleri dahil et
                 .OrderBy(x => x.Dist)
-                .Take(waveReachCount)
                 .ToList();
 
             if (orderedSegments.Count == 0) return;
