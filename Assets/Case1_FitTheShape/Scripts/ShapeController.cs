@@ -7,12 +7,15 @@ namespace Case1_FitTheShape.Scripts
     public class ShapeController : MonoBehaviour
     {
         [SerializeField] ShapeType shapeType;
-        [SerializeField] private Transform jumpTarget;
+        [SerializeField] private SegmentController targetSegment;
+
+        private Transform JumpTarget => targetSegment.GetHole();
+
 
         [ContextMenu("JumpToTarget")]
         public void JumpToTarget()
         {
-            if(jumpTarget != null && !_sequenceIsActive)
+            if(JumpTarget != null && !_sequenceIsActive)
                 StartCoroutine(MoveSequence());
         }
 
@@ -27,8 +30,8 @@ namespace Case1_FitTheShape.Scripts
             // yield return transform.DOJump(jumpTarget.position, 1,1,.25f).SetEase(Ease.InOutSine).WaitForCompletion();
 
             // Gideceği yönü belirliyoruz (X eksenine göre)
-            float dirX = Mathf.Sign(jumpTarget.position.x - transform.position.x);
-            if (Mathf.Abs(jumpTarget.position.x - transform.position.x) < 0.05f) dirX = 1f;
+            float dirX = Mathf.Sign(JumpTarget.position.x - transform.position.x);
+            if (Mathf.Abs(JumpTarget.position.x - transform.position.x) < 0.05f) dirX = 1f;
 
             // 1. Anticipation (Hazırlık) - Sıçramadan önce tatlı bir esneme/güç toplama
             yield return transform.DOPunchScale(Vector3.one * 0.75f, 0.3f, 1, 1).WaitForCompletion();
@@ -39,7 +42,7 @@ namespace Case1_FitTheShape.Scripts
             float jumpDuration = 0.45f; // Zıplama ve takla süresi
 
             // Hedefe doğrudan kavisli zıplama
-            airSeq.Append(transform.DOJump(jumpTarget.position, 1.5f, 1, jumpDuration).SetEase(Ease.InOutSine));
+            airSeq.Append(transform.DOJump(JumpTarget.position, 1.5f, 1, jumpDuration).SetEase(Ease.InOutSine));
             
             // Zıplarken gideceği yöne doğru 180 derece (yarım takla) spin atar.
             // Böylece inişte objenin Y ekseni tam tersine (hedefin -Y'sine) dönmüş olarak oturur.
@@ -51,6 +54,12 @@ namespace Case1_FitTheShape.Scripts
             
             // 4. İniş (Impact) - Yuvaya girdiğini hissettirecek minik bir bounce/squash
             yield return transform.DOPunchScale(new Vector3(0.3f, -0.3f, 0.3f), 0.2f, 1, 1).WaitForCompletion();
+
+            // 5. Yuvaya oturduğumuzu bildir (Hole kapanacak ve Meksika dalgası başlayacak)
+            if (targetSegment != null)
+            {
+                targetSegment.OnShapeLanded();
+            }
 
             _sequenceIsActive = false;
         }
