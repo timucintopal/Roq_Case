@@ -33,22 +33,20 @@ namespace Case1_FitTheShape.Scripts
             // 1. Anticipation (Hazırlık) - Sıçramadan önce tatlı bir esneme/güç toplama
             yield return transform.DOPunchScale(Vector3.one * 0.75f, 0.3f, 1, 1).WaitForCompletion();
 
-            // 2. Havalanma ve Spin (Juice!)
+            // 2. Havalanma ve Spin (Direkt Zıplama)
             Sequence airSeq = DOTween.Sequence();
             
-            // Yuvanın Y pozisyonuna offset ekleyerek havalanma
-            float offsetY = 2f;
-            airSeq.Append(transform.DOMoveY(jumpTarget.position.y + offsetY, 0.35f).SetEase(Ease.OutBack));
+            float jumpDuration = 0.45f; // Zıplama ve takla süresi
+
+            // Hedefe doğrudan kavisli zıplama
+            airSeq.Append(transform.DOJump(jumpTarget.position, 1.5f, 1, jumpDuration).SetEase(Ease.InOutSine));
             
-            // Havalanırken gideceği yöne doğru 360 derece estetik bir spin (takla)
-            airSeq.Join(transform.DORotate(new Vector3(0, 0, -dirX * 360f), 0.35f, RotateMode.FastBeyond360)
+            // Zıplarken gideceği yöne doğru 360 derece estetik bir spin (takla)
+            airSeq.Join(transform.DOLocalRotate(new Vector3(0, 0, -dirX * 360f), jumpDuration, RotateMode.FastBeyond360)
                 .SetRelative()
                 .SetEase(Ease.OutCubic));
 
             yield return airSeq.WaitForCompletion();
-
-            // 3. Hedefe (yuvaya) tam oturuş - Havadayken yuvaya doğru bir kavis
-            yield return transform.DOJump(jumpTarget.position, 0.5f, 1, 0.25f).SetEase(Ease.InOutSine).WaitForCompletion();
             
             // 4. İniş (Impact) - Yuvaya girdiğini hissettirecek minik bir bounce/squash
             yield return transform.DOPunchScale(new Vector3(0.3f, -0.3f, 0.3f), 0.2f, 1, 1).WaitForCompletion();
