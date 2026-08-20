@@ -78,10 +78,13 @@ namespace Case1_FitTheShape.Scripts
             // Append olduğu için 1. hareket bittiği milisaniyede hız kesmeden bu başlar. Ease.InSine ivmeyi giderek artırır (saplanma hissi).
             airSeq.Append(transform.DOMove(JumpTarget.position, dropDuration).SetEase(Ease.InSine));
             
-            // Zıplarken gideceği yöne doğru 180 derece (yarım takla) spin atar.
-            // SADECE 1. aşamada (kavisteyken) döner, deliğe girerken dümdüz oturmuş olmalıdır.
-            airSeq.Insert(0, transform.DORotate(new Vector3(0, 0, -dirX * 180f), arcDuration, RotateMode.LocalAxisAdd)
-                .SetEase(Ease.OutCubic));
+            // YENİ DÖNÜŞ (ROTATION) MANTIĞI:
+            // Objenin Y ekseni (Up), ApproachTarget'ın -Y eksenine (-Up) bakacak şekilde hedef rotasyon hesaplıyoruz.
+            // Objenin Z eksenini (Forward) hedefin Z'si ile aynı tutuyoruz ki sağa sola sapmasın.
+            Quaternion targetRotation = Quaternion.LookRotation(ApproachTarget.forward, ApproachTarget.up);
+
+            // Zıplama (1. aşama) boyunca bu hedef rotasyona pürüzsüzce (smooth) dönmesini sağlıyoruz.
+            airSeq.Insert(0, transform.DORotateQuaternion(targetRotation, arcDuration).SetEase(Ease.InOutSine));
 
             // YENİ: Cuk diye oturma (Snap-Fit) hissiyatı! 
             // Toplam sürenin dolmasına 0.15 saniye kala hedefteki deliği kapatmaya başla.
