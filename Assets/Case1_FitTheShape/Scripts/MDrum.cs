@@ -22,9 +22,11 @@ namespace Case1_FitTheShape.Scripts
     public class MDrum : MonoBehaviour
     {
         [Tooltip("5x15 matris için buraya 5 adet eleman (sütun) ekleyip, her birine o sütunun 15 segmentini atayın.")]
-        [SerializeField] private List<SegmentController> selectedSegments = new List<SegmentController>();
-        
         [SerializeField] private List<DrumColumn> columns = new List<DrumColumn>();
+
+        [Header("Wave Settings")]
+        [Tooltip("Dalganın merkezden dışarıya doğru toplam kaç segmente ulaşacağını belirler. (Dairesel etki alanı)")]
+        [SerializeField] private int waveReachCount = 15;
 
         // Grid (2D) ve Silindir (Wrap) matematiği ile kusursuz dairesel mesafe hesaplama
         private float CalculateGridDistance(SegmentController center, SegmentController target)
@@ -60,7 +62,7 @@ namespace Case1_FitTheShape.Scripts
             return Mathf.Sqrt(diffX * diffX + diffY * diffY);
         }
 
-        public void PlayWaveEffect(SegmentController centerSegment, int maxSegmentCount)
+        public void PlayWaveEffect(SegmentController centerSegment)
         {
             float speed = 0.05f; // Grid mesafesi baz alındığı için dalga gecikme çarpanı
             float waveAnimDuration = 0.2f; // Segmentin esneme süresi
@@ -74,7 +76,7 @@ namespace Case1_FitTheShape.Scripts
                 .Where(s => s != null)
                 .Select(s => new { Seg = s, Dist = CalculateGridDistance(centerSegment, s) })
                 .OrderBy(x => x.Dist)
-                .Take(maxSegmentCount)
+                .Take(waveReachCount)
                 .ToList();
 
             if (orderedSegments.Count == 0) return;
