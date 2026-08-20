@@ -11414,7 +11414,12 @@ MonoBehaviour:
   - {fileID: 1315217568}
   - {fileID: 54905362}
   - {fileID: 2066292443}
-  waveReachCount: 15
+  waveReachCount: 16
+  waveSpreadSpeed: 0.05
+  waveAnimDuration: 0.3
+  outwardWaveIntensity: 0.2
+  inwardWaveIntensity: 0.05
+  reflectionDelay: 0
 --- !u!1001 &2108410736
 PrefabInstance:
   m_ObjectHideFlags: 0

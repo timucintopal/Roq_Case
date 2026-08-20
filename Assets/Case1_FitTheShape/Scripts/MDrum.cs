@@ -34,6 +34,21 @@ namespace Case1_FitTheShape.Scripts
         [Tooltip("Dalganın merkezden dışarıya doğru toplam kaç segmente ulaşacağını belirler. (Dairesel etki alanı)")]
         [SerializeField] private int waveReachCount = 15;
 
+        [Tooltip("Dalganın komşulara yayılma hızı (Değer küçüldükçe dalga daha hızlı yayılır).")]
+        [SerializeField] private float waveSpreadSpeed = 0.05f;
+
+        [Tooltip("Her bir segmentin esneme/zıplama animasyonunun süresi.")]
+        [SerializeField] private float waveAnimDuration = 0.2f;
+
+        [Tooltip("Dalganın merkezden DIŞA doğru giderkenki büyüme/esneme şiddeti (Örn: 0.3)")]
+        [SerializeField] private float outwardWaveIntensity = 0.3f;
+
+        [Tooltip("Dalganın sınırdan İÇE doğru dönerkenki büyüme/esneme şiddeti (Örn: 0.2)")]
+        [SerializeField] private float inwardWaveIntensity = 0.2f;
+
+        [Tooltip("Giden dalga ile dönen dalga arasındaki ekstra bekleme süresi. Dalganın dönüşe daha erken başlaması (iç içe geçmesi) için negatif (-0.1) değerler verebilirsiniz.")]
+        [SerializeField] private float reflectionDelay = 0f;
+
         private void Awake()
         {
             if (Instance == null) Instance = this;
@@ -91,9 +106,6 @@ namespace Case1_FitTheShape.Scripts
 
         public void PlayWaveEffect(SegmentController centerSegment)
         {
-            float speed = 0.05f; // Grid mesafesi baz alındığı için dalga gecikme çarpanı
-            float waveAnimDuration = 0.2f; // Segmentin esneme süresi
-
             // Tüm kolonlardaki tüm segmentleri tek bir düz listeye (flat list) çevir
             var allSegments = columns.SelectMany(c => c.rowSegments).ToList();
 
@@ -112,10 +124,9 @@ namespace Case1_FitTheShape.Scripts
             float actualMaxDistance = orderedSegments[orderedSegments.Count - 1].Dist;
 
             // Dalganın kenarlara çarpıp yansıma sürelerinin matematiği
-            float outwardEdgeTime = actualMaxDistance * speed; 
-            float inwardStartTime = outwardEdgeTime + waveAnimDuration; 
-            float inwardCenterTime = inwardStartTime + outwardEdgeTime;
-            float secondOutwardStartTime = inwardCenterTime + waveAnimDuration;
+            float outwardEdgeTime = actualMaxDistance * waveSpreadSpeed; 
+            // Dalga hedefe varınca kendi animasyonunu bitirmesini (waveAnimDuration) bekleyip üzerine sizin gecikmenizi (reflectionDelay) ekliyor.
+            float inwardStartTime = outwardEdgeTime + waveAnimDuration + reflectionDelay; 
 
             foreach (var item in orderedSegments)
             {
@@ -124,14 +135,11 @@ namespace Case1_FitTheShape.Scripts
 
                 Sequence seq = DOTween.Sequence();
 
-                // 1. Dalga Gidişi (Merkezden dışa) - 3x Etki 
-                seq.Insert(dist * speed, segment.transform.DOPunchScale(Vector3.one * 0.3f, waveAnimDuration, 1, 1));
+                // 1. Dalga Gidişi (Merkezden dışa)
+                seq.Insert(dist * waveSpreadSpeed, segment.transform.DOPunchScale(Vector3.one * outwardWaveIntensity, waveAnimDuration, 1, 1));
 
-                // 2. Dalga Gelişi (Kenardan merkeze yansıma) - 2x Etki 
-                seq.Insert(inwardStartTime + ((actualMaxDistance - dist) * speed), segment.transform.DOPunchScale(Vector3.one * 0.2f, waveAnimDuration, 1, 1));
-
-                // 3. Son Gidiş (Merkezden dışa sönümlenme) - 1x Etki 
-                seq.Insert(secondOutwardStartTime + (dist * speed), segment.transform.DOPunchScale(Vector3.one * 0.1f, waveAnimDuration, 1, 1));
+                // 2. Dalga Gelişi (Kenardan merkeze yansıma)
+                seq.Insert(inwardStartTime + ((actualMaxDistance - dist) * waveSpreadSpeed), segment.transform.DOPunchScale(Vector3.one * inwardWaveIntensity, waveAnimDuration, 1, 1));
             }
         }
     }
