@@ -41,9 +41,10 @@ namespace Case1_FitTheShape.Scripts
             // Hedefe doğrudan kavisli zıplama
             airSeq.Append(transform.DOJump(jumpTarget.position, 1.5f, 1, jumpDuration).SetEase(Ease.InOutSine));
             
-            // Zıplarken gideceği yöne doğru 360 derece estetik bir spin (takla)
-            airSeq.Join(transform.DOLocalRotate(new Vector3(0, 0, -dirX * 360f), jumpDuration, RotateMode.FastBeyond360)
-                .SetRelative()
+            // Zıplarken gideceği yöne doğru 180 derece (yarım takla) spin atar.
+            // Böylece inişte objenin Y ekseni tam tersine (hedefin -Y'sine) dönmüş olarak oturur.
+            // Eğer 1.5 takla atıp yine ters oturmasını isterseniz 180 yerine 540 yapabilirsiniz.
+            airSeq.Join(transform.DORotate(new Vector3(0, 0, -dirX * 180f), jumpDuration, RotateMode.LocalAxisAdd)
                 .SetEase(Ease.OutCubic));
 
             yield return airSeq.WaitForCompletion();

@@ -206,7 +206,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 217060262}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1640421 stripped
 Transform:
@@ -217,6 +220,16 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 54905360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &12911821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1605704030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &19548216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 467423613}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &39812023
 PrefabInstance:
@@ -309,7 +322,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2001195629}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &39812024 stripped
 Transform:
@@ -519,7 +535,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1873289024}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &55490259 stripped
 Transform:
@@ -621,7 +640,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1164406636}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &58749168 stripped
 Transform:
@@ -715,7 +737,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 928372285}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &59656788 stripped
 Transform:
@@ -809,12 +834,25 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 241167323}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &67606355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 67606354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &90000198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1861646521}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &91317853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1473991554}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &96327325
 PrefabInstance:
@@ -911,12 +949,25 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1543242857}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &96327326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 96327325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &99198839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 188867260}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &104898264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 248880429}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &108227019
 PrefabInstance:
@@ -1005,7 +1056,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 873046703}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &108227020 stripped
 Transform:
@@ -1107,7 +1161,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 191927705}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &155715532 stripped
 Transform:
@@ -1209,13 +1266,76 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 188867264}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &188867261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 188867260}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &188867264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99198839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &191927702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 155715531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &191927705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191927702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &207456753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1506504445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &217060259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1640420}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &217060262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217060259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &231936806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1311,13 +1431,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1506718804}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &231936807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 231936806}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &241167320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 67606354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &241167323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241167320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &248880429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1413,13 +1556,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 248880433}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &248880430 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 248880429}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &248880433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104898264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &268827050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1493,6 +1654,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7660626276438400702, guid: 1c7324402508b4df39f911a2651b37ff, type: 3}
   m_PrefabInstance: {fileID: 268827050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &305773675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1140494448}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &312639090
 PrefabInstance:
@@ -1589,7 +1755,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1560020758}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &312639091 stripped
 Transform:
@@ -1600,6 +1769,31 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3614793778680413805, guid: 076b2e37e3b76074eabdef665e61bfe5, type: 3}
   m_PrefabInstance: {fileID: 1673056875}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &367051598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1202883192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &370157448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1336791300}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &413048353 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1290329228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &418311070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1216875484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &436111909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 521548352}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &467423613
 PrefabInstance:
@@ -1696,12 +1890,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 467423617}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &467423614 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 467423613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &467423617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19548216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &498804434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1452234150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &499878821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 826036907}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &521548352
 PrefabInstance:
@@ -1786,13 +2008,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 521548356}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &521548353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 521548352}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &521548356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436111909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &529274040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1888,7 +2128,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 706049210}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &529274041 stripped
 Transform:
@@ -2095,12 +2338,20 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 854106186}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &548980294 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 548980293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &549810478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1931034874}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &550752206
 PrefabInstance:
@@ -2189,7 +2440,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 803640318}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &550752207 stripped
 Transform:
@@ -2291,7 +2545,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1051000230}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &553117731 stripped
 Transform:
@@ -2393,7 +2650,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1048639057}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &564614027 stripped
 Transform:
@@ -2565,12 +2825,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1687757623}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &578542425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 578542424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &606213694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1739632637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &606352867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 2108410736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &618139729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 622931402}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &622931402
 PrefabInstance:
@@ -2667,13 +2945,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 622931406}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &622931403 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 622931402}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &622931406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618139729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &706049207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 529274040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &706049210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706049207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &714103730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2769,17 +3085,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1369820013}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &714103731 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 714103730}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &742059537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 948390098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &758032334 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5545981397468321620, guid: aa2cb8ebce4b12f4fb6044e6b54b80b7, type: 3}
   m_PrefabInstance: {fileID: 1581272659}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &758801024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1361433138}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &771431176
 PrefabInstance:
@@ -2876,13 +3205,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1121947865}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &771431177 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 771431176}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &803640315 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 550752206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &803640318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803640315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &810005040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2966,7 +3318,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1647265217}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &810005041 stripped
 Transform:
@@ -3145,13 +3500,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 826036911}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &826036908 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 826036907}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &826036911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499878821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &846827075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3247,7 +3620,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1233027261}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &846827076 stripped
 Transform:
@@ -3349,13 +3725,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1176832134}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &853867230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 853867229}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &854106183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 548980293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &854106186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854106183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &860297586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3451,7 +3850,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 973689211}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &860297587 stripped
 Transform:
@@ -3545,13 +3947,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 920337553}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &868221166 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 868221165}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &873046700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 108227019}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &873046703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873046700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &878746148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3737,13 +4162,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2046940148}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &905366919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 905366918}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &920337550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 868221165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &920337553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920337550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &924896459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3839,13 +4287,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1394276276}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &924896460 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 924896459}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &928372282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 59656787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &928372285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928372282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &948390098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3941,13 +4412,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 948390102}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &948390099 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 948390098}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &948390102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742059537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &973689208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 860297586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &973689211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973689208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1 &985386798 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -4062,6 +4571,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 998315221}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1048639054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 564614026}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1048639057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048639054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1051000227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 553117730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1051000230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051000227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1078241285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1443218601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1106214314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4157,7 +4711,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1814557395}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1106214315 stripped
 Transform:
@@ -4208,6 +4765,31 @@ Transform:
   - {fileID: 574672943}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1121947862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 771431176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1121947865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121947862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1126832580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1269081139}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1140494448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4303,12 +4885,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1140494452}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1140494449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1140494448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1140494452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305773675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1143438158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1709819750}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1145760300
 PrefabInstance:
@@ -4405,13 +5010,66 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1278602040}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1145760301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1145760300}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1164406633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 58749167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1164406636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164406633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1166303171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1997795472}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1166625161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 2042644201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1176832131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 853867229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1176832134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176832131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1202883192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4507,12 +5165,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1202883196}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1202883193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1202883192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1202883196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367051598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1203293164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1948968093}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1213444063
 PrefabInstance:
@@ -4609,12 +5290,20 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1823915233}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1213444064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1213444063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1215564449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 2013492287}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1216875484
 PrefabInstance:
@@ -4711,13 +5400,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1216875488}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1216875485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1216875484}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1216875488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418311070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1223247071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4792,6 +5499,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3119682346286365362, guid: 86653fb5af0f64fb991206e05681260e, type: 3}
   m_PrefabInstance: {fileID: 1223247071}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1233027258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 846827075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1233027261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233027258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1240053156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4865,6 +5592,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3119682346286365362, guid: 86653fb5af0f64fb991206e05681260e, type: 3}
   m_PrefabInstance: {fileID: 1240053156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1249878954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1366147278}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1269081139
 PrefabInstance:
@@ -4957,13 +5689,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1269081143}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1269081140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1269081139}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1269081143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126832580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1278602037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1145760300}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1278602040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278602037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1290329228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5059,13 +5829,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1290329232}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1290329229 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1290329228}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1290329232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413048353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1 &1297003747
 GameObject:
   m_ObjectHideFlags: 0
@@ -5309,13 +6097,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1336791304}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1336791301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1336791300}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1336791304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370157448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1361433138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5411,13 +6217,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1361433142}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1361433139 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1361433138}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1361433142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758801024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1366147278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5513,13 +6337,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1366147282}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1366147279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1366147278}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1366147282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249878954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1369820010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 714103730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1369820013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369820010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1371932432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5593,6 +6455,31 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7660626276438400702, guid: 1c7324402508b4df39f911a2651b37ff, type: 3}
   m_PrefabInstance: {fileID: 1371932432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1394276273 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 924896459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1394276276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394276273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1395660884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 2013424317}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1404683138
 PrefabInstance:
@@ -5755,7 +6642,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1697716917}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1418475504 stripped
 Transform:
@@ -5857,7 +6747,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2026697879}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1418588281 stripped
 Transform:
@@ -6033,13 +6926,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1443218605}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1443218602 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1443218601}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1443218605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078241285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1452234150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6135,13 +7046,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1452234154}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1452234151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1452234150}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1452234154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498804434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1473991554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6233,13 +7162,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473991558}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1473991555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1473991554}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1473991558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91317853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1506504445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6335,13 +7282,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1506504449}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1506504446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1506504445}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1506504449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207456753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1506718801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 231936806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1506718804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506718801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1512808744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6437,7 +7422,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1841800374}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1512808745 stripped
 Transform:
@@ -6531,13 +7519,56 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2134126433}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1532275574 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1532275573}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1543242854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 96327325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1543242857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543242854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1560020755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 312639090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1560020758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560020755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1 &1563593038
 GameObject:
   m_ObjectHideFlags: 0
@@ -6760,7 +7791,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1825134628}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1568852707 stripped
 Transform:
@@ -6858,6 +7892,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.ShapeController
   shapeType: 0
   jumpTarget: {fileID: 0}
+--- !u!1 &1599533373 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 2090019054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1605704030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6945,18 +7984,56 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1605704034}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1605704031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1605704030}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1630178397 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2606133259492319006, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
-  m_PrefabInstance: {fileID: 998315221}
+--- !u!114 &1605704034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12911821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1621830212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1652448506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1647265214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 810005040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1647265217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647265214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1652448506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7052,13 +8129,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1652448510}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1652448507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1652448506}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1652448510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621830212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1673056875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7149,7 +8244,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.ShapeController
   shapeType: 0
-  jumpTarget: {fileID: 1630178397}
+  jumpTarget: {fileID: 1977145897}
+--- !u!1 &1687757620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 578542424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1687757623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687757620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1697716914 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1418475503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1697716917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697716914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1709819750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7245,13 +8380,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1709819754}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1709819751 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1709819750}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1709819754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143438158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1739632637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7347,13 +8500,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1739632641}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1739632638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1739632637}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1739632641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606213694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1770710754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7441,13 +8612,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2090111182}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1770710755 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1770710754}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1814557392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1106214314}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1814557395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814557392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1817100040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7522,6 +8716,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7660626276438400702, guid: 1c7324402508b4df39f911a2651b37ff, type: 3}
   m_PrefabInstance: {fileID: 1817100040}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1823915230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1213444063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1823915233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823915230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1825134625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1568852706}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1825134628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825134625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1841800371 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1512808744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1841800374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841800371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1 &1847992291
 GameObject:
   m_ObjectHideFlags: 0
@@ -7649,6 +8903,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &1859469882 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1941402703}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1861646521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7744,13 +9003,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1861646525}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1861646522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1861646521}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1861646525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90000198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1873289021 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 55490258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1873289024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873289021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1 &1874162123 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -8056,7 +9353,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1936185533}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1928044038 stripped
 Transform:
@@ -8158,13 +9458,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1931034878}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1931034875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1931034874}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1931034878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549810478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &1936185530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1928044037}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1936185533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936185530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1941402703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8252,13 +9590,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1941402707}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1941402704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1941402703}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1941402707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859469882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &1948968093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8354,12 +9710,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1948968097}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1948968094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1948968093}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1948968097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203293164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!4 &1977145897 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 998315221}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1997795472
 PrefabInstance:
@@ -8456,13 +9835,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1997795476}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &1997795473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1997795472}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1997795476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166303171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &2001195626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 39812023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2001195629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001195626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &2013424317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8558,13 +9975,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2013424321}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &2013424318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 2013424317}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2013424321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395660884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &2013492287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8660,13 +10095,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2013492291}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &2013492288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 2013492287}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2013492291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215564449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &2026697876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1418588280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2026697879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026697876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &2042644201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8762,13 +10235,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2042644205}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &2042644202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 2042644201}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2042644205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166625161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &2044748770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8864,13 +10355,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2079288857}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &2044748771 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 2044748770}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2046940145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 905366918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2046940148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046940145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &2066292441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8991,6 +10505,26 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 0}
+--- !u!1 &2079288854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 2044748770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2079288857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079288854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1001 &2090019054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9086,13 +10620,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2090019058}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &2090019055 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 2090019054}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2090019058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599533373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &2090111179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1770710754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2090111182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090111179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1 &2100199904
 GameObject:
   m_ObjectHideFlags: 0
@@ -9212,7 +10784,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f361690ed56c34c8b86bce0b7d992658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MDrum
-  selectedSegment:
+  segments:
+  - {fileID: 1874162124}
+  - {fileID: 1875235815}
+  - {fileID: 1315217568}
+  - {fileID: 54905362}
+  - {fileID: 2066292443}
+  - {fileID: 1278602040}
+  - {fileID: 1366147282}
+  - {fileID: 2001195629}
+  - {fileID: 1361433142}
+  - {fileID: 1176832134}
+  - {fileID: 1202883196}
+  - {fileID: 826036911}
+  - {fileID: 2013492291}
+  - {fileID: 1121947865}
+  - {fileID: 1873289024}
+  - {fileID: 191927705}
+  - {fileID: 1823915233}
+  - {fileID: 1936185533}
+  - {fileID: 1290329232}
+  - {fileID: 1814557395}
+  - {fileID: 2090111182}
+  - {fileID: 1948968097}
+  - {fileID: 521548356}
+  - {fileID: 1369820013}
+  - {fileID: 873046703}
+  - {fileID: 2013424321}
+  - {fileID: 1697716917}
+  - {fileID: 622931406}
+  - {fileID: 2134126433}
+  - {fileID: 1452234154}
+  - {fileID: 928372285}
+  - {fileID: 1233027261}
+  - {fileID: 1647265217}
+  - {fileID: 1394276276}
+  - {fileID: 1506504449}
+  - {fileID: 1652448510}
+  - {fileID: 1140494452}
+  - {fileID: 1269081143}
+  - {fileID: 2026697879}
+  - {fileID: 1336791304}
+  - {fileID: 1216875488}
+  - {fileID: 1051000230}
+  - {fileID: 1048639057}
+  - {fileID: 1841800374}
+  - {fileID: 1997795476}
+  - {fileID: 1560020758}
+  - {fileID: 2042644205}
+  - {fileID: 2090019058}
+  - {fileID: 1543242857}
+  - {fileID: 2079288857}
+  - {fileID: 706049210}
+  - {fileID: 467423617}
+  - {fileID: 1687757623}
+  - {fileID: 854106186}
+  - {fileID: 188867264}
+  - {fileID: 1931034878}
+  - {fileID: 948390102}
+  - {fileID: 1709819754}
+  - {fileID: 1443218605}
+  - {fileID: 1825134628}
+  - {fileID: 1861646525}
+  - {fileID: 973689211}
+  - {fileID: 920337553}
+  - {fileID: 1506718804}
+  - {fileID: 217060262}
+  - {fileID: 1164406636}
+  - {fileID: 803640318}
+  - {fileID: 1473991558}
+  - {fileID: 2046940148}
+  - {fileID: 2108410740}
+  - {fileID: 1605704034}
+  - {fileID: 1739632641}
+  - {fileID: 1941402707}
+  - {fileID: 248880433}
+  - {fileID: 241167323}
+  selectedSegments:
   - {fileID: 1874162124}
   - {fileID: 1875235815}
   - {fileID: 1315217568}
@@ -9313,13 +10961,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2108410740}
   m_SourcePrefab: {fileID: 100100000, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
 --- !u!4 &2108410737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 2108410736}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2108410740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606352867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
+--- !u!1 &2134126430 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
+  m_PrefabInstance: {fileID: 1532275573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2134126433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134126430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59e0f4b9989421d8ab2ed1f40899e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
+  shape:
+    Type: 0
+  hole: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
