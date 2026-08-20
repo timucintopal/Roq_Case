@@ -10,6 +10,8 @@ namespace Case2_BlockHole.Scripts
         [SerializeField] private LayerMask draggableLayer;
         [Tooltip("Zemin olarak kabul edilecek oyun alanının layer'ı (Örn: 'Ground')")]
         [SerializeField] private LayerMask groundLayer;
+        [Tooltip("Bırakıldığında deliği algılamak için kullanılacak layer")]
+        [SerializeField] private LayerMask holeLayer;
 
         [Header("Drag Settings")]
         [Tooltip("Objenin oyun alanı üzerindeki yüksekliği")]
@@ -82,6 +84,15 @@ namespace Case2_BlockHole.Scripts
 
             if (Pointer.current.press.wasReleasedThisFrame)
             {
+                if (_draggedObject != null)
+                {
+                    // Aşağıya (-y yönünde) bir ışın gönderip Hole layer'ındaki bir objeye çarpıyor mu kontrol et
+                    if (Physics.Raycast(_draggedObject.position, Vector3.down, out RaycastHit holeHit, 10f, holeLayer))
+                    {
+                        Debug.Log("Hole bulundu: " + holeHit.transform.name);
+                    }
+                }
+
                 _isDragging = false;
                 _draggedObject = null;
                 currentBlockController = null;
