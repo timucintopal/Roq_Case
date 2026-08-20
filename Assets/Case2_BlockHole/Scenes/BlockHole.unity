@@ -909,6 +909,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160740785}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &163086450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605982791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8d7ac720364633b3ec1d671887790b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.BlockController
+  holeColor: 0
 --- !u!1 &201115501
 GameObject:
   m_ObjectHideFlags: 0
@@ -5562,15 +5575,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3276481487074523901, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.051
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3276481487074523901, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.938
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3276481487074523901, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.039
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3276481487074523901, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5658,6 +5671,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1693279212646787575, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 163086450}
+    - targetCorrespondingSourceObject: {fileID: 1693279212646787575, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1825520757}
     - targetCorrespondingSourceObject: {fileID: 8395114149649257963, guid: 1f9a7fd359571437db2d08d6d83dbefa, type: 3}
       insertIndex: -1
@@ -5695,19 +5711,33 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3328007558244423297, guid: 00dfcd32817cf624b8199a481609386c, type: 3}
---- !u!114 &1825520757
-MonoBehaviour:
+--- !u!54 &1825520757
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605982791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8d7ac720364633b3ec1d671887790b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.BlockController
-  holeColor: 0
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1828486785
 GameObject:
   m_ObjectHideFlags: 0
@@ -5739,12 +5769,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.MInput
   draggableLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 64
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
   yOffset: 1
   moveSpeed: 25
+  currentHoleController: {fileID: 0}
 --- !u!4 &1828486787
 Transform:
   m_ObjectHideFlags: 0

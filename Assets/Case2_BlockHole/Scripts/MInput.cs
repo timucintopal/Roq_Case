@@ -17,6 +17,7 @@ namespace Case2_BlockHole.Scripts
         [Tooltip("Sürüklenme hassasiyeti (yumuşaklığı)")]
         [SerializeField] private float moveSpeed = 25f;
 
+        [SerializeField] BlockController currentBlockController;
         private Camera _mainCamera;
         private Transform _draggedObject;
         private bool _isDragging;
@@ -44,6 +45,8 @@ namespace Case2_BlockHole.Scripts
                     _isDragging = true;
                     
                     Debug.Log(_draggedObject.name);
+
+                    currentBlockController = hitObj.collider.attachedRigidbody.GetComponent<BlockController>();
                     
                     // 2. Tıklanan noktanın zemindeki karşılığını buluyoruz (offset hesaplamak için)
                     if (Physics.Raycast(ray, out RaycastHit hitGround, 100f, groundLayer))
@@ -51,6 +54,8 @@ namespace Case2_BlockHole.Scripts
                         // Sürüklerken objenin fareye aniden atlamaması için aradaki mesafeyi kaydediyoruz
                         _offset = _draggedObject.position - hitGround.point;
                         _offset.y = 0; // Sadece X ve Z'deki farkı koruyoruz
+                        
+                        
                     }
                     else
                     {
@@ -79,6 +84,7 @@ namespace Case2_BlockHole.Scripts
             {
                 _isDragging = false;
                 _draggedObject = null;
+                currentBlockController = null;
             }
         }
     }
