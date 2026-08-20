@@ -24,7 +24,8 @@ namespace Case1_FitTheShape.Scripts
             
             if (match != null)
             {
-                // Eşleşme bulundu, hedefe kilitlen ve zıpla
+                // Eşleşme bulundu, hedefi anında kilitle ki havadayken başka şekil aynı yuvayı kapmasın
+                match.LockSegment();
                 targetSegment = match;
                 StartCoroutine(MoveSequence());
             }
@@ -68,6 +69,16 @@ namespace Case1_FitTheShape.Scripts
             // Eğer 1.5 takla atıp yine ters oturmasını isterseniz 180 yerine 540 yapabilirsiniz.
             airSeq.Join(transform.DORotate(new Vector3(0, 0, -dirX * 180f), jumpDuration, RotateMode.LocalAxisAdd)
                 .SetEase(Ease.OutCubic));
+
+            // YENİ: Cuk diye oturma (Snap-Fit) hissiyatı! 
+            // Zıplama süresi dolmadan 0.15 saniye önce hedefteki deliği kapatmaya başla.
+            airSeq.InsertCallback(jumpDuration - 0.15f, () => 
+            {
+                if (targetSegment != null)
+                {
+                    targetSegment.CloseHoleEarly();
+                }
+            });
 
             yield return airSeq.WaitForCompletion();
             

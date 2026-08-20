@@ -26,16 +26,24 @@ namespace Case1_FitTheShape.Scripts
             return shape.Type == type;
         }
 
-        public void OnShapeLanded()
+        // Şekil eşleşip havalandığı an, yuvayı başka bir şekil kapmasın diye kilitler
+        public void LockSegment()
         {
             IsFilled = true;
+        }
 
+        // Şekil yuvaya değmeden hemen önce deliği kapatma efekti (Snap-Fit hissiyatı)
+        public void CloseHoleEarly()
+        {
             if (hole != null)
             {
-                // Deliği küçülterek yok et (Juice!)
-                hole.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack).OnComplete(() => hole.gameObject.SetActive(false));
+                // Deliği küçülterek yok et
+                hole.DOScale(Vector3.zero, 0.15f).SetEase(Ease.InBack).OnComplete(() => hole.gameObject.SetActive(false));
             }
+        }
 
+        public void OnShapeLanded()
+        {
             // MDrum'ı bul ve meksika dalgasını başlat
             MDrum drum = GetComponentInParent<MDrum>();
             if (drum != null)
