@@ -36,8 +36,8 @@ namespace Case1_FitTheShape.Scripts
             MDrum drum = GetComponentInParent<MDrum>();
             if (drum != null)
             {
-                // Dalganın etki edeceği maksimum fiziksel mesafe (örneğin 6 birim)
-                drum.PlayWaveEffect(this, 6f);
+                // Dalganın etki edeceği maksimum segment sayısı (örneğin en yakın 15 segment)
+                drum.PlayWaveEffect(this, 15);
             }
         }
     }

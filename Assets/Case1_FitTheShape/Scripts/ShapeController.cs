@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -18,6 +19,8 @@ namespace Case1_FitTheShape.Scripts
             if(JumpTarget != null && !_sequenceIsActive)
                 StartCoroutine(MoveSequence());
         }
+
+
 
         bool _sequenceIsActive = false;
         

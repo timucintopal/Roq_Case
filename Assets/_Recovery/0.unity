@@ -11239,6 +11239,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 998315222}
+  - {fileID: 1875235814}
+  - {fileID: 542028624}
+  - {fileID: 54905361}
+  - {fileID: 2066292442}
   - {fileID: 1145760301}
   - {fileID: 1366147279}
   - {fileID: 39812024}
@@ -11253,7 +11257,6 @@ Transform:
   - {fileID: 1213444064}
   - {fileID: 1928044038}
   - {fileID: 1290329229}
-  - {fileID: 1875235814}
   - {fileID: 1106214315}
   - {fileID: 1770710755}
   - {fileID: 1948968094}
@@ -11268,7 +11271,6 @@ Transform:
   - {fileID: 59656788}
   - {fileID: 846827076}
   - {fileID: 810005041}
-  - {fileID: 542028624}
   - {fileID: 924896460}
   - {fileID: 1506504446}
   - {fileID: 1652448507}
@@ -11283,7 +11285,6 @@ Transform:
   - {fileID: 1997795473}
   - {fileID: 312639091}
   - {fileID: 2042644202}
-  - {fileID: 54905361}
   - {fileID: 2090019055}
   - {fileID: 96327326}
   - {fileID: 2044748771}
@@ -11298,7 +11299,6 @@ Transform:
   - {fileID: 1443218602}
   - {fileID: 1568852707}
   - {fileID: 1861646522}
-  - {fileID: 2066292442}
   - {fileID: 860297587}
   - {fileID: 868221166}
   - {fileID: 231936807}
@@ -11327,93 +11327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f361690ed56c34c8b86bce0b7d992658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MDrum
-  selectedSegments:
-  - {fileID: 1874162124}
-  - {fileID: 1875235815}
-  - {fileID: 1315217568}
-  - {fileID: 54905362}
-  - {fileID: 2066292443}
-  columns:
-  - rowSegments:
-    - {fileID: 1874162124}
-    - {fileID: 1278602040}
-    - {fileID: 1366147282}
-    - {fileID: 2001195629}
-    - {fileID: 1361433142}
-    - {fileID: 1176832134}
-    - {fileID: 1202883196}
-    - {fileID: 826036911}
-    - {fileID: 2013492291}
-    - {fileID: 1121947865}
-    - {fileID: 1873289024}
-    - {fileID: 191927705}
-    - {fileID: 1823915233}
-    - {fileID: 1936185533}
-    - {fileID: 1290329232}
-  - rowSegments:
-    - {fileID: 1875235815}
-    - {fileID: 1814557395}
-    - {fileID: 2090111182}
-    - {fileID: 1948968097}
-    - {fileID: 521548356}
-    - {fileID: 1369820013}
-    - {fileID: 873046703}
-    - {fileID: 2013424321}
-    - {fileID: 1697716917}
-    - {fileID: 622931406}
-    - {fileID: 2134126433}
-    - {fileID: 1452234154}
-    - {fileID: 928372285}
-    - {fileID: 1233027261}
-    - {fileID: 1647265217}
-  - rowSegments:
-    - {fileID: 1315217568}
-    - {fileID: 1394276276}
-    - {fileID: 1506504449}
-    - {fileID: 1652448510}
-    - {fileID: 1140494452}
-    - {fileID: 1269081143}
-    - {fileID: 2026697879}
-    - {fileID: 1336791304}
-    - {fileID: 1216875488}
-    - {fileID: 1051000230}
-    - {fileID: 1048639057}
-    - {fileID: 1841800374}
-    - {fileID: 1997795476}
-    - {fileID: 1560020758}
-    - {fileID: 2042644205}
-  - rowSegments:
-    - {fileID: 54905362}
-    - {fileID: 2090019058}
-    - {fileID: 1543242857}
-    - {fileID: 2079288857}
-    - {fileID: 706049210}
-    - {fileID: 467423617}
-    - {fileID: 1687757623}
-    - {fileID: 854106186}
-    - {fileID: 188867264}
-    - {fileID: 1931034878}
-    - {fileID: 948390102}
-    - {fileID: 1709819754}
-    - {fileID: 1443218605}
-    - {fileID: 1825134628}
-    - {fileID: 1861646525}
-  - rowSegments:
-    - {fileID: 2066292443}
-    - {fileID: 973689211}
-    - {fileID: 920337553}
-    - {fileID: 1506718804}
-    - {fileID: 217060262}
-    - {fileID: 1164406636}
-    - {fileID: 803640318}
-    - {fileID: 1473991558}
-    - {fileID: 2046940148}
-    - {fileID: 2108410740}
-    - {fileID: 1605704034}
-    - {fileID: 1739632641}
-    - {fileID: 1941402707}
-    - {fileID: 248880433}
-    - {fileID: 241167323}
+  columns: []
 --- !u!1001 &2108410736
 PrefabInstance:
   m_ObjectHideFlags: 0

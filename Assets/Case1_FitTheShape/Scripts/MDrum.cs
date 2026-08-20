@@ -1,62 +1,108 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
+
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+using System.Linq;
+using NUnit.Framework;
 
 namespace Case1_FitTheShape.Scripts
 {
+    // Inspector'da 2 boyutlu (Sütun ve Satır) yapı oluşturabilmek için bir sınıf
+    [System.Serializable]
+    public class DrumColumn
+    {
+        [Tooltip("Bu sütuna ait segmentleri sırayla (örneğin yukarıdan aşağıya doğru) atayın.")]
+        public List<SegmentController> rowSegments = new List<SegmentController>();
+    }
+
     public class MDrum : MonoBehaviour
     {
-        [SerializeField] private List<SegmentController> segments = new List<SegmentController>();
-        
+        [Tooltip("5x15 matris için buraya 5 adet eleman (sütun) ekleyip, her birine o sütunun 15 segmentini atayın.")]
         [SerializeField] private List<SegmentController> selectedSegments = new List<SegmentController>();
+        
+        [SerializeField] private List<DrumColumn> columns = new List<DrumColumn>();
 
-        private void Awake()
+        // Grid (2D) ve Silindir (Wrap) matematiği ile kusursuz dairesel mesafe hesaplama
+        private float CalculateGridDistance(SegmentController center, SegmentController target)
         {
-            GatherSegments();
+            int cX = -1, cY = -1;
+            int tX = -1, tY = -1;
+
+            // Her iki objenin de (Center ve Target) Sütun (X) ve Satır (Y) koordinatlarını buluyoruz
+            for (int i = 0; i < columns.Count; i++)
+            {
+                int cIndex = columns[i].rowSegments.IndexOf(center);
+                if (cIndex != -1) { cX = i; cY = cIndex; }
+
+                int tIndex = columns[i].rowSegments.IndexOf(target);
+                if (tIndex != -1) { tX = i; tY = tIndex; }
+            }
+
+            // Objelerden biri listelerde yoksa (atanmamışsa) çok uzak say
+            if (cX == -1 || tX == -1) return 999f; 
+
+            int numCols = columns.Count;
+            // İlk kolonun eleman sayısını silindirin çevresi (satır sayısı) kabul ediyoruz
+            int numRows = columns[0].rowSegments.Count; 
+
+            // X ekseninde normal mesafe (Sütunlar arası)
+            float diffX = Mathf.Abs(cX - tX);
+            
+            // Y ekseninde silindir etrafında döndüğü için "başa sarma (wrap-around)" mesafesi
+            // Örneğin 0. satır ile 14. satır birbirine komşudur.
+            float diffY = Mathf.Min(Mathf.Abs(cY - tY), numRows - Mathf.Abs(cY - tY));
+
+            // Pisagor teoremi ile 2D Grid üzerindeki dairesel kuş uçuşu mesafesi
+            return Mathf.Sqrt(diffX * diffX + diffY * diffY);
         }
 
-        // Unity editöründe scriptin yanındaki 3 noktaya (...) basıp "Gather Segments" diyerek
-        // manuel olarak da listeyi doldurabilirsiniz.
-        [ContextMenu("Gather Segments")]
-        public void GatherSegments()
+        public void PlayWaveEffect(SegmentController centerSegment, int maxSegmentCount)
         {
-            // Tüm alt objelerdeki SegmentController'ları bulup listeye çeviriyoruz.
-            segments = new List<SegmentController>(GetComponentsInChildren<SegmentController>());
-        }
-
-        public void PlayWaveEffect(SegmentController centerSegment, float maxDistance)
-        {
-            float speed = 0.04f; // Dalganın yayılma hızı
+            float speed = 0.05f; // Grid mesafesi baz alındığı için dalga gecikme çarpanı
             float waveAnimDuration = 0.2f; // Segmentin esneme süresi
 
+            // Tüm kolonlardaki tüm segmentleri tek bir düz listeye (flat list) çevir
+            var allSegments = columns.SelectMany(c => c.rowSegments).ToList();
+
+            // Segmentleri artık fiziksel 3D mesafeye göre değil, Sizin Inspector'dan atadığınız
+            // Sanal 2D Silindir Grid mesafesine göre sıralıyoruz!
+            var orderedSegments = allSegments
+                .Where(s => s != null)
+                .Select(s => new { Seg = s, Dist = CalculateGridDistance(centerSegment, s) })
+                .OrderBy(x => x.Dist)
+                .Take(maxSegmentCount)
+                .ToList();
+
+            if (orderedSegments.Count == 0) return;
+
+            // Etki alanındaki en uzak segmentin mesafesi, dalganın geri sekme sınırıdır (edge).
+            float actualMaxDistance = orderedSegments[orderedSegments.Count - 1].Dist;
+
             // Dalganın kenarlara çarpıp yansıma sürelerinin matematiği
-            float outwardEdgeTime = maxDistance * speed; 
+            float outwardEdgeTime = actualMaxDistance * speed; 
             float inwardStartTime = outwardEdgeTime + waveAnimDuration; 
             float inwardCenterTime = inwardStartTime + outwardEdgeTime;
             float secondOutwardStartTime = inwardCenterTime + waveAnimDuration;
 
-            foreach (var segment in segments)
+            foreach (var item in orderedSegments)
             {
-                if (segment == null) continue;
+                float dist = item.Dist;
+                SegmentController segment = item.Seg;
 
-                float dist = Vector3.Distance(centerSegment.transform.position, segment.transform.position);
-                
-                if (dist <= maxDistance)
-                {
-                    Sequence seq = DOTween.Sequence();
+                Sequence seq = DOTween.Sequence();
 
-                    // 1. Dalga Gidişi (Merkezden dışa) - 3x Etki (0.3f büyüklük)
-                    float t1 = dist * speed;
-                    seq.Insert(t1, segment.transform.DOPunchScale(Vector3.one * 0.3f, waveAnimDuration, 1, 1));
+                // 1. Dalga Gidişi (Merkezden dışa) - 3x Etki 
+                seq.Insert(dist * speed, segment.transform.DOPunchScale(Vector3.one * 0.3f, waveAnimDuration, 1, 1));
 
-                    // 2. Dalga Gelişi (Kenardan merkeze yansıma) - 2x Etki (0.2f büyüklük)
-                    float t2 = inwardStartTime + ((maxDistance - dist) * speed);
-                    seq.Insert(t2, segment.transform.DOPunchScale(Vector3.one * 0.2f, waveAnimDuration, 1, 1));
+                // 2. Dalga Gelişi (Kenardan merkeze yansıma) - 2x Etki 
+                seq.Insert(inwardStartTime + ((actualMaxDistance - dist) * speed), segment.transform.DOPunchScale(Vector3.one * 0.2f, waveAnimDuration, 1, 1));
 
-                    // 3. Son Gidiş (Merkezden dışa sönümlenme) - 1x Etki (0.1f büyüklük)
-                    float t3 = secondOutwardStartTime + (dist * speed);
-                    seq.Insert(t3, segment.transform.DOPunchScale(Vector3.one * 0.1f, waveAnimDuration, 1, 1));
-                }
+                // 3. Son Gidiş (Merkezden dışa sönümlenme) - 1x Etki 
+                seq.Insert(secondOutwardStartTime + (dist * speed), segment.transform.DOPunchScale(Vector3.one * 0.1f, waveAnimDuration, 1, 1));
             }
         }
     }
