@@ -16,8 +16,24 @@ namespace Case1_FitTheShape.Scripts
         [ContextMenu("JumpToTarget")]
         public void JumpToTarget()
         {
-            if(JumpTarget != null && !_sequenceIsActive)
+            if (_sequenceIsActive) return;
+
+            // MDrum'daki aktif segmentler arasından şekil tipine uygun, bize EN YAKIN (kendi hizamızdaki) boş hedefi ara
+            SegmentController match = MDrum.Instance.GetMatchingActiveSegment(shapeType);
+            
+            
+            if (match != null)
+            {
+                // Eşleşme bulundu, hedefe kilitlen ve zıpla
+                targetSegment = match;
                 StartCoroutine(MoveSequence());
+            }
+            else
+            {
+                // Eşleşme bulunamadı! Oyuncuya "hayır" diyen minik bir titreme (wobble) animasyonu oynat
+                transform.DOShakeRotation(0.3f, new Vector3(0, 0, 20f), 10, 90, false);
+                transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 1, 1);
+            }
         }
 
 

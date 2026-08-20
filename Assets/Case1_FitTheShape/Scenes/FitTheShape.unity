@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
   shape:
-    Type: 0
+    Type: 3
   hole: {fileID: 138537744}
 --- !u!1001 &55490258
 PrefabInstance:
@@ -4208,7 +4208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0333a4198ef1f435cbace050884cda89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.ShapeController
-  shapeType: 0
+  shapeType: 1
   targetSegment: {fileID: 0}
 --- !u!54 &881256086
 Rigidbody:
@@ -6232,7 +6232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
   shape:
-    Type: 0
+    Type: 2
   hole: {fileID: 1669588778}
 --- !u!1001 &1336791300
 PrefabInstance:
@@ -8207,7 +8207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0333a4198ef1f435cbace050884cda89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.ShapeController
-  shapeType: 0
+  shapeType: 2
   targetSegment: {fileID: 0}
 --- !u!54 &1581272664
 Rigidbody:
@@ -8643,7 +8643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.ShapeController
   shapeType: 0
-  targetSegment: {fileID: 1874162124}
+  targetSegment: {fileID: 0}
 --- !u!54 &1673056880
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9632,7 +9632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
   shape:
-    Type: 0
+    Type: 1
   hole: {fileID: 1636144323}
 --- !u!4 &1887921203 stripped
 Transform:
@@ -11031,7 +11031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case1_FitTheShape.Scripts.SegmentController
   shape:
-    Type: 0
+    Type: 4
   hole: {fileID: 37946751}
 --- !u!4 &2071473284 stripped
 Transform:
@@ -11327,12 +11327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f361690ed56c34c8b86bce0b7d992658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MDrum
-  selectedSegments:
-  - {fileID: 1874162124}
-  - {fileID: 1875235815}
-  - {fileID: 1315217568}
-  - {fileID: 54905362}
-  - {fileID: 2066292443}
   columns:
   - rowSegments:
     - {fileID: 1874162124}
@@ -11414,6 +11408,13 @@ MonoBehaviour:
     - {fileID: 1941402707}
     - {fileID: 248880433}
     - {fileID: 241167323}
+  activeSegments:
+  - {fileID: 1874162124}
+  - {fileID: 1875235815}
+  - {fileID: 1315217568}
+  - {fileID: 54905362}
+  - {fileID: 2066292443}
+  waveReachCount: 15
 --- !u!1001 &2108410736
 PrefabInstance:
   m_ObjectHideFlags: 0

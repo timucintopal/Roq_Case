@@ -21,12 +21,39 @@ namespace Case1_FitTheShape.Scripts
 
     public class MDrum : MonoBehaviour
     {
+        public static MDrum Instance { get; private set; }
+
         [Tooltip("5x15 matris için buraya 5 adet eleman (sütun) ekleyip, her birine o sütunun 15 segmentini atayın.")]
         [SerializeField] private List<DrumColumn> columns = new List<DrumColumn>();
+
+        [Header("Active State")]
+        [Tooltip("O an kameraya dönük (oynanabilir) olan segmentleri tutan liste. Davul döndükçe bunu güncelleyin.")]
+        public List<SegmentController> activeSegments = new List<SegmentController>();
 
         [Header("Wave Settings")]
         [Tooltip("Dalganın merkezden dışarıya doğru toplam kaç segmente ulaşacağını belirler. (Dairesel etki alanı)")]
         [SerializeField] private int waveReachCount = 15;
+
+        private void Awake()
+        {
+            if (Instance == null) Instance = this;
+            else Destroy(gameObject);
+        }
+
+        // Aktif segmentler arasından tipi eşleşen, içi boş olan ve fırlatılan objeye YATAYDA (X ekseninde) EN YAKIN hedefi döndürür
+        public SegmentController GetMatchingActiveSegment(ShapeType type)
+        {
+            SegmentController bestMatch = null;
+
+            foreach (var segment in activeSegments)
+            {
+                if (segment != null && !segment.IsFilled && segment.SegmentCheck(type))
+                {
+                    return segment;
+                }
+            }
+            return bestMatch; // Eşleşen hedef yoksa null döner
+        }
 
         // Grid (2D) ve Silindir (Wrap) matematiği ile kusursuz dairesel mesafe hesaplama
         private float CalculateGridDistance(SegmentController center, SegmentController target)

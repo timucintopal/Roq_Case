@@ -19,6 +19,8 @@ namespace Case1_FitTheShape.Scripts
             return hole;
         }
 
+        public bool IsFilled { get; private set; } = false;
+
         public bool SegmentCheck(ShapeType type)
         {
             return shape.Type == type;
@@ -26,6 +28,8 @@ namespace Case1_FitTheShape.Scripts
 
         public void OnShapeLanded()
         {
+            IsFilled = true;
+
             if (hole != null)
             {
                 // Deliği küçülterek yok et (Juice!)
