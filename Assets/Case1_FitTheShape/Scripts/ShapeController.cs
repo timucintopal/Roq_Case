@@ -81,7 +81,7 @@ namespace Case1_FitTheShape.Scripts
             // YENİ DÖNÜŞ (ROTATION) MANTIĞI:
             // Objenin Y ekseni (Up), ApproachTarget'ın -Y eksenine (-Up) bakacak şekilde hedef rotasyon hesaplıyoruz.
             // Objenin Z eksenini (Forward) hedefin Z'si ile aynı tutuyoruz ki sağa sola sapmasın.
-            Quaternion targetRotation = Quaternion.LookRotation(ApproachTarget.forward, ApproachTarget.up);
+            Quaternion targetRotation = Quaternion.LookRotation(ApproachTarget.forward, -ApproachTarget.up);
 
             // Zıplama (1. aşama) boyunca bu hedef rotasyona pürüzsüzce (smooth) dönmesini sağlıyoruz.
             airSeq.Insert(0, transform.DORotateQuaternion(targetRotation, arcDuration).SetEase(Ease.InOutSine));
@@ -97,9 +97,8 @@ namespace Case1_FitTheShape.Scripts
             });
 
             yield return airSeq.WaitForCompletion();
-            
-            // 4. İniş (Impact) - Yuvaya girdiğini hissettirecek minik bir bounce/squash
-            yield return transform.DOPunchScale(new Vector3(0.3f, -0.3f, 0.3f), 0.2f, 1, 1).WaitForCompletion();
+            // 4. İniş (Impact) - Yuvaya girdiğini hissettirecek minik bir bounce/squash kaldırıldı
+            // Artık scale animasyonu oynatmadan doğrudan oturacak.
 
             // 5. Yuvaya oturduğumuzu bildir (Hole kapanacak ve Meksika dalgası başlayacak)
             if (targetSegment != null)
