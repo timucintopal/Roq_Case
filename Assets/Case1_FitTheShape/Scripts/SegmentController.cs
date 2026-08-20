@@ -7,16 +7,24 @@ namespace Case1_FitTheShape.Scripts
     {
         [SerializeField] private Shape shape;
         [SerializeField] private Transform hole;
+        [SerializeField] private Transform approachPoint;
 
         [ContextMenu("FillHole")]
         public void SetHole()
         {
             hole = transform.GetChild(0);
+            approachPoint = transform.GetChild(9);
         }
 
         public Transform GetHole()
         {
             return hole;
+        }
+
+        // Objelerin yuvaya girmeden hemen önce havada hizalanacağı nokta (9. Child)
+        public Transform GetApproachPoint()
+        {
+            return approachPoint; // Eğer 9. child yoksa güvenlik olarak asıl deliği döndür
         }
 
         public bool IsFilled { get; private set; } = false;

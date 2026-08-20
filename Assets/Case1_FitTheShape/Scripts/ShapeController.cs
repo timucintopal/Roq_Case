@@ -11,6 +11,7 @@ namespace Case1_FitTheShape.Scripts
         [SerializeField] private SegmentController targetSegment;
 
         private Transform JumpTarget => targetSegment.GetHole();
+        private Transform ApproachTarget => targetSegment.GetApproachPoint();
 
 
         [ContextMenu("JumpToTarget")]
@@ -50,29 +51,41 @@ namespace Case1_FitTheShape.Scripts
             // yield return transform.DOJump(jumpTarget.position, 1,1,.25f).SetEase(Ease.InOutSine).WaitForCompletion();
 
             // Gideceği yönü belirliyoruz (X eksenine göre)
-            float dirX = Mathf.Sign(JumpTarget.position.x - transform.position.x);
-            if (Mathf.Abs(JumpTarget.position.x - transform.position.x) < 0.05f) dirX = 1f;
+            float dirX = Mathf.Sign(ApproachTarget.position.x - transform.position.x);
+            if (Mathf.Abs(ApproachTarget.position.x - transform.position.x) < 0.05f) dirX = 1f;
 
             // 1. Anticipation (Hazırlık) - Sıçramadan önce tatlı bir esneme/güç toplama
             yield return transform.DOPunchScale(Vector3.one * 0.75f, 0.3f, 1, 1).WaitForCompletion();
 
-            // 2. Havalanma ve Spin (Direkt Zıplama)
+            // 2. Havalanma ve Saplanma (İki Aşamalı Zıplama)
             Sequence airSeq = DOTween.Sequence();
             
-            float jumpDuration = 0.45f; // Zıplama ve takla süresi
+            float totalDuration = 0.45f; // Zıplama ve girme toplam süresi
 
-            // Hedefe doğrudan kavisli zıplama
-            airSeq.Append(transform.DOJump(JumpTarget.position, 1.5f, 1, jumpDuration).SetEase(Ease.InOutSine));
+            // Toplam hızı (hissiyatı) sabit tutmak için süreyi mesafeye oranlıyoruz
+            float distToApproach = Vector3.Distance(transform.position, ApproachTarget.position);
+            float distToHole = Vector3.Distance(ApproachTarget.position, JumpTarget.position);
+            float totalDist = distToApproach + distToHole;
+            if (totalDist == 0) totalDist = 0.1f; // Matematiksel Güvenlik
+
+            float arcDuration = totalDuration * (distToApproach / totalDist);
+            float dropDuration = totalDuration * (distToHole / totalDist);
+
+            // 1. Aşama: Havadaki hizaya (Approach Point) kavisli zıpla
+            airSeq.Append(transform.DOJump(ApproachTarget.position, 1.5f, 1, arcDuration).SetEase(Ease.InOutSine));
+            
+            // 2. Aşama: Havadaki hizadan asıl deliğe dikine (linear) gir
+            // Append olduğu için 1. hareket bittiği milisaniyede hız kesmeden bu başlar. Ease.InSine ivmeyi giderek artırır (saplanma hissi).
+            airSeq.Append(transform.DOMove(JumpTarget.position, dropDuration).SetEase(Ease.InSine));
             
             // Zıplarken gideceği yöne doğru 180 derece (yarım takla) spin atar.
-            // Böylece inişte objenin Y ekseni tam tersine (hedefin -Y'sine) dönmüş olarak oturur.
-            // Eğer 1.5 takla atıp yine ters oturmasını isterseniz 180 yerine 540 yapabilirsiniz.
-            airSeq.Join(transform.DORotate(new Vector3(0, 0, -dirX * 180f), jumpDuration, RotateMode.LocalAxisAdd)
+            // SADECE 1. aşamada (kavisteyken) döner, deliğe girerken dümdüz oturmuş olmalıdır.
+            airSeq.Insert(0, transform.DORotate(new Vector3(0, 0, -dirX * 180f), arcDuration, RotateMode.LocalAxisAdd)
                 .SetEase(Ease.OutCubic));
 
             // YENİ: Cuk diye oturma (Snap-Fit) hissiyatı! 
-            // Zıplama süresi dolmadan 0.15 saniye önce hedefteki deliği kapatmaya başla.
-            airSeq.InsertCallback(jumpDuration - 0.15f, () => 
+            // Toplam sürenin dolmasına 0.15 saniye kala hedefteki deliği kapatmaya başla.
+            airSeq.InsertCallback(totalDuration - 0.15f, () => 
             {
                 if (targetSegment != null)
                 {
