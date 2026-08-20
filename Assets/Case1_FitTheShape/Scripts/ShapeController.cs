@@ -78,6 +78,9 @@ namespace Case1_FitTheShape.Scripts
             // Append olduğu için 1. hareket bittiği milisaniyede hız kesmeden bu başlar. Ease.InSine ivmeyi giderek artırır (saplanma hissi).
             airSeq.Append(transform.DOMove(JumpTarget.position, dropDuration).SetEase(Ease.InSine));
             
+            // YENİ: Yuvaya girerken şeklin kendisi de küçülüp sıfırlansın (yok olsun)
+            airSeq.Join(transform.DOScale(Vector3.zero, dropDuration).SetEase(Ease.InSine));
+            
             // YENİ DÖNÜŞ (ROTATION) MANTIĞI:
             // Objenin Y ekseni (Up), ApproachTarget'ın -Y eksenine (-Up) bakacak şekilde hedef rotasyon hesaplıyoruz.
             // Objenin Z eksenini (Forward) hedefin Z'si ile aynı tutuyoruz ki sağa sola sapmasın.

@@ -24,7 +24,14 @@ namespace Case1_FitTheShape.Scripts
         // Objelerin yuvaya girmeden hemen önce havada hizalanacağı nokta (9. Child)
         public Transform GetApproachPoint()
         {
-            return approachPoint; // Eğer 9. child yoksa güvenlik olarak asıl deliği döndür
+            // Eğer Inspector'dan atandıysa onu kullan
+            if (approachPoint != null) return approachPoint;
+            
+            // Atanmadıysa ama 9. child varsa onu kullan
+            if (transform.childCount > 9) return transform.GetChild(9);
+
+            // Hiçbiri yoksa hata vermesin diye deliğin kendisini döndür
+            return hole; 
         }
 
         public bool IsFilled { get; private set; } = false;
