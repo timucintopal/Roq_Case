@@ -86,8 +86,9 @@ namespace Case1_FitTheShape.Scripts
             // Objenin Z eksenini (Forward) hedefin Z'si ile aynı tutuyoruz ki sağa sola sapmasın.
             Quaternion targetRotation = Quaternion.LookRotation(ApproachTarget.forward, -ApproachTarget.up);
 
-            // Zıplama (1. aşama) boyunca bu hedef rotasyona pürüzsüzce (smooth) dönmesini sağlıyoruz.
-            airSeq.Insert(0, transform.DORotateQuaternion(targetRotation, arcDuration).SetEase(Ease.InOutSine));
+            // Kullanıcı isteği: Dönme işlemi objenin approach noktasına varmasından önce tamamlansın.
+            // Bu yüzden süreyi arcDuration'ın %65'i kadar yapıyoruz (Havadayken erkenden yüzünü döner).
+            airSeq.Insert(0, transform.DORotateQuaternion(targetRotation, arcDuration * 0.65f).SetEase(Ease.InOutSine));
 
             // YENİ: Cuk diye oturma (Snap-Fit) hissiyatı! 
             // Toplam sürenin dolmasına 0.15 saniye kala hedefteki deliği kapatmaya başla.
