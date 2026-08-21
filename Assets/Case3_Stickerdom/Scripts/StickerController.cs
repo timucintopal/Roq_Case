@@ -13,7 +13,7 @@ public class StickerController : MonoBehaviour
     public float maxPeelAmount = 0.8f; // Sürüklerken maksimum ne kadar kıvrılsın (0-1)
     public float peelDuration = 0.3f; // Kıvrılma animasyon hızı
 
-    private SpriteRenderer spriteRenderer;
+
     private Material stickerMaterial;
     private Vector3 originalPosition;
     
@@ -27,27 +27,40 @@ public class StickerController : MonoBehaviour
     private Camera mainCam;
     private float originalZ;
 
+    private Renderer activeRenderer;
+
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        
-        // Material'in instance'ını alıyoruz ki diğer sticker'lar aynı anda kıvrılmasın
-        if (spriteRenderer.material != null)
-        {
-            stickerMaterial = new Material(spriteRenderer.material);
-            spriteRenderer.material = stickerMaterial;
-        }
-
         peelAmountPropId = Shader.PropertyToID("_PeelAmount");
         peelDirPropId = Shader.PropertyToID("_PeelDirection");
 
         originalPosition = transform.position;
         originalZ = transform.position.z;
         mainCam = Camera.main;
-        
-        if (stickerMaterial != null)
+
+        // Eğer StickerMeshGenerator henüz SetActiveRenderer çağırmadıysa (veya yoksa), SpriteRenderer'ı kullan
+        if (activeRenderer == null)
         {
-            stickerMaterial.SetFloat(peelAmountPropId, 0f);
+            SetActiveRenderer(GetComponent<SpriteRenderer>());
+        }
+    }
+
+    public void SetActiveRenderer(Renderer rend)
+    {
+        if (rend == null) return;
+        
+        activeRenderer = rend;
+        
+        // Material'in instance'ını alıyoruz ki diğer sticker'lar aynı anda kıvrılmasın
+        if (activeRenderer.material != null)
+        {
+            stickerMaterial = new Material(activeRenderer.sharedMaterial);
+            activeRenderer.material = stickerMaterial;
+            
+            if (peelAmountPropId != 0) // Eğer Start daha önce çalıştıysa
+            {
+                stickerMaterial.SetFloat(peelAmountPropId, 0f);
+            }
         }
     }
 
