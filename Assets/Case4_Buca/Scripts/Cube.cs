@@ -33,6 +33,12 @@ namespace Case4_Buca.Scripts
             {
                 isHit = true;
                 _renderer.material.DOColor(targetColor, coloringDuration);
+                
+                // Çarpışmadan 1.5 saniye sonra başla, Drag ve Angular Drag değerlerini 2 saniye içinde 5'e kadar çıkart.
+                DOVirtual.Float(_rigidbody.linearDamping, 5f, 1f, (value) => {
+                    _rigidbody.linearDamping = value;
+                    _rigidbody.angularDamping = value;
+                }).SetDelay(1.5f);
             }
         }
 
