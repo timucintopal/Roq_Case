@@ -3567,7 +3567,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0.48235294}
+      key0: {r: 1, g: 0.0141509175, b: 0.0141509175, a: 0.48235294}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -3826,8 +3826,8 @@ MonoBehaviour:
   maxDragDistance: 5
   canShootWhileMoving: 0
   lineRenderer: {fileID: 2101040939}
-  lineMaxWidth: 0.5
-  lineMinWidth: 0.1
+  lineMaxWidth: 0.75
+  lineMinWidth: 0.25
 --- !u!64 &2082906079
 MeshCollider:
   m_ObjectHideFlags: 0
