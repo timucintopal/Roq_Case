@@ -16,27 +16,20 @@ namespace Case3_Stickerdom.Scripts
         public float peelDuration = 0.3f;
 
         private Material stickerMaterial;
-        private Vector3 originalPosition;
-    
         private int peelAmountPropId;
         private int peelDirPropId;
 
         private bool isPlaced = false;
-        private Camera mainCam;
-        private float originalZ;
 
         private Renderer activeRenderer;
 
         public bool IsPlaced => isPlaced;
+        public int SortingOrder => activeRenderer != null ? activeRenderer.sortingOrder : 0;
 
         void Start()
         {
             peelAmountPropId = Shader.PropertyToID("_PeelAmount");
             peelDirPropId = Shader.PropertyToID("_PeelDirection");
-
-            originalPosition = transform.position;
-            originalZ = transform.position.z;
-            mainCam = Camera.main;
 
             if (activeRenderer == null)
             {

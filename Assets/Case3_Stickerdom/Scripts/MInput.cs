@@ -22,16 +22,31 @@ namespace Case3_Stickerdom.Scripts
                 Vector3 mouseWorld = GetMouseWorldPos(0f);
                 Vector2 mousePos2D = new Vector2(mouseWorld.x, mouseWorld.y);
                 
-                RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+                RaycastHit2D[] hits = Physics2D.RaycastAll(mousePos2D, Vector2.zero);
                 
-                if (hit.collider != null)
+                StickerController topSticker = null;
+                int maxOrder = int.MinValue;
+
+                foreach (var hit in hits)
                 {
-                    StickerController sticker = hit.collider.GetComponent<StickerController>();
-                    if (sticker != null && !sticker.IsPlaced)
+                    if (hit.collider != null)
                     {
-                        Vector3 exactMouseWorld = GetMouseWorldPos(sticker.transform.position.z);
-                        sticker.OnTap(exactMouseWorld);
+                        StickerController sticker = hit.collider.GetComponent<StickerController>();
+                        if (sticker != null && !sticker.IsPlaced)
+                        {
+                            if (sticker.SortingOrder > maxOrder)
+                            {
+                                topSticker = sticker;
+                                maxOrder = sticker.SortingOrder;
+                            }
+                        }
                     }
+                }
+
+                if (topSticker != null)
+                {
+                    Vector3 exactMouseWorld = GetMouseWorldPos(topSticker.transform.position.z);
+                    topSticker.OnTap(exactMouseWorld);
                 }
             }
         }
