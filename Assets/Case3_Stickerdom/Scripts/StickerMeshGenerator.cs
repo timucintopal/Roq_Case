@@ -5,6 +5,7 @@ using UnityEditor;
 #endif
 
 [RequireComponent(typeof(SpriteRenderer))]
+[ExecuteAlways]
 public class StickerMeshGenerator : MonoBehaviour
 {
     [Header("Mesh Settings")]
@@ -28,6 +29,30 @@ public class StickerMeshGenerator : MonoBehaviour
             // Eğer yoksa Run-time (Oyun anında) yarat
             GenerateRuntimeMesh();
         }
+    }
+
+    void Update()
+    {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            if (sr == null || sr.sprite == null) return;
+            
+            Transform child = transform.Find("GeneratedStickerMesh");
+            if (child != null)
+            {
+                MeshRenderer mr = child.GetComponent<MeshRenderer>();
+                if (mr != null)
+                {
+                    MaterialPropertyBlock block = new MaterialPropertyBlock();
+                    if (sr.sprite.texture != null) block.SetTexture("_MainTex", sr.sprite.texture);
+                    block.SetColor("_Color", sr.color);
+                    mr.SetPropertyBlock(block);
+                }
+            }
+        }
+#endif
     }
 
     private void GenerateRuntimeMesh()
