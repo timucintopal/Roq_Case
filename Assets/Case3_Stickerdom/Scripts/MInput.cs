@@ -5,12 +5,12 @@ namespace Case3_Stickerdom.Scripts
 {
     public class MInput : MonoBehaviour
     {
-        private StickerController currentDraggedSticker;
-        private Camera mainCam;
+        private StickerController _currentDraggedSticker;
+        private Camera _mainCam;
 
         void Start()
         {
-            mainCam = Camera.main;
+            _mainCam = Camera.main;
         }
 
         void Update()
@@ -34,24 +34,24 @@ namespace Case3_Stickerdom.Scripts
                     StickerController sticker = hit.collider.GetComponent<StickerController>();
                     if (sticker != null && !sticker.IsPlaced)
                     {
-                        currentDraggedSticker = sticker;
+                        _currentDraggedSticker = sticker;
                         // Objeye özel derinlikte fare pozisyonunu tekrar al
-                        Vector3 exactMouseWorld = GetMouseWorldPos(currentDraggedSticker.transform.position.z);
-                        currentDraggedSticker.OnInputDown(exactMouseWorld);
+                        Vector3 exactMouseWorld = GetMouseWorldPos(_currentDraggedSticker.transform.position.z);
+                        _currentDraggedSticker.OnInputDown(exactMouseWorld);
                     }
                 }
             }
             // Sürükleme
-            else if (isPointerDrag && currentDraggedSticker != null)
+            else if (isPointerDrag && _currentDraggedSticker != null)
             {
-                Vector3 exactMouseWorld = GetMouseWorldPos(currentDraggedSticker.transform.position.z);
-                currentDraggedSticker.OnInputDrag(exactMouseWorld);
+                Vector3 exactMouseWorld = GetMouseWorldPos(_currentDraggedSticker.transform.position.z);
+                _currentDraggedSticker.OnInputDrag(exactMouseWorld);
             }
             // Bırakma
-            else if (isPointerUp && currentDraggedSticker != null)
+            else if (isPointerUp && _currentDraggedSticker != null)
             {
-                currentDraggedSticker.OnInputUp();
-                currentDraggedSticker = null;
+                _currentDraggedSticker.OnInputUp();
+                _currentDraggedSticker = null;
             }
         }
 
@@ -63,8 +63,8 @@ namespace Case3_Stickerdom.Scripts
             Vector3 mousePos = new Vector3(rawMousePos.x, rawMousePos.y, 0f);
             
             // Kamera Z ile Obje Z arasındaki farkı bul (Perspektif için doğru hizalama)
-            mousePos.z = Mathf.Abs(mainCam.transform.position.z - objectZ);
-            return mainCam.ScreenToWorldPoint(mousePos);
+            mousePos.z = Mathf.Abs(_mainCam.transform.position.z - objectZ);
+            return _mainCam.ScreenToWorldPoint(mousePos);
         }
     }
 }

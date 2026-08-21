@@ -426,6 +426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 264991237}
   - component: {fileID: 264991238}
+  - component: {fileID: 264991239}
   m_Layer: 0
   m_Name: Ghost_Meyve
   m_TagString: Untagged
@@ -507,6 +508,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &264991239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264991236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a89480c5d5334786ae4ebe25c4e1485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StickerSlot
 --- !u!1 &339643456
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +658,7 @@ GameObject:
   m_Component:
   - component: {fileID: 367521627}
   - component: {fileID: 367521628}
+  - component: {fileID: 367521629}
   m_Layer: 0
   m_Name: Ghost_Hayvan
   m_TagString: Untagged
@@ -661,9 +675,9 @@ Transform:
   m_GameObject: {fileID: 367521626}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 3.45, z: 0.2}
-  m_LocalScale: {x: 1.0526316, y: 1.0526316, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -2.525, y: 3.491, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 0.9499999}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1856208315}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -726,6 +740,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &367521629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367521626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a89480c5d5334786ae4ebe25c4e1485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StickerSlot
 --- !u!1 &548803014
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,6 +943,7 @@ GameObject:
   m_Component:
   - component: {fileID: 636427986}
   - component: {fileID: 636427987}
+  - component: {fileID: 636427988}
   m_Layer: 0
   m_Name: Ghost_Arac
   m_TagString: Untagged
@@ -998,6 +1025,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &636427988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636427985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a89480c5d5334786ae4ebe25c4e1485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StickerSlot
 --- !u!1 &646356819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,13 +1707,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215549562}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.034899496, w: 0.99939084}
+  m_LocalRotation: {x: -0, y: -0, z: 0.034899496, w: 0.99939084}
   m_LocalPosition: {x: 3.3, y: -6.45, z: 0}
   m_LocalScale: {x: 0.7415255, y: 0.7415255, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1823975610}
-  m_Father: {fileID: 2005150150}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1215549564
 SpriteRenderer:
@@ -2058,6 +2097,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503049761}
   m_Mesh: {fileID: 4300000, guid: 13137ce16e14b43bb84c19a79b93374a, type: 2}
+--- !u!1 &1602049300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1602049302}
+  - component: {fileID: 1602049301}
+  m_Layer: 0
+  m_Name: MSticker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1602049301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602049300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ba558e51c974042bf387f4de173b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case3_Stickerdom.Scripts.MSticker
+--- !u!4 &1602049302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602049300}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.49271, y: 0, z: 0.97155}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1644672740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,13 +2169,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644672740}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.05233596, w: 0.9986295}
+  m_LocalRotation: {x: -0, y: 0, z: -0.05233596, w: 0.9986295}
   m_LocalPosition: {x: -0.6, y: -7, z: 0}
   m_LocalScale: {x: 0.8706468, y: 0.8706468, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1503049762}
-  m_Father: {fileID: 2005150150}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1644672742
 SpriteRenderer:
@@ -2433,10 +2516,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2059011743}
-  - {fileID: 1644672741}
-  - {fileID: 1215549563}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2055223283
@@ -2558,13 +2638,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059011742}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.061048545, w: 0.99813485}
-  m_LocalPosition: {x: -4.3, y: -6.75, z: 0}
-  m_LocalScale: {x: 0.80091536, y: 0.80091536, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.33, y: -6.42, z: 0}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 570590732}
-  m_Father: {fileID: 2005150150}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2059011744
 SpriteRenderer:
@@ -2881,5 +2961,9 @@ SceneRoots:
   - {fileID: 740737550}
   - {fileID: 2005150150}
   - {fileID: 1058743709}
+  - {fileID: 2059011743}
+  - {fileID: 1644672741}
+  - {fileID: 1215549563}
   - {fileID: 1487409587}
   - {fileID: 646356821}
+  - {fileID: 1602049302}
