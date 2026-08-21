@@ -680,12 +680,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BallSlingshot
   powerMultiplier: 10
   maxDragDistance: 5
+  minDragDistance: 0.5
   canShootWhileMoving: 0
   lineRenderer: {fileID: 0}
   lineStartYOffset: 0.5
   lineEndYOffset: 0.5
   lineMaxWidth: 0.5
   lineMinWidth: 0.1
+  lineEndWidthMultiplier: 0.2
 --- !u!1 &297645757
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,14 +3826,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a3868fd0251403e8274cfeb59446ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallSlingshot
-  powerMultiplier: 160
+  powerMultiplier: 60
   maxDragDistance: 5
+  minDragDistance: 0.5
   canShootWhileMoving: 0
   lineRenderer: {fileID: 2101040939}
   lineStartYOffset: 0.35
   lineEndYOffset: 1.85
   lineMaxWidth: 0.5
   lineMinWidth: 0.25
+  lineEndWidthMultiplier: 0.2
 --- !u!64 &2082906079
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3862,8 +3866,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082906077}
   serializedVersion: 5
-  m_Mass: 15
-  m_LinearDamping: 0
+  m_Mass: 5
+  m_LinearDamping: 0.4
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
