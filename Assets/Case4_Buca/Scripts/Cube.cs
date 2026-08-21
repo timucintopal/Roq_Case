@@ -18,6 +18,35 @@ namespace Case4_Buca.Scripts
 
         [SerializeField] bool isHit = false;
 
+        private void Start()
+        {
+            if (MCube.Instance != null)
+            {
+                MCube.Instance.RegisterCube();
+                MCube.Instance.OnAllCubesHit += OnAllCubesCompleted;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (MCube.Instance != null)
+            {
+                MCube.Instance.OnAllCubesHit -= OnAllCubesCompleted;
+            }
+        }
+
+        public void OnAllCubesCompleted()
+        {
+            
+            transform.DOScale(Vector3.zero, 1)
+                .OnStart(() =>
+            {
+                _rigidbody.isKinematic = true;
+            })
+                .SetEase(Ease.InBack).SetDelay(1.5f);
+            // Gelecekte eklenecek tüm küplere ait ortak davranışlar buraya gelecek.
+        }
+
         [ContextMenu("SET")]
         private void Set()
         {
@@ -32,6 +61,8 @@ namespace Case4_Buca.Scripts
             if ((triggerLayers.value & (1 << other.gameObject.layer)) > 0)
             {
                 isHit = true;
+                if (MCube.Instance != null) MCube.Instance.CubeHit();
+                
                 _renderer.material.DOColor(targetColor, coloringDuration);
                 
                 // Çarpışmadan 1.5 saniye sonra başla, Drag ve Angular Drag değerlerini 2 saniye içinde 5'e kadar çıkart.
