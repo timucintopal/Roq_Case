@@ -9,6 +9,8 @@ public class BallSlingshot : MonoBehaviour
     public float powerMultiplier = 10f;
     [Tooltip("Maksimum çekme mesafesi sınırı.")]
     public float maxDragDistance = 5f;
+    [Tooltip("Atışın gerçekleşmesi ve çizginin görünmesi için gereken minimum çekme mesafesi (Ölü Alan).")]
+    public float minDragDistance = 0.5f;
     [Tooltip("Top hareket halindeyken tekrar atış yapılabilir mi?")]
     public bool canShootWhileMoving = false;
 
@@ -20,6 +22,9 @@ public class BallSlingshot : MonoBehaviour
     public float lineMaxWidth = 0.5f;
     [Tooltip("Çizginin en ince hali (uzun çekildiğinde).")]
     public float lineMinWidth = 0.1f;
+    [Tooltip("Çizginin bitiş noktasına doğru ne kadar inceldiği (0 = iğne gibi sivri, 1 = başlangıçla aynı kalınlık).")]
+    [Range(0f, 1f)]
+    public float lineEndWidthMultiplier = 0.2f;
 
     private Rigidbody rb;
     private bool isDragging = false;
@@ -63,10 +68,10 @@ public class BallSlingshot : MonoBehaviour
                     // Topun merkezinden geçen, yukarıya (Y) bakan bir düzlem oluşturuyoruz
                     dragPlane = new Plane(Vector3.up, dragStartPos);
 
+                    // Çizgiyi anında göstermiyoruz, sürükleyip ölü alanı geçmesini bekliyoruz
                     if (lineRenderer != null)
                     {
-                        lineRenderer.enabled = true;
-                        UpdateLineRenderer(dragStartPos);
+                        lineRenderer.enabled = false;
                     }
                 }
             }
@@ -80,17 +85,27 @@ public class BallSlingshot : MonoBehaviour
             // Çekme vektörünü hesapla (topun merkezi -> farenin/parmağın pozisyonu)
             Vector3 dragVector = currentPointerPos - dragStartPos;
             
-            // Mesafeyi maxDragDistance ile sınırlandır
-            if (dragVector.magnitude > maxDragDistance)
+            // Ölü alan kontrolü (Deadzone)
+            if (dragVector.magnitude < minDragDistance)
             {
-                dragVector = dragVector.normalized * maxDragDistance;
+                if (lineRenderer != null) lineRenderer.enabled = false;
             }
-
-            Vector3 clampedPointerPos = dragStartPos + dragVector;
-
-            if (lineRenderer != null)
+            else
             {
-                UpdateLineRenderer(clampedPointerPos);
+                if (lineRenderer != null) lineRenderer.enabled = true;
+
+                // Mesafeyi maxDragDistance ile sınırlandır
+                if (dragVector.magnitude > maxDragDistance)
+                {
+                    dragVector = dragVector.normalized * maxDragDistance;
+                }
+
+                Vector3 clampedPointerPos = dragStartPos + dragVector;
+
+                if (lineRenderer != null)
+                {
+                    UpdateLineRenderer(clampedPointerPos);
+                }
             }
         }
 
@@ -107,14 +122,18 @@ public class BallSlingshot : MonoBehaviour
             Vector3 currentPointerPos = GetPointerPositionOnPlane();
             Vector3 dragVector = currentPointerPos - dragStartPos;
 
-            if (dragVector.magnitude > maxDragDistance)
+            // Atışı sadece ölü alanı (minDragDistance) geçtiysek yap
+            if (dragVector.magnitude >= minDragDistance)
             {
-                dragVector = dragVector.normalized * maxDragDistance;
-            }
+                if (dragVector.magnitude > maxDragDistance)
+                {
+                    dragVector = dragVector.normalized * maxDragDistance;
+                }
 
-            // Çekilen yönün tersine güç uyguluyoruz
-            Vector3 force = -dragVector * powerMultiplier;
-            rb.AddForce(force, ForceMode.Impulse);
+                // Çekilen yönün tersine güç uyguluyoruz
+                Vector3 force = -dragVector * powerMultiplier;
+                rb.AddForce(force, ForceMode.Impulse);
+            }
         }
     }
 
@@ -143,6 +162,6 @@ public class BallSlingshot : MonoBehaviour
         
         float currentWidth = Mathf.Lerp(lineMaxWidth, lineMinWidth, distanceRatio);
         lineRenderer.startWidth = currentWidth;
-        lineRenderer.endWidth = currentWidth;
+        lineRenderer.endWidth = currentWidth * lineEndWidthMultiplier;
     }
 }
