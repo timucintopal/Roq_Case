@@ -54,11 +54,13 @@ public class StickerMeshGenerator : MonoBehaviour
         mr.sortingLayerID = spriteRenderer.sortingLayerID;
         mr.sortingOrder = spriteRenderer.sortingOrder;
         
+        MaterialPropertyBlock block = new MaterialPropertyBlock();
         if (spriteRenderer.sprite.texture != null)
         {
-            mr.material.SetTexture("_MainTex", spriteRenderer.sprite.texture);
+            block.SetTexture("_MainTex", spriteRenderer.sprite.texture);
         }
-        mr.material.SetColor("_Color", spriteRenderer.color);
+        block.SetColor("_Color", spriteRenderer.color);
+        mr.SetPropertyBlock(block);
 
         spriteRenderer.enabled = false;
         
@@ -202,11 +204,13 @@ public class StickerMeshGenerator : MonoBehaviour
         mr.sortingLayerID = sr.sortingLayerID;
         mr.sortingOrder = sr.sortingOrder;
         
+        MaterialPropertyBlock block = new MaterialPropertyBlock();
         if (sr.sprite.texture != null)
         {
-            mr.sharedMaterial.SetTexture("_MainTex", sr.sprite.texture);
+            block.SetTexture("_MainTex", sr.sprite.texture);
         }
-        mr.sharedMaterial.SetColor("_Color", sr.color);
+        block.SetColor("_Color", sr.color);
+        mr.SetPropertyBlock(block);
 
         sr.enabled = false;
         

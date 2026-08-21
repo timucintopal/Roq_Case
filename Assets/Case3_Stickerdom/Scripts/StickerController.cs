@@ -58,9 +58,19 @@ namespace Case3_Stickerdom.Scripts
         
             activeRenderer = rend;
         
-            if (activeRenderer.material != null)
+            // Editör modundayken .material çağrısı yaparsak hafıza sızıntısı (leak) uyarısı verir.
+            // Bu yüzden sadece oyun oynanırken (Play mode) instance alıyoruz.
+            if (Application.isPlaying && activeRenderer.sharedMaterial != null)
             {
                 stickerMaterial = new Material(activeRenderer.sharedMaterial);
+                
+                SpriteRenderer sr = GetComponent<SpriteRenderer>();
+                if (sr != null && sr.sprite != null && sr.sprite.texture != null)
+                {
+                    stickerMaterial.SetTexture("_MainTex", sr.sprite.texture);
+                    stickerMaterial.SetColor("_Color", sr.color);
+                }
+
                 activeRenderer.material = stickerMaterial;
             
                 if (peelAmountPropId != 0) 
