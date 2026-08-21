@@ -1,3 +1,4 @@
+using Case3_Stickerdom.Scripts;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;

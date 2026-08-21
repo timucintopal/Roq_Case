@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102b68b7cbc884d61adff2392b76aa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StickerController
+  stickerType: 0
   snapTarget: {fileID: 0}
   shadowTransform: {fileID: 0}
   snapDistance: 1.5
@@ -520,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a89480c5d5334786ae4ebe25c4e1485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StickerSlot
+  stickerType: 1
 --- !u!1 &339643456
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,6 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a89480c5d5334786ae4ebe25c4e1485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StickerSlot
+  stickerType: 0
 --- !u!1 &548803014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,6 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a89480c5d5334786ae4ebe25c4e1485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StickerSlot
+  stickerType: 2
 --- !u!1 &646356819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,6 +1560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102b68b7cbc884d61adff2392b76aa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StickerController
+  stickerType: 0
   snapTarget: {fileID: 0}
   shadowTransform: {fileID: 0}
   snapDistance: 1.5
@@ -1845,6 +1850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102b68b7cbc884d61adff2392b76aa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StickerController
+  stickerType: 2
   snapTarget: {fileID: 0}
   shadowTransform: {fileID: 0}
   snapDistance: 1.5
@@ -2307,6 +2313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102b68b7cbc884d61adff2392b76aa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StickerController
+  stickerType: 1
   snapTarget: {fileID: 0}
   shadowTransform: {fileID: 0}
   snapDistance: 1.5
@@ -2776,6 +2783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102b68b7cbc884d61adff2392b76aa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StickerController
+  stickerType: 0
   snapTarget: {fileID: 0}
   shadowTransform: {fileID: 0}
   snapDistance: 1.5
@@ -2828,6 +2836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102b68b7cbc884d61adff2392b76aa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StickerController
+  stickerType: 0
   snapTarget: {fileID: 0}
   shadowTransform: {fileID: 0}
   snapDistance: 1.5
