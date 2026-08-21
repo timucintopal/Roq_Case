@@ -10,6 +10,7 @@ Shader "Custom/StickerPeel"
         _PeelDirection ("Peel Direction (XY)", Vector) = (-1, 1, 0, 0)
         _CurlRadius ("Curl Radius", Range(0.01, 1)) = 0.3
         _FoilShininess ("Foil Shininess", Range(0, 1)) = 0.5
+        _SpriteSize ("Sprite Size Bound", Float) = 5.0
     }
     SubShader
     {
@@ -59,6 +60,7 @@ Shader "Custom/StickerPeel"
                 float4 _PeelDirection;
                 float _CurlRadius;
                 float _FoilShininess;
+                float _SpriteSize;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -74,10 +76,9 @@ Shader "Custom/StickerPeel"
                 float d = dot(pos.xy, dir);
                 
                 // Map _PeelAmount (0 to 1) to a peel line position.
-                // Assuming sprite is roughly between -1.5 and 1.5 in local space.
-                // When _PeelAmount is 0, peel line is at 1.5 (nothing peeled)
-                // When _PeelAmount is 1, peel line is at -2.5 (fully peeled)
-                float peelLine = 1.5 - (_PeelAmount * 4.0); 
+                // When _PeelAmount is 0, peel line is at _SpriteSize (far away, nothing peeled)
+                // When _PeelAmount is 1, peel line is at -_SpriteSize (fully peeled)
+                float peelLine = _SpriteSize - (_PeelAmount * _SpriteSize * 2.0); 
                 
                 float distToLine = d - peelLine;
                 OUT.isBackface = 0.0;
