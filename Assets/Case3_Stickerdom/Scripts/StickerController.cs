@@ -9,11 +9,9 @@ namespace Case3_Stickerdom.Scripts
         public StickerType stickerType;
 
         [Space, Header("References")]
-        public Transform snapTarget;
         public Transform shadowTransform;
 
         [Header("Settings")]
-        public float snapDistance = 1.5f;
         public float maxPeelAmount = 0.776f;
         public float peelDuration = 0.3f;
 
@@ -23,8 +21,6 @@ namespace Case3_Stickerdom.Scripts
         private int peelAmountPropId;
         private int peelDirPropId;
 
-        private Vector3 dragOffset;
-        private bool isDragging = false;
         private bool isPlaced = false;
         private Camera mainCam;
         private float originalZ;
@@ -35,7 +31,6 @@ namespace Case3_Stickerdom.Scripts
 
         void Start()
         {
-
             peelAmountPropId = Shader.PropertyToID("_PeelAmount");
             peelDirPropId = Shader.PropertyToID("_PeelDirection");
 
@@ -75,108 +70,108 @@ namespace Case3_Stickerdom.Scripts
             }
         }
 
-        public void OnInputDown(Vector3 clickWorldPos)
+        public void OnTap(Vector3 clickWorldPos)
         {
             if (isPlaced) return;
+            isPlaced = true; // İlk tıklamada hemen kilitliyoruz ki uçarken art arda tıklanmasın
 
-            Debug.Log("Tıklama Başarılı! Obje: " + gameObject.name);
-            isDragging = true;
-            dragOffset = transform.position - clickWorldPos;
-            StartPeel(clickWorldPos);
-        }
-
-        public void OnInputDrag(Vector3 dragWorldPos)
-        {
-            if (!isDragging || isPlaced) return;
-
-            transform.position = dragWorldPos + dragOffset;
-
-            if (stickerMaterial != null)
-            {
-                float currentPeel = stickerMaterial.GetFloat(peelAmountPropId);
-                if (currentPeel < maxPeelAmount)
-                {
-                    float newPeel = Mathf.Lerp(currentPeel, maxPeelAmount, Time.deltaTime * 5f);
-                    stickerMaterial.SetFloat(peelAmountPropId, newPeel);
-                }
-            }
-        }
-
-        public void OnInputUp()
-        {
-            if (!isDragging || isPlaced) return;
-        
-            Debug.Log("Sürükleme Bırakıldı! Obje: " + gameObject.name);
-            isDragging = false;
-            EndPeel();
-        }
-
-        private void StartPeel(Vector3 clickWorldPos)
-        {
+            Debug.Log("Sticker'a Tıklandı! (Tap) Obje: " + gameObject.name);
+            
+            // 1. Tıklanan yere göre peel yönü hesapla
             Vector3 clickLocalDir = transform.InverseTransformPoint(clickWorldPos).normalized;
             Vector2 peelDir = new Vector2(-clickLocalDir.x, -clickLocalDir.y);
-        
             if (peelDir == Vector2.zero) peelDir = new Vector2(-1, 1); 
-        
+
             if (stickerMaterial != null)
             {
                 stickerMaterial.SetVector(peelDirPropId, peelDir);
                 DOTween.Kill(stickerMaterial);
-                stickerMaterial.DOFloat(0.2f, "_PeelAmount", peelDuration / 2f);
+                // X sn duration ile katlanıyor (peelDuration)
+                stickerMaterial.DOFloat(maxPeelAmount, "_PeelAmount", peelDuration);
             }
-        
-            transform.position = new Vector3(transform.position.x, transform.position.y, originalZ - 1f);
 
+            // Gölge varsa hafifçe belli et
             if (shadowTransform != null)
             {
                 shadowTransform.DOLocalMove(new Vector3(0.15f, -0.15f, 0.5f), peelDuration);
                 SpriteRenderer shadowSR = shadowTransform.GetComponent<SpriteRenderer>();
                 if (shadowSR != null) shadowSR.DOFade(0.4f, peelDuration);
             }
-        }
 
-        private void EndPeel()
-        {
-            float distanceToTarget = snapTarget != null ? Vector2.Distance(transform.position, snapTarget.position) : float.MaxValue;
-
-            if (stickerMaterial != null) DOTween.Kill(stickerMaterial);
-
-            if (distanceToTarget <= snapDistance && snapTarget != null)
+            // 2. MSticker'dan uygun slot var mı bak
+            StickerSlot targetSlot = null;
+            if (MSticker.Instance != null)
             {
-                isPlaced = true;
-                transform.DOMove(snapTarget.position, 0.2f).SetEase(Ease.OutBack);
-            
-                if (stickerMaterial != null)
-                {
-                    stickerMaterial.DOFloat(0f, "_PeelAmount", 0.2f).OnComplete(() => {
-                        transform.DOPunchScale(new Vector3(0.08f, 0.08f, 0f), 0.3f, 5, 0.5f);
-                        transform.position = new Vector3(transform.position.x, transform.position.y, snapTarget.position.z - 0.1f);
-                    });
-                }
+                targetSlot = MSticker.Instance.GetAvailableSlot(stickerType);
+            }
 
-                if (shadowTransform != null)
-                {
-                    shadowTransform.DOLocalMove(Vector3.zero, 0.2f);
-                    SpriteRenderer shadowSR = shadowTransform.GetComponent<SpriteRenderer>();
-                    if (shadowSR != null) shadowSR.DOFade(0f, 0.2f);
-                }
+            if (targetSlot != null)
+            {
+                targetSlot.isFilled = true; // Yuvayı başkası kapmasın
+                
+                // Havalanma hissi için Z'yi öne al
+                float targetZ = targetSlot.transform.position.z - 0.1f;
+                
+                Sequence flySeq = DOTween.Sequence();
+                
+                // Kıvrılma animasyonu bittikten hemen sonra uçmaya başla
+                flySeq.AppendInterval(peelDuration);
+                
+                // Zıplayarak hedefe git (DOJump parabolik, tatmin edici bir uçuş sağlar)
+                flySeq.Append(transform.DOJump(
+                    new Vector3(targetSlot.transform.position.x, targetSlot.transform.position.y, targetZ),
+                    jumpPower: 1.5f,
+                    numJumps: 1,
+                    duration: 0.8f
+                ));
+
+                // Uçarken eş zamanlı olarak Scale'i 1 yap
+                flySeq.Join(transform.DOScale(Vector3.one, 0.8f));
+
+                // Hedefe vardığında Foil değerini sıfırla ve jöle efekti ver
+                flySeq.OnComplete(() => {
+                    if (stickerMaterial != null)
+                    {
+                        stickerMaterial.DOFloat(0f, "_PeelAmount", 0.2f);
+                    }
+                    transform.DOPunchScale(new Vector3(0.08f, 0.08f, 0f), 0.3f, 5, 0.5f);
+                    
+                    if (shadowTransform != null)
+                    {
+                        shadowTransform.DOLocalMove(Vector3.zero, 0.2f);
+                        SpriteRenderer shadowSR = shadowTransform.GetComponent<SpriteRenderer>();
+                        if (shadowSR != null) shadowSR.DOFade(0f, 0.2f);
+                    }
+                });
             }
             else
             {
-                transform.DOMove(originalPosition, 0.3f).SetEase(Ease.OutQuad);
-                transform.DOMoveZ(originalZ, 0.3f);
-
+                // Slot yoksa veya doluysa, sadece katlanıp geri açılsın (hata/reddedilme efekti)
                 if (stickerMaterial != null)
                 {
-                    stickerMaterial.DOFloat(0f, "_PeelAmount", 0.3f);
+                    stickerMaterial.DOFloat(0f, "_PeelAmount", peelDuration).SetDelay(peelDuration + 0.1f);
                 }
-            
+                
                 if (shadowTransform != null)
                 {
-                    shadowTransform.DOLocalMove(Vector3.zero, 0.3f);
+                    shadowTransform.DOLocalMove(Vector3.zero, peelDuration).SetDelay(peelDuration + 0.1f);
                     SpriteRenderer shadowSR = shadowTransform.GetComponent<SpriteRenderer>();
-                    if (shadowSR != null) shadowSR.DOFade(0f, 0.3f);
+                    if (shadowSR != null) shadowSR.DOFade(0f, peelDuration).SetDelay(peelDuration + 0.1f);
                 }
+
+                // Geri açıldıktan sonra tekrar tıklanabilsin diye kiliti kaldırıyoruz
+                DOVirtual.DelayedCall(peelDuration * 2f + 0.2f, () => {
+                    isPlaced = false;
+                });
+            }
+        }
+
+        void OnDestroy()
+        {
+            // Bahsettiğimiz Memory Leak (Hafıza Kaçağı) çözümüdür.
+            if (stickerMaterial != null)
+            {
+                Destroy(stickerMaterial);
             }
         }
     }

@@ -5,16 +5,14 @@ namespace Case3_Stickerdom.Scripts
     public class StickerSlot : MonoBehaviour
     {
         public StickerType stickerType;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        public bool isFilled = false;
+        
         void Start()
         {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
+            if (MSticker.Instance != null)
+            {
+                MSticker.Instance.RegisterSlot(this);
+            }
         }
     }
 }
