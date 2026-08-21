@@ -14,6 +14,8 @@ public class BallSlingshot : MonoBehaviour
 
     [Header("Line Renderer Settings")]
     public LineRenderer lineRenderer;
+    public float lineStartYOffset = 0.5f;
+    public float lineEndYOffset = 0.5f;
     [Tooltip("Çizginin en kalın hali (kısa çekildiğinde).")]
     public float lineMaxWidth = 0.5f;
     [Tooltip("Çizginin en ince hali (uzun çekildiğinde).")]
@@ -130,8 +132,11 @@ public class BallSlingshot : MonoBehaviour
 
     private void UpdateLineRenderer(Vector3 currentPointerPos)
     {
-        lineRenderer.SetPosition(0, dragStartPos);
-        lineRenderer.SetPosition(1, currentPointerPos);
+        Vector3 startOffset = new Vector3(0, lineStartYOffset, 0);
+        Vector3 endOffset = new Vector3(0, lineEndYOffset, 0);
+        
+        lineRenderer.SetPosition(0, dragStartPos + startOffset);
+        lineRenderer.SetPosition(1, currentPointerPos + endOffset);
 
         float currentDistance = Vector3.Distance(dragStartPos, currentPointerPos);
         float distanceRatio = Mathf.Clamp01(currentDistance / maxDragDistance);

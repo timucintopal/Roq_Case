@@ -682,6 +682,8 @@ MonoBehaviour:
   maxDragDistance: 5
   canShootWhileMoving: 0
   lineRenderer: {fileID: 0}
+  lineStartYOffset: 0.5
+  lineEndYOffset: 0.5
   lineMaxWidth: 0.5
   lineMinWidth: 0.1
 --- !u!1 &297645757
@@ -3826,7 +3828,9 @@ MonoBehaviour:
   maxDragDistance: 5
   canShootWhileMoving: 0
   lineRenderer: {fileID: 2101040939}
-  lineMaxWidth: 0.75
+  lineStartYOffset: 0.35
+  lineEndYOffset: 1.85
+  lineMaxWidth: 0.5
   lineMinWidth: 0.25
 --- !u!64 &2082906079
 MeshCollider:
@@ -3996,7 +4000,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 21281e896d4c84adcbb9506a9e9090d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4042,8 +4046,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 0.5529412}
+      key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -4067,7 +4071,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
