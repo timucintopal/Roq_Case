@@ -136,18 +136,26 @@ namespace Case3_Stickerdom.Scripts
                     duration: 0.8f
                 ));
 
-                // Uçarken eş zamanlı olarak Scale'i 1 yap
+                // Uçarken eş zamanlı olarak Scale'i 1 yap ve Rotasyonu Sıfırla (dik konuma getir)
                 flySeq.Join(transform.DOScale(Vector3.one, 0.8f));
+                flySeq.Join(transform.DORotate(Vector3.zero, 0.8f));
 
-                // Hedefe vardığında Foil değerini sıfırla, jöle efekti ver ve Parlama (Şimşek/Shine) geçişi yap
+                // Hedefe vardığında 2 aşamalı tepki
                 flySeq.OnComplete(() => {
                     if (stickerMaterial != null)
                     {
                         stickerMaterial.DOFloat(0f, "_PeelAmount", 0.2f);
                         stickerMaterial.SetFloat(shineLocationPropId, -1f);
-                        stickerMaterial.DOFloat(3f, "_ShineLocation", 0.5f).SetEase(Ease.InOutSine);
                     }
+                    
+                    // --- 1. AŞAMA (VURUŞ) ---
                     transform.DOPunchScale(new Vector3(0.08f, 0.08f, 0f), 0.3f, 5, 0.5f);
+                    
+                    // Mikro Kamera Sarsıntısı (Vuruş / Impact hissi)
+                    if (Camera.main != null)
+                    {
+                        Camera.main.transform.DOShakePosition(0.15f, strength: 0.1f, vibrato: 10, randomness: 90f, snapping: false, fadeOut: true);
+                    }
                     
                     if (shadowTransform != null)
                     {
@@ -155,6 +163,18 @@ namespace Case3_Stickerdom.Scripts
                         SpriteRenderer shadowSR = shadowTransform.GetComponent<SpriteRenderer>();
                         if (shadowSR != null) shadowSR.DOFade(0f, 0.2f);
                     }
+
+                    // --- 2. AŞAMA (SİHİR/ÖDÜL) ---
+                    DOVirtual.DelayedCall(0.4f, () => {
+                        if (stickerMaterial != null)
+                        {
+                            stickerMaterial.DOFloat(3f, "_ShineLocation", 0.6f).SetEase(Ease.InOutSine);
+                        }
+                        // Hare geçerken çok yumuşak bir kalp atışı (nefes alma) efekti
+                        transform.DOScale(Vector3.one * 1.06f, 0.3f).SetEase(Ease.OutQuad).OnComplete(() => {
+                            transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InQuad);
+                        });
+                    });
                 });
             }
             else
