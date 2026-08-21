@@ -11,6 +11,9 @@ Shader "Custom/StickerPeel"
         _CurlRadius ("Curl Radius", Range(0.01, 1)) = 0.3
         _FoilShininess ("Foil Shininess", Range(0, 1)) = 0.5
         _SpriteSize ("Sprite Size Bound", Float) = 5.0
+        
+        _ShineLocation ("Shine Location", Range(-1, 3)) = -1
+        _ShineWidth ("Shine Width", Float) = 0.15
     }
     SubShader
     {
@@ -65,6 +68,8 @@ Shader "Custom/StickerPeel"
                 float _CurlRadius;
                 float _FoilShininess;
                 float _SpriteSize;
+                float _ShineLocation;
+                float _ShineWidth;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -126,6 +131,20 @@ Shader "Custom/StickerPeel"
                     foil.rgb += shine * _FoilShininess;
                     
                     col.rgb = foil.rgb;
+                }
+                
+                // --- Beyaz Hare / Parlama (Glint) Efekti ---
+                if (_ShineLocation > -0.5)
+                {
+                    // Çapraz bir çizgi elde etmek için x ve y koordinatlarını topluyoruz (0 ile 2 arası bir değer)
+                    float diagonal = IN.uv.x + IN.uv.y; 
+                    
+                    // Çizginin kenarlarını yumuşatmak için smoothstep kullanıyoruz
+                    float shineBand = smoothstep(_ShineLocation - _ShineWidth, _ShineLocation, diagonal) 
+                                    - smoothstep(_ShineLocation, _ShineLocation + _ShineWidth, diagonal);
+                    
+                    // Orijinal renge beyaz parlaklık olarak ekle
+                    col.rgb += shineBand * col.a * 0.6; // Saydam yerleri parlatma, şiddeti 0.6
                 }
                 
                 return col;

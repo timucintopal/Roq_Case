@@ -170,6 +170,7 @@ MonoBehaviour:
   shadowTransform: {fileID: 0}
   maxPeelAmount: 0.8
   peelDuration: 0.3
+  fixedPeelDirection: {x: -1, y: 1}
 --- !u!61 &30685569
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1477,6 +1478,7 @@ MonoBehaviour:
   shadowTransform: {fileID: 0}
   maxPeelAmount: 0.8
   peelDuration: 0.3
+  fixedPeelDirection: {x: -1, y: 1}
 --- !u!61 &1162003195
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1764,7 +1766,8 @@ MonoBehaviour:
   stickerType: 2
   shadowTransform: {fileID: 0}
   maxPeelAmount: 0.8
-  peelDuration: 0.3
+  peelDuration: 0.5
+  fixedPeelDirection: {x: -1, y: 0}
 --- !u!1 &1306484379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,7 +2228,8 @@ MonoBehaviour:
   stickerType: 1
   shadowTransform: {fileID: 0}
   maxPeelAmount: 0.8
-  peelDuration: 0.3
+  peelDuration: 0.5
+  fixedPeelDirection: {x: -1, y: 0}
 --- !u!1 &1856208314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2552,7 +2556,8 @@ MonoBehaviour:
   stickerType: 0
   shadowTransform: {fileID: 0}
   maxPeelAmount: 0.8
-  peelDuration: 0.3
+  peelDuration: 0.5
+  fixedPeelDirection: {x: -1, y: 0}
 --- !u!1 &2100884232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,6 +2609,7 @@ MonoBehaviour:
   shadowTransform: {fileID: 0}
   maxPeelAmount: 0.8
   peelDuration: 0.3
+  fixedPeelDirection: {x: -1, y: 1}
 --- !u!61 &2100884235
 BoxCollider2D:
   m_ObjectHideFlags: 0

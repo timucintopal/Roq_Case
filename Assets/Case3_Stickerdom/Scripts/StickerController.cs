@@ -14,10 +14,13 @@ namespace Case3_Stickerdom.Scripts
         [Header("Settings")]
         public float maxPeelAmount = 0.776f;
         public float peelDuration = 0.3f;
+        [Tooltip("Soyulma/Kıvrılma yönünü belirler. (-1, 1) sol üste doğru, (1, 1) sağ üste doğru vs.")]
+        public Vector2 fixedPeelDirection = new Vector2(-1f, 1f);
 
         private Material stickerMaterial;
         private int peelAmountPropId;
         private int peelDirPropId;
+        private int shineLocationPropId;
 
         private bool isPlaced = false;
 
@@ -30,6 +33,7 @@ namespace Case3_Stickerdom.Scripts
         {
             peelAmountPropId = Shader.PropertyToID("_PeelAmount");
             peelDirPropId = Shader.PropertyToID("_PeelDirection");
+            shineLocationPropId = Shader.PropertyToID("_ShineLocation");
 
             if (activeRenderer == null)
             {
@@ -70,6 +74,11 @@ namespace Case3_Stickerdom.Scripts
                 {
                     stickerMaterial.SetFloat(peelAmountPropId, 0f);
                 }
+                
+                if (shineLocationPropId != 0)
+                {
+                    stickerMaterial.SetFloat(shineLocationPropId, -1f);
+                }
             }
         }
 
@@ -80,10 +89,9 @@ namespace Case3_Stickerdom.Scripts
 
             Debug.Log("Sticker'a Tıklandı! (Tap) Obje: " + gameObject.name);
             
-            // 1. Tıklanan yere göre peel yönü hesapla
-            Vector3 clickLocalDir = transform.InverseTransformPoint(clickWorldPos).normalized;
-            Vector2 peelDir = new Vector2(-clickLocalDir.x, -clickLocalDir.y);
-            if (peelDir == Vector2.zero) peelDir = new Vector2(-1, 1); 
+            // 1. Sabit soyulma yönünü kullan
+            Vector2 peelDir = fixedPeelDirection.normalized;
+            if (peelDir == Vector2.zero) peelDir = new Vector2(-1, 1).normalized; 
 
             if (stickerMaterial != null)
             {
@@ -131,11 +139,13 @@ namespace Case3_Stickerdom.Scripts
                 // Uçarken eş zamanlı olarak Scale'i 1 yap
                 flySeq.Join(transform.DOScale(Vector3.one, 0.8f));
 
-                // Hedefe vardığında Foil değerini sıfırla ve jöle efekti ver
+                // Hedefe vardığında Foil değerini sıfırla, jöle efekti ver ve Parlama (Şimşek/Shine) geçişi yap
                 flySeq.OnComplete(() => {
                     if (stickerMaterial != null)
                     {
                         stickerMaterial.DOFloat(0f, "_PeelAmount", 0.2f);
+                        stickerMaterial.SetFloat(shineLocationPropId, -1f);
+                        stickerMaterial.DOFloat(3f, "_ShineLocation", 0.5f).SetEase(Ease.InOutSine);
                     }
                     transform.DOPunchScale(new Vector3(0.08f, 0.08f, 0f), 0.3f, 5, 0.5f);
                     
