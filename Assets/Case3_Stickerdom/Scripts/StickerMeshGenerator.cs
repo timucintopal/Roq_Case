@@ -1,4 +1,7 @@
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class StickerMeshGenerator : MonoBehaviour
@@ -8,19 +11,30 @@ public class StickerMeshGenerator : MonoBehaviour
     [Range(2, 100)]
     public int resolution = 30;
 
-    private SpriteRenderer spriteRenderer;
-
     void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-        if (spriteRenderer == null || spriteRenderer.sprite == null)
+        if (Application.isPlaying)
         {
-            Debug.LogWarning("StickerMeshGenerator: SpriteRenderer'da bir resim bulunamadı.");
-            return;
+            // Eğer Editor'de önceden yaratılmış bir mesh varsa (child obje), tekrar yaratmaya gerek yok.
+            if (transform.Find("GeneratedStickerMesh") != null)
+            {
+                // Sadece eski SpriteRenderer'ı kapat
+                SpriteRenderer sr = GetComponent<SpriteRenderer>();
+                if (sr != null) sr.enabled = false;
+                return;
+            }
+            
+            // Eğer yoksa Run-time (Oyun anında) yarat
+            GenerateRuntimeMesh();
         }
+    }
 
-        // 1. Mesh için yeni bir ALT (Child) obje yarat (SpriteRenderer ve MeshRenderer aynı objede olamaz!)
+    private void GenerateRuntimeMesh()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer == null || spriteRenderer.sprite == null) return;
+
         GameObject meshObj = new GameObject("GeneratedStickerMesh");
         meshObj.transform.SetParent(this.transform);
         meshObj.transform.localPosition = Vector3.zero;
@@ -30,38 +44,31 @@ public class StickerMeshGenerator : MonoBehaviour
         MeshFilter mf = meshObj.AddComponent<MeshFilter>();
         MeshRenderer mr = meshObj.AddComponent<MeshRenderer>();
 
-        // 2. Sprite'ın boyutlarına tam uyan ızgara (grid) mesh'ini üret
-        GenerateMesh(mf);
+        Mesh mesh = CreateGridMesh(spriteRenderer.sprite);
+        if (mesh == null) return;
 
-        // 3. SpriteRenderer'daki ayarları MeshRenderer'a kopyala
+        mf.sharedMesh = mesh;
+
         mr.material = spriteRenderer.material;
         mr.sortingLayerID = spriteRenderer.sortingLayerID;
         mr.sortingOrder = spriteRenderer.sortingOrder;
         
-        // SpriteRenderer resmi Shader'a otomatik gönderir, ama MeshRenderer bunu yapmaz!
-        // Bu yüzden Sprite'ın dokusunu (texture) ve rengini (tint) manuel olarak Materyale vermeliyiz.
-        if (spriteRenderer.sprite != null && spriteRenderer.sprite.texture != null)
+        if (spriteRenderer.sprite.texture != null)
         {
             mr.material.SetTexture("_MainTex", spriteRenderer.sprite.texture);
         }
         mr.material.SetColor("_Color", spriteRenderer.color);
 
-        // 4. Eski SpriteRenderer'ı kapat (iki kere çizilmesin)
         spriteRenderer.enabled = false;
         
-        // StickerController'ı uyaralım ki yeni child objeyi bilsin (opsiyonel ama sağlıklı)
         StickerController controller = GetComponent<StickerController>();
-        if (controller != null)
-        {
-            controller.SetActiveRenderer(mr);
-        }
+        if (controller != null) controller.SetActiveRenderer(mr);
     }
 
-    void GenerateMesh(MeshFilter mf)
+    private Mesh CreateGridMesh(Sprite sprite)
     {
-        Sprite sprite = spriteRenderer.sprite;
-        
-        // Sprite'ın local uzaydaki boyutu ve merkezi
+        if (sprite == null || sprite.texture == null) return null;
+
         Vector2 size = sprite.bounds.size;
         Vector2 offset = sprite.bounds.center; 
 
@@ -75,13 +82,6 @@ public class StickerMeshGenerator : MonoBehaviour
         Vector2[] uvs = new Vector2[numVertices];
         int[] triangles = new int[numTriangles];
 
-        if (sprite.texture == null)
-        {
-            Debug.LogError("StickerMeshGenerator: Sprite'ın texture'ı bulunamadı (null)!");
-            return;
-        }
-
-        // UV koordinatlarını hesaplamak için sprite'ın texture üzerindeki bölgesini bul
         Rect uvRect = new Rect(
             sprite.rect.x / sprite.texture.width,
             sprite.rect.y / sprite.texture.height,
@@ -100,17 +100,14 @@ public class StickerMeshGenerator : MonoBehaviour
         {
             for (int x = 0; x <= resolution; x++)
             {
-                // Vertex pozisyonu
                 vertices[vIndex] = new Vector3(startX + (x * stepX), startY + (y * stepY), 0);
 
-                // UV hesabı
                 float u = (float)x / resolution;
                 float v = (float)y / resolution;
                 uvs[vIndex] = new Vector2(
                     Mathf.Lerp(uvRect.xMin, uvRect.xMax, u),
                     Mathf.Lerp(uvRect.yMin, uvRect.yMax, v)
                 );
-
                 vIndex++;
             }
         }
@@ -121,13 +118,9 @@ public class StickerMeshGenerator : MonoBehaviour
             for (int x = 0; x < resolution; x++)
             {
                 int i = (y * (resolution + 1)) + x;
-
-                // 1. Üçgen
                 triangles[tIndex++] = i;
                 triangles[tIndex++] = i + resolution + 1;
                 triangles[tIndex++] = i + 1;
-
-                // 2. Üçgen
                 triangles[tIndex++] = i + 1;
                 triangles[tIndex++] = i + resolution + 1;
                 triangles[tIndex++] = i + resolution + 2;
@@ -137,22 +130,93 @@ public class StickerMeshGenerator : MonoBehaviour
         mesh.vertices = vertices;
         mesh.uv = uvs;
         
-        // Eksik Vertex Renklerini (White) ekleyelim ki Shader'daki IN.color çarpımı siyah/şeffaf yapmasın.
         Color[] colors = new Color[numVertices];
         for (int c = 0; c < numVertices; c++) colors[c] = Color.white;
         mesh.colors = colors;
         
         mesh.triangles = triangles;
-        
         mesh.RecalculateNormals();
         mesh.RecalculateBounds();
 
-        if (mf == null)
+        return mesh;
+    }
+
+#if UNITY_EDITOR
+    [ContextMenu("Meshi Uret ve Sahneye Kaydet (Onerilen)")]
+    public void GenerateMeshInEditor()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr == null || sr.sprite == null)
         {
-            Debug.LogError("StickerMeshGenerator: mf parametresi null geldi!");
+            Debug.LogError("Sprite bulunamadi!");
             return;
         }
+
+        Transform existingChild = transform.Find("GeneratedStickerMesh");
+        if (existingChild != null)
+        {
+            DestroyImmediate(existingChild.gameObject);
+        }
+
+        GameObject meshObj = new GameObject("GeneratedStickerMesh");
+        meshObj.transform.SetParent(this.transform);
+        meshObj.transform.localPosition = Vector3.zero;
+        meshObj.transform.localRotation = Quaternion.identity;
+        meshObj.transform.localScale = Vector3.one;
+
+        MeshFilter mf = meshObj.AddComponent<MeshFilter>();
+        MeshRenderer mr = meshObj.AddComponent<MeshRenderer>();
+
+        Mesh mesh = CreateGridMesh(sr.sprite);
+        if (mesh == null) return;
+
+        // Dosyaya kaydet
+        string folderPath = "Assets/Case3_Stickerdom/Meshes";
+        if (!AssetDatabase.IsValidFolder(folderPath))
+        {
+            System.IO.Directory.CreateDirectory(folderPath);
+            AssetDatabase.Refresh();
+        }
+
+        string assetPath = $"{folderPath}/{sr.sprite.name}_GridMesh.asset";
+        Mesh existingMesh = AssetDatabase.LoadAssetAtPath<Mesh>(assetPath);
         
-        mf.sharedMesh = mesh;
+        if (existingMesh != null)
+        {
+            existingMesh.Clear();
+            EditorUtility.CopySerialized(mesh, existingMesh);
+            existingMesh.RecalculateNormals();
+            existingMesh.RecalculateBounds();
+            mf.sharedMesh = existingMesh;
+        }
+        else
+        {
+            AssetDatabase.CreateAsset(mesh, assetPath);
+            mf.sharedMesh = mesh;
+        }
+        
+        AssetDatabase.SaveAssets();
+
+        mr.sharedMaterial = sr.sharedMaterial;
+        mr.sortingLayerID = sr.sortingLayerID;
+        mr.sortingOrder = sr.sortingOrder;
+        
+        if (sr.sprite.texture != null)
+        {
+            mr.sharedMaterial.SetTexture("_MainTex", sr.sprite.texture);
+        }
+        mr.sharedMaterial.SetColor("_Color", sr.color);
+
+        sr.enabled = false;
+        
+        StickerController controller = GetComponent<StickerController>();
+        if (controller != null)
+        {
+            controller.SetActiveRenderer(mr);
+        }
+
+        EditorUtility.SetDirty(this.gameObject);
+        Debug.Log($"<color=green>Mesh basariyla uretildi ve dosyaya kaydedildi: {assetPath}</color>");
     }
+#endif
 }

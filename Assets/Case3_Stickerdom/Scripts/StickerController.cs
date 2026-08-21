@@ -5,19 +5,17 @@ using DG.Tweening;
 public class StickerController : MonoBehaviour
 {
     [Header("References")]
-    public Transform snapTarget; // Hedef yapışma noktası (boşluk/gölge olan yer)
-    public Transform shadowTransform; // Sticker'ın altındaki gölge (çocuk obje olmalı)
+    public Transform snapTarget;
+    public Transform shadowTransform;
 
     [Header("Settings")]
-    public float snapDistance = 1.5f; // Ne kadar yaklaşınca yapışsın
-    public float maxPeelAmount = 0.8f; // Sürüklerken maksimum ne kadar kıvrılsın (0-1)
-    public float peelDuration = 0.3f; // Kıvrılma animasyon hızı
-
+    public float snapDistance = 1.5f;
+    public float maxPeelAmount = 0.776f;
+    public float peelDuration = 0.3f;
 
     private Material stickerMaterial;
     private Vector3 originalPosition;
     
-    // Shader Property ID'leri (Performans için)
     private int peelAmountPropId;
     private int peelDirPropId;
 
@@ -29,6 +27,8 @@ public class StickerController : MonoBehaviour
 
     private Renderer activeRenderer;
 
+    public bool IsPlaced => isPlaced;
+
     void Start()
     {
         peelAmountPropId = Shader.PropertyToID("_PeelAmount");
@@ -38,10 +38,17 @@ public class StickerController : MonoBehaviour
         originalZ = transform.position.z;
         mainCam = Camera.main;
 
-        // Eğer StickerMeshGenerator henüz SetActiveRenderer çağırmadıysa (veya yoksa), SpriteRenderer'ı kullan
         if (activeRenderer == null)
         {
-            SetActiveRenderer(GetComponent<SpriteRenderer>());
+            Renderer childRenderer = GetComponentInChildren<MeshRenderer>();
+            if (childRenderer != null)
+            {
+                SetActiveRenderer(childRenderer);
+            }
+            else
+            {
+                SetActiveRenderer(GetComponent<SpriteRenderer>());
+            }
         }
     }
 
@@ -51,46 +58,70 @@ public class StickerController : MonoBehaviour
         
         activeRenderer = rend;
         
-        // Material'in instance'ını alıyoruz ki diğer sticker'lar aynı anda kıvrılmasın
         if (activeRenderer.material != null)
         {
             stickerMaterial = new Material(activeRenderer.sharedMaterial);
             activeRenderer.material = stickerMaterial;
             
-            if (peelAmountPropId != 0) // Eğer Start daha önce çalıştıysa
+            if (peelAmountPropId != 0) 
             {
                 stickerMaterial.SetFloat(peelAmountPropId, 0f);
             }
         }
     }
 
-    void OnMouseDown()
+    public void OnInputDown(Vector3 clickWorldPos)
     {
         if (isPlaced) return;
 
+        Debug.Log("Tıklama Başarılı! Obje: " + gameObject.name);
         isDragging = true;
-        
-        Vector3 mouseWorldPos = GetMouseWorldPos();
-        dragOffset = transform.position - mouseWorldPos;
+        dragOffset = transform.position - clickWorldPos;
+        StartPeel(clickWorldPos);
+    }
 
-        // Dokunduğumuz yere göre soyulma yönünü hesapla (Dokunulan noktadan merkeze doğru)
-        Vector3 clickLocalDir = transform.InverseTransformPoint(mouseWorldPos).normalized;
+    public void OnInputDrag(Vector3 dragWorldPos)
+    {
+        if (!isDragging || isPlaced) return;
+
+        transform.position = dragWorldPos + dragOffset;
+
+        if (stickerMaterial != null)
+        {
+            float currentPeel = stickerMaterial.GetFloat(peelAmountPropId);
+            if (currentPeel < maxPeelAmount)
+            {
+                float newPeel = Mathf.Lerp(currentPeel, maxPeelAmount, Time.deltaTime * 5f);
+                stickerMaterial.SetFloat(peelAmountPropId, newPeel);
+            }
+        }
+    }
+
+    public void OnInputUp()
+    {
+        if (!isDragging || isPlaced) return;
+        
+        Debug.Log("Sürükleme Bırakıldı! Obje: " + gameObject.name);
+        isDragging = false;
+        EndPeel();
+    }
+
+    private void StartPeel(Vector3 clickWorldPos)
+    {
+        Vector3 clickLocalDir = transform.InverseTransformPoint(clickWorldPos).normalized;
         Vector2 peelDir = new Vector2(-clickLocalDir.x, -clickLocalDir.y);
         
-        if (peelDir == Vector2.zero) peelDir = new Vector2(-1, 1); // Varsayılan yön
+        if (peelDir == Vector2.zero) peelDir = new Vector2(-1, 1); 
         
         if (stickerMaterial != null)
         {
             stickerMaterial.SetVector(peelDirPropId, peelDir);
-            // Başlangıçta hafifçe kıvrılma (Jelly/Tepki hissi)
             DOTween.Kill(stickerMaterial);
-            stickerMaterial.DOFloat(0.2f, peelAmountPropId, peelDuration / 2f);
+            stickerMaterial.DOFloat(0.2f, "_PeelAmount", peelDuration / 2f);
         }
         
-        // Havaya kalkma hissi için Z ekseninde öne al
         transform.position = new Vector3(transform.position.x, transform.position.y, originalZ - 1f);
 
-        // Gölgeyi Z ekseninde geriye iterek ve kaydırarak derinlik hissi yarat (Drop Shadow)
         if (shadowTransform != null)
         {
             shadowTransform.DOLocalMove(new Vector3(0.15f, -0.15f, 0.5f), peelDuration);
@@ -99,57 +130,25 @@ public class StickerController : MonoBehaviour
         }
     }
 
-    void OnMouseDrag()
+    private void EndPeel()
     {
-        if (isPlaced || !isDragging) return;
-
-        // Fareyi takip et
-        transform.position = GetMouseWorldPos() + dragOffset;
-
-        // Sürüklerken kıvrılma miktarını dinamik olarak artır
-        if (stickerMaterial != null)
-        {
-            float currentPeel = stickerMaterial.GetFloat(peelAmountPropId);
-            if (currentPeel < maxPeelAmount)
-            {
-                // Yumuşak geçişle kıvrılma miktarını hedefe çek
-                float newPeel = Mathf.Lerp(currentPeel, maxPeelAmount, Time.deltaTime * 5f);
-                stickerMaterial.SetFloat(peelAmountPropId, newPeel);
-            }
-        }
-    }
-
-    void OnMouseUp()
-    {
-        if (isPlaced || !isDragging) return;
-        isDragging = false;
-
         float distanceToTarget = snapTarget != null ? Vector2.Distance(transform.position, snapTarget.position) : float.MaxValue;
 
         if (stickerMaterial != null) DOTween.Kill(stickerMaterial);
 
         if (distanceToTarget <= snapDistance && snapTarget != null)
         {
-            // --- BAŞARILI YAPIŞTIRMA ---
             isPlaced = true;
-            
-            // Hedefe doğru git (OutBack ile hafif taşma efekti - Juice)
             transform.DOMove(snapTarget.position, 0.2f).SetEase(Ease.OutBack);
             
-            // Sticker'ı düzelt (Kıvrılmayı sıfırla)
             if (stickerMaterial != null)
             {
-                stickerMaterial.DOFloat(0f, peelAmountPropId, 0.2f).OnComplete(() => {
-                    // Tam yapıştığı an jöle gibi titreme (Punch Scale)
+                stickerMaterial.DOFloat(0f, "_PeelAmount", 0.2f).OnComplete(() => {
                     transform.DOPunchScale(new Vector3(0.08f, 0.08f, 0f), 0.3f, 5, 0.5f);
                     transform.position = new Vector3(transform.position.x, transform.position.y, snapTarget.position.z - 0.1f);
-                    
-                    // TODO: Buraya "Particle System" (toz bulutu veya yıldızlar) eklenebilir.
-                    // TODO: Tok bir yapışma sesi (SFX) çalınabilir.
                 });
             }
 
-            // Gölgeyi sıfırla/kapat
             if (shadowTransform != null)
             {
                 shadowTransform.DOLocalMove(Vector3.zero, 0.2f);
@@ -159,14 +158,12 @@ public class StickerController : MonoBehaviour
         }
         else
         {
-            // --- YANLIŞ YER / GERİ DÖNÜŞ ---
-            
             transform.DOMove(originalPosition, 0.3f).SetEase(Ease.OutQuad);
             transform.DOMoveZ(originalZ, 0.3f);
 
             if (stickerMaterial != null)
             {
-                stickerMaterial.DOFloat(0f, peelAmountPropId, 0.3f);
+                stickerMaterial.DOFloat(0f, "_PeelAmount", 0.3f);
             }
             
             if (shadowTransform != null)
@@ -176,13 +173,5 @@ public class StickerController : MonoBehaviour
                 if (shadowSR != null) shadowSR.DOFade(0f, 0.3f);
             }
         }
-    }
-
-    private Vector3 GetMouseWorldPos()
-    {
-        Vector3 mousePos = Input.mousePosition;
-        // Kamera Z ile Obje Z arasındaki farkı bul (Perspektif için)
-        mousePos.z = Mathf.Abs(mainCam.transform.position.z - transform.position.z);
-        return mainCam.ScreenToWorldPoint(mousePos);
     }
 }
