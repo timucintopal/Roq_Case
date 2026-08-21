@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -56,8 +57,6 @@ namespace Case2_BlockHole.Scripts
                         // Sürüklerken objenin fareye aniden atlamaması için aradaki mesafeyi kaydediyoruz
                         _offset = _draggedObject.position - hitGround.point;
                         _offset.y = 0; // Sadece X ve Z'deki farkı koruyoruz
-                        
-                        
                     }
                     else
                     {
@@ -89,7 +88,14 @@ namespace Case2_BlockHole.Scripts
                     // Aşağıya (-y yönünde) bir ışın gönderip Hole layer'ındaki bir objeye çarpıyor mu kontrol et
                     if (Physics.Raycast(_draggedObject.position, Vector3.down, out RaycastHit holeHit, 10f, holeLayer))
                     {
-                        Debug.Log("Hole bulundu: " + holeHit.transform.name);
+                        var targetHole = holeHit.transform.GetComponent<HoleController>();
+
+                        var targetTransform = targetHole.Compare(currentBlockController.holeColor);
+
+                        if (targetTransform != null)
+                            currentBlockController.MoveToHole(targetTransform);
+                            
+
                     }
                 }
 
