@@ -15,6 +15,13 @@ namespace Case2_BlockHole.Scripts
         [SerializeField] private float tileHiddenY = -2f; // Oyun başı saklanacakları Y derinliği
         [SerializeField] private float tilePopDelay = 0.1f; // Tile'ların çıkış hızı (Meksika dalgası gecikmesi)
         
+        [Header("Glow Settings")]
+        [ColorUsage(true, true)] // Unity Inspector'da HDR (Işık patlaması) özelliğini açar
+        [SerializeField] private Color glowColorStart = new Color(1f, 1f, 1f, 1f); // Sönük halindeki renk ve ışık şiddeti
+        [ColorUsage(true, true)] 
+        [SerializeField] private Color glowColorEnd = new Color(1f, 1f, 1f, 5f);   // Patlama anındaki renk ve ışık şiddeti
+        [SerializeField] private float glowPulseDuration = 1.0f; // Bir nefes alış süresi
+        
         public Hole.HoleColor currentColor;
 
         private Material _topGlowMaterial;
@@ -42,18 +49,13 @@ namespace Case2_BlockHole.Scripts
         {
             if (holeRenderer != null)
             {
-                // SADECE ÜST YÜZEYİN PARLAMASI İÇİN YEPYENİ BİR YÖNTEM:
-                // Kendi yazdığımız "Sadece yukarı (Y ekseni) bakan yüzeyleri" parlatan özel shader'ı kullanıyoruz.
-                // Bu sayede iç duvarlar veya yanlar parlamaz, obje de şişip deforme olmaz! 
-                // Sadece tam tepesinde (dış hattında) jilet gibi bir neon ışığı oluşur.
-                
                 Shader topFaceShader = Shader.Find("Custom/TopFaceGlow");
                 if (topFaceShader != null)
                 {
                     _topGlowMaterial = new Material(topFaceShader);
                     
-                    Color baseColor = Color.white; 
-                    _topGlowMaterial.SetColor("_GlowColor", baseColor * 1.5f);
+                    // Inspector'dan seçtiğimiz Başlangıç (Sönük) rengini atıyoruz
+                    _topGlowMaterial.SetColor("_GlowColor", glowColorStart);
                     
                     // Mevcut materyallerin üzerine şeffaf bir ışık (Additive) katmanı olarak ekliyoruz
                     var mats = holeRenderer.materials;
@@ -62,9 +64,9 @@ namespace Case2_BlockHole.Scripts
                     newMats[mats.Length] = _topGlowMaterial;
                     holeRenderer.materials = newMats;
 
-                    // Neon efekti
-                    _glowTween = _topGlowMaterial.DOColor(baseColor * 5f, "_GlowColor", 0.8f)
-                        .SetEase(Ease.InOutSine)
+                    // Neon efekti (Başlangıç renginden Bitiş rengine yumuşak bir InOutQuad gidiş-gelişi)
+                    _glowTween = _topGlowMaterial.DOColor(glowColorEnd, "_GlowColor", glowPulseDuration)
+                        .SetEase(Ease.InOutQuad) // InOutQuad nefes alıp vermeyi daha organik ve tatlı yapar
                         .SetLoops(-1, LoopType.Yoyo);
                 }
             }

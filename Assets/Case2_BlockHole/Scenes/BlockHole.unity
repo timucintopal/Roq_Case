@@ -3028,6 +3028,9 @@ MonoBehaviour:
   - {fileID: 320098208}
   tileHiddenY: -10
   tilePopDelay: 0.1
+  glowColorStart: {r: 2, g: 1.2705883, b: 1.9686275, a: 1}
+  glowColorEnd: {r: 0.8067981, g: 0.04186217, b: 0.77688426, a: 1}
+  glowPulseDuration: 0.5
   currentColor: 0
 --- !u!23 &701587504 stripped
 MeshRenderer:
@@ -7785,6 +7788,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1771158833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771158834}
+  m_Layer: 0
+  m_Name: MHole
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1771158834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771158833}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.4617, y: 3.49209, z: 2.52267}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1789618557
 GameObject:
   m_ObjectHideFlags: 0
@@ -9123,6 +9157,9 @@ MonoBehaviour:
   tiles: []
   tileHiddenY: -2
   tilePopDelay: 0.1
+  glowColorStart: {r: 1, g: 1, b: 1, a: 1}
+  glowColorEnd: {r: 1, g: 1, b: 1, a: 5}
+  glowPulseDuration: 1
   currentColor: 0
 --- !u!64 &1982228746
 MeshCollider:
@@ -9562,3 +9599,4 @@ SceneRoots:
   - {fileID: 1828486787}
   - {fileID: 2064874459}
   - {fileID: 1252803372}
+  - {fileID: 1771158834}
