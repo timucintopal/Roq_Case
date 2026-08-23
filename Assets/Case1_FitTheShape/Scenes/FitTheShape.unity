@@ -445,6 +445,7 @@ MonoBehaviour:
   shape:
     Type: 3
   hole: {fileID: 138537744}
+  approachPoint: {fileID: 0}
 --- !u!1001 &55490258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1326,6 +1327,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 751285242}
+  approachPoint: {fileID: 0}
 --- !u!1 &191927702 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -1346,6 +1348,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1109651383}
+  approachPoint: {fileID: 0}
 --- !u!1 &207456753 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -1371,6 +1374,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 2033677486}
+  approachPoint: {fileID: 0}
 --- !u!4 &218871742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -1506,6 +1510,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1275823208}
+  approachPoint: {fileID: 0}
 --- !u!1001 &248880429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1626,6 +1631,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1667446589}
+  approachPoint: {fileID: 0}
 --- !u!1001 &268827050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1990,6 +1996,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 980244265}
+  approachPoint: {fileID: 0}
 --- !u!4 &491413382 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -2113,6 +2120,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1510601195}
+  approachPoint: {fileID: 0}
 --- !u!1001 &529274040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2945,6 +2953,63 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 622931402}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &621771115
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2197180272132347860, guid: 939a319e52d534493916bd04742d87d1, type: 3}
+      propertyPath: m_Name
+      value: ImpactBurst
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814509658172276592, guid: 939a319e52d534493916bd04742d87d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814509658172276592, guid: 939a319e52d534493916bd04742d87d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814509658172276592, guid: 939a319e52d534493916bd04742d87d1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814509658172276592, guid: 939a319e52d534493916bd04742d87d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814509658172276592, guid: 939a319e52d534493916bd04742d87d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814509658172276592, guid: 939a319e52d534493916bd04742d87d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814509658172276592, guid: 939a319e52d534493916bd04742d87d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814509658172276592, guid: 939a319e52d534493916bd04742d87d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814509658172276592, guid: 939a319e52d534493916bd04742d87d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814509658172276592, guid: 939a319e52d534493916bd04742d87d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 939a319e52d534493916bd04742d87d1, type: 3}
 --- !u!1001 &622931402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3065,6 +3130,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 569571079}
+  approachPoint: {fileID: 0}
 --- !u!1 &706049207 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -3085,6 +3151,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1512090200}
+  approachPoint: {fileID: 0}
 --- !u!1001 &714103730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3345,6 +3412,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 282514399}
+  approachPoint: {fileID: 0}
 --- !u!1001 &810005040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3655,6 +3723,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 2045907819}
+  approachPoint: {fileID: 0}
 --- !u!4 &845949668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -3890,6 +3959,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 780666111}
+  approachPoint: {fileID: 0}
 --- !u!1001 &860297586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4117,6 +4187,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 935902469}
+  approachPoint: {fileID: 0}
 --- !u!1001 &878746148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4364,6 +4435,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1577288623}
+  approachPoint: {fileID: 0}
 --- !u!1001 &924896459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4489,6 +4561,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 845949668}
+  approachPoint: {fileID: 0}
 --- !u!4 &935902469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -4614,6 +4687,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 821134631}
+  approachPoint: {fileID: 0}
 --- !u!4 &952625988 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -4639,6 +4713,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1245827505}
+  approachPoint: {fileID: 0}
 --- !u!4 &980244265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -4788,6 +4863,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 2075690884}
+  approachPoint: {fileID: 0}
 --- !u!1 &1051000227 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -4808,6 +4884,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1593833989}
+  approachPoint: {fileID: 0}
 --- !u!1 &1078241285 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -4923,6 +5000,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 155715531}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1113133241
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3629936875153163302, guid: f22bd25c02a534c539d3ff373beef1a2, type: 3}
+      propertyPath: m_Name
+      value: MiniConfetti
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532203876066940185, guid: f22bd25c02a534c539d3ff373beef1a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532203876066940185, guid: f22bd25c02a534c539d3ff373beef1a2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532203876066940185, guid: f22bd25c02a534c539d3ff373beef1a2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532203876066940185, guid: f22bd25c02a534c539d3ff373beef1a2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532203876066940185, guid: f22bd25c02a534c539d3ff373beef1a2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532203876066940185, guid: f22bd25c02a534c539d3ff373beef1a2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532203876066940185, guid: f22bd25c02a534c539d3ff373beef1a2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532203876066940185, guid: f22bd25c02a534c539d3ff373beef1a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532203876066940185, guid: f22bd25c02a534c539d3ff373beef1a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532203876066940185, guid: f22bd25c02a534c539d3ff373beef1a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f22bd25c02a534c539d3ff373beef1a2, type: 3}
 --- !u!1 &1115312849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4987,6 +5121,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1513309499}
+  approachPoint: {fileID: 0}
 --- !u!1 &1126832580 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -5112,6 +5247,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1343393869}
+  approachPoint: {fileID: 0}
 --- !u!1 &1143438158 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -5247,6 +5383,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 221063559}
+  approachPoint: {fileID: 0}
 --- !u!1 &1166303171 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -5277,6 +5414,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1463691055}
+  approachPoint: {fileID: 0}
 --- !u!4 &1190035531 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -5402,6 +5540,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 359905415}
+  approachPoint: {fileID: 0}
 --- !u!1 &1203293164 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -5637,6 +5776,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 97977742}
+  approachPoint: {fileID: 0}
 --- !u!4 &1219277357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -5736,6 +5876,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 427619098}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1240053156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5936,6 +6077,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1827152804}
+  approachPoint: {fileID: 0}
 --- !u!4 &1275823208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -5961,6 +6103,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 271115510}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1290329228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6081,6 +6224,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1863259424}
+  approachPoint: {fileID: 0}
 --- !u!4 &1295671730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -6234,6 +6378,7 @@ MonoBehaviour:
   shape:
     Type: 2
   hole: {fileID: 1669588778}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1336791300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6354,6 +6499,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1219277357}
+  approachPoint: {fileID: 0}
 --- !u!4 &1343393869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -6484,6 +6630,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1623117945}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1366147278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6604,6 +6751,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1615868192}
+  approachPoint: {fileID: 0}
 --- !u!1 &1369820010 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -6624,6 +6772,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1992049398}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1371932432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6723,6 +6872,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 81884520}
+  approachPoint: {fileID: 0}
 --- !u!1 &1395660884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -7208,6 +7358,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 156362757}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1452234150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7328,6 +7479,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 491413382}
+  approachPoint: {fileID: 0}
 --- !u!4 &1463691055 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -7449,6 +7601,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1372328100}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1506504445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7569,6 +7722,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 2072528357}
+  approachPoint: {fileID: 0}
 --- !u!1 &1506718801 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -7589,6 +7743,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 218871742}
+  approachPoint: {fileID: 0}
 --- !u!4 &1510601195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -7831,6 +7986,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 616009564}
+  approachPoint: {fileID: 0}
 --- !u!1 &1560020755 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -7851,6 +8007,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 866456239}
+  approachPoint: {fileID: 0}
 --- !u!1 &1563593038
 GameObject:
   m_ObjectHideFlags: 0
@@ -8358,6 +8515,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 174367160}
+  approachPoint: {fileID: 0}
 --- !u!4 &1615868192 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -8403,6 +8561,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1572565033}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1652448506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8523,6 +8682,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1008350551}
+  approachPoint: {fileID: 0}
 --- !u!4 &1661567829 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -8691,6 +8851,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1576539866}
+  approachPoint: {fileID: 0}
 --- !u!4 &1688185186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -8716,6 +8877,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 86225056}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1709819750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8836,6 +8998,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1575493067}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1739632637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8956,6 +9119,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 564166496}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1770710754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9053,6 +9217,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6371146750105926131, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
   m_PrefabInstance: {fileID: 1770710754}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1803109100
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5106717544537256124, guid: 1e817d954994442619c1a523db0a9509, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106717544537256124, guid: 1e817d954994442619c1a523db0a9509, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106717544537256124, guid: 1e817d954994442619c1a523db0a9509, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106717544537256124, guid: 1e817d954994442619c1a523db0a9509, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106717544537256124, guid: 1e817d954994442619c1a523db0a9509, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106717544537256124, guid: 1e817d954994442619c1a523db0a9509, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106717544537256124, guid: 1e817d954994442619c1a523db0a9509, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106717544537256124, guid: 1e817d954994442619c1a523db0a9509, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106717544537256124, guid: 1e817d954994442619c1a523db0a9509, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106717544537256124, guid: 1e817d954994442619c1a523db0a9509, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8587513789041691748, guid: 1e817d954994442619c1a523db0a9509, type: 3}
+      propertyPath: m_Name
+      value: RingShockwave
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1e817d954994442619c1a523db0a9509, type: 3}
 --- !u!1 &1814557392 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -9073,6 +9294,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1295671730}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1817100040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9167,6 +9389,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1889089603}
+  approachPoint: {fileID: 0}
 --- !u!1 &1825134625 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -9187,6 +9410,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1358741570}
+  approachPoint: {fileID: 0}
 --- !u!4 &1827152804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -9212,6 +9436,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1022140135}
+  approachPoint: {fileID: 0}
 --- !u!1 &1847992291
 GameObject:
   m_ObjectHideFlags: 0
@@ -9469,6 +9694,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1405783327}
+  approachPoint: {fileID: 0}
 --- !u!4 &1863259424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -9494,6 +9720,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1661567829}
+  approachPoint: {fileID: 0}
 --- !u!1 &1874162123 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -9514,6 +9741,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1977145897}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1875235813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9634,6 +9862,7 @@ MonoBehaviour:
   shape:
     Type: 1
   hole: {fileID: 1636144323}
+  approachPoint: {fileID: 0}
 --- !u!4 &1887921203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -9991,6 +10220,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 895718096}
+  approachPoint: {fileID: 0}
 --- !u!1 &1936185530 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -10011,6 +10241,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1953368434}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1941402703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10123,6 +10354,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1855069356}
+  approachPoint: {fileID: 0}
 --- !u!1001 &1948968093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10243,6 +10475,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 318757468}
+  approachPoint: {fileID: 0}
 --- !u!4 &1953368434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -10378,6 +10611,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1627317031}
+  approachPoint: {fileID: 0}
 --- !u!1 &2001195626 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -10398,6 +10632,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1190035531}
+  approachPoint: {fileID: 0}
 --- !u!1001 &2013424317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10518,6 +10753,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 722375236}
+  approachPoint: {fileID: 0}
 --- !u!1001 &2013492287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10638,6 +10874,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1419966738}
+  approachPoint: {fileID: 0}
 --- !u!1 &2026697876 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -10658,6 +10895,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 2071473284}
+  approachPoint: {fileID: 0}
 --- !u!4 &2033677486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -10783,6 +11021,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1539024521}
+  approachPoint: {fileID: 0}
 --- !u!1001 &2044748770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10913,6 +11152,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1688185186}
+  approachPoint: {fileID: 0}
 --- !u!1001 &2066292441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11033,6 +11273,7 @@ MonoBehaviour:
   shape:
     Type: 4
   hole: {fileID: 37946751}
+  approachPoint: {fileID: 0}
 --- !u!4 &2071473284 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404721523628904467, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -11068,6 +11309,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1922605869}
+  approachPoint: {fileID: 0}
 --- !u!1001 &2090019054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11188,6 +11430,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 310168501}
+  approachPoint: {fileID: 0}
 --- !u!1 &2090111179 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -11208,6 +11451,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1887921203}
+  approachPoint: {fileID: 0}
 --- !u!1 &2100199904
 GameObject:
   m_ObjectHideFlags: 0
@@ -11540,6 +11784,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 952625988}
+  approachPoint: {fileID: 0}
 --- !u!1 &2134126430 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990082835904652105, guid: 5c44bc22f023b4a36b87e16c656406d4, type: 3}
@@ -11560,6 +11805,7 @@ MonoBehaviour:
   shape:
     Type: 0
   hole: {fileID: 1155565442}
+  approachPoint: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -11570,3 +11816,6 @@ SceneRoots:
   - {fileID: 2100199905}
   - {fileID: 1115312850}
   - {fileID: 1922262339}
+  - {fileID: 1113133241}
+  - {fileID: 621771115}
+  - {fileID: 1803109100}
