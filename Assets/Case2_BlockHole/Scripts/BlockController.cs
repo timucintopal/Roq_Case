@@ -78,8 +78,49 @@ namespace Case2_BlockHole.Scripts
 
             mainRenderer.enabled = false;
                 
+            Vector3 center = transform.position;
+
             foreach(var block in blocks)
+            {
                 block.SetActive(true);
+
+                // 1. Fizik motorunun müdahale etmesini engelliyoruz (isKinematic = true)
+                if (block.TryGetComponent<Rigidbody>(out var rb))
+                {
+                    rb.isKinematic = true;
+                }
+
+                // 2. Hedef noktaları hesaplıyoruz
+                Vector3 currentPos = block.transform.position;
+                
+                // Merkezden dışa doğru hafif bir vektör bulalım (açılı fırlasınlar diye)
+                Vector3 outwardDir = (currentPos - center).normalized;
+                outwardDir.y = 0;
+                if (outwardDir == Vector3.zero) 
+                    outwardDir = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+
+                // Tepe noktası: Hafif dışa ve yukarı doğru
+                Vector3 peakPos = currentPos + (outwardDir * Random.Range(0.2f, 0.8f)) + (Vector3.up * Random.Range(1.5f, 2.5f));
+                
+                // Düşüş noktası: Tepe noktasının çok aşağısı (çukurun dibi)
+                Vector3 fallPos = peakPos + Vector3.down * 15f; 
+
+                // 3. DOTween Sequence ile animasyonu çiziyoruz
+                Sequence seq = DOTween.Sequence();
+                
+                // Yukarı doğru tatlı bir kalkış (0.4 saniye)
+                seq.Append(block.transform.DOMove(peakPos, 0.4f).SetEase(Ease.OutQuad));
+                
+                // Aynı anda kendi etraflarında rastgele dönsünler (Tumble efekti)
+                Vector3 randomRotation = new Vector3(Random.Range(-360f, 360f), Random.Range(-360f, 360f), Random.Range(-360f, 360f));
+                block.transform.DORotate(randomRotation, 1.5f, RotateMode.FastBeyond360).SetEase(Ease.OutQuad);
+
+                // Yukarı kalktıktan hemen sonra çukurun içine süzülerek düşüş (1.5 saniye)
+                seq.Append(block.transform.DOMove(fallPos, 1.5f).SetEase(Ease.InQuad));
+                
+                // Animasyon bitince optimizasyon için objeyi tamamen kapat
+                seq.OnComplete(() => block.SetActive(false));
+            }
         }
         
         
