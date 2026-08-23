@@ -3020,6 +3020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.HoleController
   targetPos: {fileID: 1115346903}
   holeCollider: {fileID: 701587502}
+  holeRenderer: {fileID: 701587504}
   tiles:
   - {fileID: 1850256074}
   - {fileID: 210402889}
@@ -3028,6 +3029,11 @@ MonoBehaviour:
   tileHiddenY: -10
   tilePopDelay: 0.1
   currentColor: 0
+--- !u!23 &701587504 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1260431100135262944, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+  m_PrefabInstance: {fileID: 246839755}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &725922925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8574250915467631891, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
@@ -9113,6 +9119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.HoleController
   targetPos: {fileID: 1982228743}
   holeCollider: {fileID: 0}
+  holeRenderer: {fileID: 0}
   tiles: []
   tileHiddenY: -2
   tilePopDelay: 0.1
