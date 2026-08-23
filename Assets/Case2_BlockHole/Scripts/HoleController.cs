@@ -26,6 +26,14 @@ namespace Case2_BlockHole.Scripts
         [Tooltip("Parlamanın sadece hangi yüzeylerde çıkacağını belirler. 1'e yaklaştıkça sadece tam yukarı bakan düz yüzeyler parlar.")]
         [SerializeField] private float glowSurfaceAngle = 0.95f;
         
+        [Header("Particle Settings")]
+        [Tooltip("Toz/Işık patlaması yapacak ana Particle sistemleri buraya ekleyin.")]
+        [SerializeField] private List<ParticleSystem> dustParticles = new List<ParticleSystem>();
+        [Tooltip("Tozun 1. indexli child'ı (GlowFlash) için uygulanacak renk/şeffaflık geçişi.")]
+        [SerializeField] private Gradient particleGlowGradient;
+        [Tooltip("Blok deliğe bırakıldıktan kaç saniye sonra patlasın? (Parçalanma 0.5. saniyede başlıyor, üzerine 0.5sn eklersek 1.0 yapar)")]
+        [SerializeField] private float particlePlayDelay = 1.0f;
+        
         public Hole.HoleColor currentColor;
 
         private Material _topGlowMaterial;
@@ -47,6 +55,23 @@ namespace Case2_BlockHole.Scripts
                     Vector3 pos = tile.localPosition;
                     pos.y = tileHiddenY;
                     tile.localPosition = pos;
+                }
+            }
+            
+            // Particle sistemlerinin içindeki (1. indexli) Glow ışığına Gradient'i uygula
+            foreach (var mainParticle in dustParticles)
+            {
+                if (mainParticle != null && mainParticle.transform.childCount > 1)
+                {
+                    // 1. index'teki child objesini alıyoruz (DustDirtyPoofSoft -> [0] Cloud -> [1] GlowFlash)
+                    ParticleSystem glowParticle = mainParticle.transform.GetChild(1).GetComponent<ParticleSystem>();
+                    
+                    if (glowParticle != null)
+                    {
+                        var colorModule = glowParticle.colorOverLifetime;
+                        colorModule.enabled = true;
+                        colorModule.color = new ParticleSystem.MinMaxGradient(particleGlowGradient);
+                    }
                 }
             }
             
@@ -151,6 +176,15 @@ namespace Case2_BlockHole.Scripts
                     
                 // Yuvaya obje oturduğu için Glow efektini iptal ediyoruz
                 StopGlow();
+                
+                // Parçacıkları belirlenen gecikmeyle patlat
+                DOVirtual.DelayedCall(particlePlayDelay, () =>
+                {
+                    foreach (var ps in dustParticles)
+                    {
+                        if (ps != null) ps.Play(true); // true parametresi içindeki alt particle'ların (GlowFlash) da patlamasını sağlar
+                    }
+                });
                     
                 // 1.5 saniye sonra (Blok çukura ulaşıp, parçalanma başladıktan 1 saniye sonra)
                 DOVirtual.DelayedCall(1.5f, () =>
