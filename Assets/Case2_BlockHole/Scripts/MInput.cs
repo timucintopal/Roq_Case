@@ -25,6 +25,7 @@ namespace Case2_BlockHole.Scripts
         private Transform _draggedObject;
         private bool _isDragging;
         private Vector3 _offset;
+        private Vector3 _initialDragPos;
 
         private void Start()
         {
@@ -45,6 +46,7 @@ namespace Case2_BlockHole.Scripts
                 if (Physics.Raycast(ray, out RaycastHit hitObj, 100f, draggableLayer))
                 {
                     _draggedObject = hitObj.transform;
+                    _initialDragPos = _draggedObject.position; // Tutulduğu ilk yeri kaydet
                     _isDragging = true;
                     
                     Debug.Log(_draggedObject.name);
@@ -90,17 +92,27 @@ namespace Case2_BlockHole.Scripts
             {
                 if (_draggedObject != null)
                 {
+                    bool isSuccess = false;
+                    
                     // Aşağıya (-y yönünde) bir ışın gönderip Hole layer'ındaki bir objeye çarpıyor mu kontrol et
                     if (Physics.Raycast(_draggedObject.position, Vector3.down, out RaycastHit holeHit, 10f, holeLayer))
                     {
                         var targetHole = holeHit.transform.GetComponent<HoleController>();
+                        if (targetHole != null)
+                        {
+                            var targetTransform = targetHole.Compare(currentBlockController.holeColor);
+                            if (targetTransform != null)
+                            {
+                                currentBlockController.MoveToHole(targetTransform);
+                                isSuccess = true;
+                            }
+                        }
+                    }
 
-                        var targetTransform = targetHole.Compare(currentBlockController.holeColor);
-
-                        if (targetTransform != null)
-                            currentBlockController.MoveToHole(targetTransform);
-                            
-
+                    // Eğer boşluğa veya yanlış deliğe bırakıldıysa, ilk aldığı yere geri dönsün
+                    if (!isSuccess)
+                    {
+                        _draggedObject.DOMove(_initialDragPos, 0.3f).SetEase(Ease.OutQuad);
                     }
                 }
 
