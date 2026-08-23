@@ -10,6 +10,7 @@ namespace Case2_BlockHole.Scripts
         public Hole.HoleColor holeColor;
         
         [SerializeField] MeshRenderer mainRenderer;
+        [SerializeField] Collider mainCollider; // Ana objenin collider'ı
         
         [SerializeField] List<GameObject> blocks = new List<GameObject>();
 
@@ -76,22 +77,33 @@ namespace Case2_BlockHole.Scripts
 
             yield return new WaitForSeconds(.1f);
 
-            mainRenderer.enabled = false;
+            if (mainRenderer != null) mainRenderer.enabled = false;
+            if (mainCollider != null) mainCollider.enabled = false; // Parçalar çıkarken ana collidera çarpıp patlamaması için kapattık
                 
             Vector3 center = transform.position;
 
             foreach(var block in blocks)
             {
-                block.SetActive(true);
+                GameObject b = block; // Güvenli değişken kopyalama (Lambda içinde kaybolmaması için)
+                b.SetActive(true);
+                b.transform.localScale = Vector3.one; // Obje havuzlaması (pooling) varsa önceki küçülmeden dolayı 0 kalmasın
 
-                // 1. Fizik motorunun müdahale etmesini engelliyoruz (isKinematic = true)
-                if (block.TryGetComponent<Rigidbody>(out var rb))
+                // 1. Rigidbody'i güvenli şekilde buluyoruz
+                Rigidbody rb = b.GetComponent<Rigidbody>();
+                if (rb == null) rb = b.GetComponentInChildren<Rigidbody>();
+
+                if (rb != null)
                 {
                     rb.isKinematic = true;
+                    rb.useGravity = true; // Yerçekimi kapalı kalmış olabilir diye garantiye alıyoruz
+                }
+                else
+                {
+                    Debug.LogWarning("Block üzerinde Rigidbody bulunamadı! Lütfen objeye Rigidbody eklediğinizden emin olun: " + b.name);
                 }
 
                 // 2. Hedef noktaları hesaplıyoruz
-                Vector3 currentPos = block.transform.position;
+                Vector3 currentPos = b.transform.position;
                 
                 // Merkezden dışa doğru hafif bir vektör bulalım (açılı fırlasınlar diye)
                 Vector3 outwardDir = (currentPos - center).normalized;
@@ -101,25 +113,33 @@ namespace Case2_BlockHole.Scripts
 
                 // Tepe noktası: Sağa sola saçılmayı çok aza indirdik (0.05 ile 0.2 arası)
                 Vector3 peakPos = currentPos + (outwardDir * Random.Range(0.05f, 0.2f)) + (Vector3.up * Random.Range(1.0f, 1.8f));
-                
-                // Düşüş noktası: Tepe noktasının çok aşağısı (çukurun dibi)
-                Vector3 fallPos = peakPos + Vector3.down * 15f; 
 
-                // 3. DOTween Sequence ile animasyonu çiziyoruz
-                Sequence seq = DOTween.Sequence();
-                
-                // Ağır kalkış ve havada asılı kalma hissi (0.5 sn, OutCubic ile tepe noktasında asılı kalır)
-                seq.Append(block.transform.DOMove(peakPos, 0.5f).SetEase(Ease.OutCubic));
-                
-                // Ağır çekimde dönme efekti
+                // Yukarı kalkış sırasında sahte dönme animasyonu (0.5 saniye)
                 Vector3 randomRotation = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
-                block.transform.DORotate(randomRotation, 1.5f, RotateMode.FastBeyond360).SetEase(Ease.InOutSine);
+                b.transform.DORotate(randomRotation, 0.5f, RotateMode.FastBeyond360).SetEase(Ease.OutCubic);
 
-                // Ağır ve ivmeli bir düşüş (1.0 sn, InCubic ile düşerken giderek hızlanır)
-                seq.Append(block.transform.DOMove(fallPos, 1.0f).SetEase(Ease.InCubic));
-                
-                // Animasyon bitince optimizasyon için objeyi tamamen kapat
-                seq.OnComplete(() => block.SetActive(false));
+                // Yukarı kalkarken fiziksel çarpışmaları (iç içe geçmeyi) tamamen önlemek ve şık bir etki için boyutu pürüzsüzce 0.6'ya düşür
+                b.transform.DOScale(Vector3.one * 0.6f, 0.5f).SetEase(Ease.OutCubic);
+
+                // Yukarı tatlı kalkış
+                b.transform.DOMove(peakPos, 0.5f).SetEase(Ease.OutCubic).OnComplete(() =>
+                {
+                    Debug.Log("DOTween OnComplete tetiklendi: " + b.name);
+                    // TEPE NOKTASINDA FİZİĞİ SERBEST BIRAK!
+                    if (rb != null)
+                    {
+                        rb.isKinematic = false;
+                        rb.useGravity = true;
+                        rb.WakeUp(); // Fizik motorunu zorla uyandır (bazen kinematic objeler uyku modunda kalabilir)
+                        
+                        // Yerçekimiyle düşerken dönmeye (takla atmaya) devam etmeleri için tork (dönüş ivmesi) veriyoruz
+                        rb.AddTorque(Random.insideUnitSphere * Random.Range(20f, 40f), ForceMode.Impulse);
+                        
+                        Debug.Log("Rigidbody serbest bırakıldı, isKinematic durumu: " + rb.isKinematic + " Obje: " + b.name);
+                    }
+                });
+
+                // Test için küçülme ve kapanma özelliklerini ŞİMDİLİK KALDIRDIK.
             }
         }
         

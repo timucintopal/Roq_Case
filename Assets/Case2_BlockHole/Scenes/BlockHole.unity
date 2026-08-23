@@ -664,11 +664,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73530672}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &104696760 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1042974791006937339, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &117055904
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +676,7 @@ GameObject:
   - component: {fileID: 117055908}
   - component: {fileID: 117055907}
   - component: {fileID: 117055906}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1036,11 +1031,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160740785}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &160937851 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4156469970251645632, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &163086450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1055,6 +1045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.BlockController
   holeColor: 0
   mainRenderer: {fileID: 1825520758}
+  mainCollider: {fileID: 1825520756}
   blocks:
   - {fileID: 71622290}
   - {fileID: 651132333}
@@ -1080,39 +1071,10 @@ MonoBehaviour:
   - {fileID: 1708614418}
   - {fileID: 414575456}
   - {fileID: 582170232}
-  - {fileID: 1404609608}
-  - {fileID: 423400560}
-  - {fileID: 399879483}
-  - {fileID: 196041397}
-  - {fileID: 1629842786}
-  - {fileID: 725922925}
-  - {fileID: 841336939}
-  - {fileID: 104696760}
-  - {fileID: 1427371792}
-  - {fileID: 1231684160}
-  - {fileID: 160937851}
-  - {fileID: 2070217473}
-  - {fileID: 1235925476}
-  - {fileID: 1223760272}
-  - {fileID: 480105389}
-  - {fileID: 2131345054}
-  - {fileID: 814103449}
-  - {fileID: 1148324191}
-  - {fileID: 245214535}
-  - {fileID: 416998228}
-  - {fileID: 1842559586}
-  - {fileID: 1424214235}
-  - {fileID: 523316228}
-  - {fileID: 1035536548}
 --- !u!1 &181448816 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 540515829899338753, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
   m_PrefabInstance: {fileID: 995165430}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &196041397 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8121114658387733152, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &201115501
 GameObject:
@@ -1278,11 +1240,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234578699}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &245214535 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4867473169621875926, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &246839755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1747,64 +1704,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346281188}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &396622552
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 396622553}
-  - component: {fileID: 396622554}
-  m_Layer: 7
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &396622553
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396622552}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.59, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2134316586}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &396622554
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396622552}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 7.5499187, y: 1, z: 8.750348}
-  m_Center: {x: 3.2749593, y: 0, z: 3.875174}
---- !u!1 &399879483 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5114250892870864136, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &401462498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,16 +1798,6 @@ MeshFilter:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 641631571865527248, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
   m_PrefabInstance: {fileID: 995165430}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &416998228 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8324841234101422223, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &423400560 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4233873393498836693, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &428894427
 GameObject:
@@ -2156,7 +2045,7 @@ GameObject:
   - component: {fileID: 462929141}
   - component: {fileID: 462929140}
   - component: {fileID: 462929139}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2256,11 +2145,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462929137}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &480105389 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5965213624736744195, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &489816630 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5264532291401912574, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
@@ -2393,11 +2277,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &523316228 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 641631571865527248, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &539784634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,7 +2289,7 @@ GameObject:
   - component: {fileID: 539784638}
   - component: {fileID: 539784637}
   - component: {fileID: 539784636}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2840,12 +2719,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.HoleController
   targetPos: {fileID: 1115346903}
+  holeCollider: {fileID: 701587502}
   currentColor: 0
---- !u!1 &725922925 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8574250915467631891, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &739987546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3286,11 +3161,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8574250915467631891, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
   m_PrefabInstance: {fileID: 995165430}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &814103449 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 540515829899338753, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &838135528
 GameObject:
   m_ObjectHideFlags: 0
@@ -3508,11 +3378,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840813948}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &841336939 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3630682578278213079, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &875640231
 GameObject:
   m_ObjectHideFlags: 0
@@ -3940,16 +3805,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 1825520754}
     m_Modifications:
     - target: {fileID: 137233456489780286, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 137233456489780286, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 199748949671508847, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 199748949671508847, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199748949671508847, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 540515829899338753, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 540515829899338753, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -3957,11 +3834,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 609323352826742106, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 609323352826742106, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 609323352826742106, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 641631571865527248, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 641631571865527248, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -3985,11 +3870,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 1015830997121080767, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1015830997121080767, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015830997121080767, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042974791006937339, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1042974791006937339, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4001,19 +3894,27 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 1122879716597866724, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1122879716597866724, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1129789447294511887, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-      propertyPath: m_Mass
+    - target: {fileID: 1122879716597866724, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1129789447294511887, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129789447294511887, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129789447294511887, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1203366544936402273, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -4021,27 +3922,43 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 1423310655814812199, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1423310655814812199, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1450623026420276785, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-      propertyPath: m_Mass
+    - target: {fileID: 1423310655814812199, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1450623026420276785, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-      propertyPath: m_LinearDamping
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1749535703933226575, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450623026420276785, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_LinearDamping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450623026420276785, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1749535703933226575, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749535703933226575, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749535703933226575, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371628874070243414, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2371628874070243414, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4049,11 +3966,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2373778262864530371, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2373778262864530371, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373778262864530371, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2563903202656210934, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4096,8 +4017,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2596088330718004919, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596088330718004919, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2708675475964619000, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2708675475964619000, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4105,19 +4034,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2844236091055173065, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2844236091055173065, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2868908616779771451, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-      propertyPath: m_Mass
+    - target: {fileID: 2844236091055173065, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2868908616779771451, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2868908616779771451, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2868908616779771451, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005274777107572568, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3005274777107572568, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4125,11 +4066,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3081491155150263166, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3081491155150263166, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081491155150263166, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3208466174837437795, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -4137,11 +4082,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 3584184001722890660, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3584184001722890660, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584184001722890660, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630682578278213079, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3630682578278213079, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4152,6 +4105,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 3846824907038857852, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3846824907038857852, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4161,19 +4118,31 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 3905893625243507920, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3905893625243507920, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905893625243507920, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3938919365376756152, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 4156469970251645632, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4156469970251645632, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233873393498836693, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4233873393498836693, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4196,8 +4165,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 4867473169621875926, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867473169621875926, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114250892870864136, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5114250892870864136, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4205,11 +4182,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5151938111674891371, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5151938111674891371, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151938111674891371, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5185128347824839861, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -4219,6 +4200,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
+    - target: {fileID: 5264532291401912574, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5264532291401912574, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4233,11 +4218,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 5901747759898595581, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5901747759898595581, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5901747759898595581, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965213624736744195, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5965213624736744195, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4245,11 +4238,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6369488783289689105, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6369488783289689105, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369488783289689105, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644777521170833148, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6644777521170833148, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4268,6 +4269,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 7089673955200725393, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089673955200725393, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4281,43 +4286,71 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 7657723889506624200, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7657723889506624200, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7764828883987394191, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-      propertyPath: m_Mass
+    - target: {fileID: 7657723889506624200, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7764828883987394191, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-      propertyPath: m_LinearDamping
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7780957349424094149, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7764828883987394191, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_LinearDamping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7764828883987394191, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7780957349424094149, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-      propertyPath: m_LinearDamping
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929098513260305144, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7780957349424094149, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_LinearDamping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7780957349424094149, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7929098513260305144, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929098513260305144, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929098513260305144, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8006687977888592950, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8006687977888592950, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8121114658387733152, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121114658387733152, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324841234101422223, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8324841234101422223, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4325,11 +4358,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8341706475867453730, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8341706475867453730, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341706475867453730, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415549114621363932, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8415549114621363932, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4337,11 +4378,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8438892581322517792, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8438892581322517792, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438892581322517792, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8574250915467631891, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8574250915467631891, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4360,16 +4409,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8949384719426400049, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8949384719426400049, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9145247867100693436, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9145247867100693436, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9145247867100693436, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_AngularDamping
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4471,11 +4528,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005069769}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1035536548 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2708675475964619000, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1056694615
 GameObject:
   m_ObjectHideFlags: 0
@@ -4665,16 +4717,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 1825520754}
     m_Modifications:
     - target: {fileID: 137233456489780286, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 137233456489780286, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 199748949671508847, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 199748949671508847, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 540515829899338753, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 540515829899338753, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4682,11 +4742,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 609323352826742106, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 609323352826742106, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 641631571865527248, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 641631571865527248, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4710,11 +4774,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 1015830997121080767, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1015830997121080767, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042974791006937339, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1042974791006937339, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4726,19 +4794,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 1122879716597866724, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1122879716597866724, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1129789447294511887, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1129789447294511887, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1203366544936402273, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -4746,27 +4814,31 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 1423310655814812199, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1423310655814812199, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1450623026420276785, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1450623026420276785, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1749535703933226575, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1749535703933226575, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371628874070243414, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2371628874070243414, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4774,11 +4846,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2373778262864530371, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2373778262864530371, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2563903202656210934, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4821,8 +4893,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2596088330718004919, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596088330718004919, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2708675475964619000, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2708675475964619000, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4830,19 +4910,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2844236091055173065, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2844236091055173065, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2868908616779771451, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2868908616779771451, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005274777107572568, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3005274777107572568, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4850,11 +4934,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3081491155150263166, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3081491155150263166, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3208466174837437795, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -4862,11 +4946,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 3584184001722890660, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3584184001722890660, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630682578278213079, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3630682578278213079, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4877,6 +4965,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 3846824907038857852, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3846824907038857852, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4886,19 +4978,27 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 3905893625243507920, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3905893625243507920, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3938919365376756152, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 4156469970251645632, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4156469970251645632, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233873393498836693, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4233873393498836693, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4921,8 +5021,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 4867473169621875926, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867473169621875926, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114250892870864136, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5114250892870864136, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4930,11 +5038,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5151938111674891371, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5151938111674891371, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5185128347824839861, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -4944,6 +5052,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
+    - target: {fileID: 5264532291401912574, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5264532291401912574, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4958,11 +5070,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 5901747759898595581, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5901747759898595581, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965213624736744195, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5965213624736744195, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4970,11 +5086,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6369488783289689105, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6369488783289689105, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644777521170833148, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6644777521170833148, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -4993,6 +5113,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 7089673955200725393, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089673955200725393, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -5006,43 +5130,55 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f6dec51669483743856938fb223768d, type: 2}
     - target: {fileID: 7657723889506624200, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7657723889506624200, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7764828883987394191, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7764828883987394191, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7780957349424094149, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7780957349424094149, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7929098513260305144, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7929098513260305144, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8006687977888592950, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8006687977888592950, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8121114658387733152, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121114658387733152, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324841234101422223, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8324841234101422223, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -5050,11 +5186,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8341706475867453730, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8341706475867453730, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415549114621363932, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8415549114621363932, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -5062,11 +5202,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8438892581322517792, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8438892581322517792, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8574250915467631891, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8574250915467631891, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -5082,7 +5226,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852618802286154136, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8949384719426400049, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8949384719426400049, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_IsActive
@@ -5090,11 +5238,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9145247867100693436, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9145247867100693436, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
       propertyPath: m_LinearDamping
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5296,11 +5444,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5802457560725290850, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
   m_PrefabInstance: {fileID: 246839755}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1148324191 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8006687977888592950, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1160806186 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3846824907038857852, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
@@ -5401,21 +5544,118 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8324841234101422223, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
   m_PrefabInstance: {fileID: 995165430}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1223760272 stripped
+--- !u!1 &1252803368
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2371628874070243414, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1231684160 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3005274777107572568, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252803372}
+  - component: {fileID: 1252803371}
+  - component: {fileID: 1252803370}
+  - component: {fileID: 1252803369}
+  m_Layer: 7
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1252803369
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1235925476 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5264532291401912574, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
+  m_GameObject: {fileID: 1252803368}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1252803370
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252803368}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1252803371
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252803368}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1252803372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252803368}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.5, y: -4.74, z: 5.355}
+  m_LocalScale: {x: 7.6091576, y: 1, z: 8.103708}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1278863329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6095,21 +6335,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 137233456489780286, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
   m_PrefabInstance: {fileID: 995165430}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1404609608 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6644777521170833148, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1424214235 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2596088330718004919, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1427371792 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137233456489780286, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1470361863
 GameObject:
   m_ObjectHideFlags: 0
@@ -6641,11 +6866,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618427724}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1629842786 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8415549114621363932, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1673100348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7163,7 +7383,7 @@ GameObject:
   - component: {fileID: 1801864227}
   - component: {fileID: 1801864226}
   - component: {fileID: 1801864225}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7535,11 +7755,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1842559586 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8949384719426400049, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1862100072
 GameObject:
   m_ObjectHideFlags: 0
@@ -7903,7 +8118,7 @@ GameObject:
   - component: {fileID: 1966970056}
   - component: {fileID: 1966970055}
   - component: {fileID: 1966970054}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8210,6 +8425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.HoleController
   targetPos: {fileID: 1982228743}
+  holeCollider: {fileID: 0}
   currentColor: 0
 --- !u!64 &1982228746
 MeshCollider:
@@ -8408,11 +8624,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2070217473 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7089673955200725393, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2110944154
 GameObject:
   m_ObjectHideFlags: 0
@@ -8593,11 +8804,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116399000}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2131345054 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3846824907038857852, guid: 6450c5b8876c84d43978727b161952ca, type: 3}
-  m_PrefabInstance: {fileID: 1063435929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2134316585
 GameObject:
   m_ObjectHideFlags: 0
@@ -8631,7 +8837,6 @@ Transform:
   - {fileID: 201115502}
   - {fileID: 201292549}
   - {fileID: 268001659}
-  - {fileID: 396622553}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2134504806 stripped
@@ -8649,3 +8854,4 @@ SceneRoots:
   - {fileID: 2134316586}
   - {fileID: 1828486787}
   - {fileID: 2064874459}
+  - {fileID: 1252803372}
