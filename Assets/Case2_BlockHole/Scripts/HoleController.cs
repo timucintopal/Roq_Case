@@ -26,6 +26,8 @@ namespace Case2_BlockHole.Scripts
 
         private Material _topGlowMaterial;
         private Tween _glowTween;
+        private bool _isGlowing = false;
+        private bool _isFilled = false; // Yuvaya obje oturdu mu?
 
         private void Awake()
         {
@@ -43,31 +45,61 @@ namespace Case2_BlockHole.Scripts
                     tile.localPosition = pos;
                 }
             }
+            
+            // MHole yöneticisine kendini kaydet
+            if (MHole.Instance != null) MHole.Instance.RegisterHole(this);
         }
 
-        private void Start()
+        private void OnDestroy()
         {
-            if (holeRenderer != null)
-            {
-                Shader topFaceShader = Shader.Find("Custom/TopFaceGlow");
-                if (topFaceShader != null)
-                {
-                    _topGlowMaterial = new Material(topFaceShader);
-                    
-                    // Inspector'dan seçtiğimiz Başlangıç (Sönük) rengini atıyoruz
-                    _topGlowMaterial.SetColor("_GlowColor", glowColorStart);
-                    
-                    // Mevcut materyallerin üzerine şeffaf bir ışık (Additive) katmanı olarak ekliyoruz
-                    var mats = holeRenderer.materials;
-                    var newMats = new Material[mats.Length + 1];
-                    for (int i = 0; i < mats.Length; i++) newMats[i] = mats[i];
-                    newMats[mats.Length] = _topGlowMaterial;
-                    holeRenderer.materials = newMats;
+            if (MHole.Instance != null) MHole.Instance.UnregisterHole(this);
+        }
 
-                    // Neon efekti (Başlangıç renginden Bitiş rengine yumuşak bir InOutQuad gidiş-gelişi)
-                    _glowTween = _topGlowMaterial.DOColor(glowColorEnd, "_GlowColor", glowPulseDuration)
-                        .SetEase(Ease.InOutQuad) // InOutQuad nefes alıp vermeyi daha organik ve tatlı yapar
-                        .SetLoops(-1, LoopType.Yoyo);
+        public void StartGlow()
+        {
+            // Eğer zaten parlıyorsa veya yuva zaten doluysa tekrar başlatma
+            if (_isGlowing || _isFilled || holeRenderer == null) return;
+            
+            _isGlowing = true;
+
+            Shader topFaceShader = Shader.Find("Custom/TopFaceGlow");
+            if (topFaceShader != null)
+            {
+                if (_topGlowMaterial == null) _topGlowMaterial = new Material(topFaceShader);
+                
+                // Inspector'dan seçtiğimiz Başlangıç (Sönük) rengini atıyoruz
+                _topGlowMaterial.SetColor("_GlowColor", glowColorStart);
+                
+                // Mevcut materyallerin üzerine şeffaf bir ışık (Additive) katmanı olarak ekliyoruz
+                var mats = holeRenderer.materials;
+                var newMats = new Material[mats.Length + 1];
+                for (int i = 0; i < mats.Length; i++) newMats[i] = mats[i];
+                newMats[mats.Length] = _topGlowMaterial;
+                holeRenderer.materials = newMats;
+
+                // Neon efekti
+                _glowTween = _topGlowMaterial.DOColor(glowColorEnd, "_GlowColor", glowPulseDuration)
+                    .SetEase(Ease.InOutQuad)
+                    .SetLoops(-1, LoopType.Yoyo);
+            }
+        }
+
+        public void StopGlow()
+        {
+            if (!_isGlowing) return;
+            _isGlowing = false;
+
+            if (_glowTween != null) _glowTween.Kill();
+            
+            // Ve eklediğimiz Glow materyalini listeden siliyoruz ki yuva tamamen normale dönsün
+            if (holeRenderer != null && _topGlowMaterial != null)
+            {
+                var mats = holeRenderer.materials;
+                if (mats.Length > 0 && mats[mats.Length - 1].shader.name == "Custom/TopFaceGlow")
+                {
+                    var newMats = new Material[mats.Length - 1];
+                    for (int i = 0; i < newMats.Length; i++) newMats[i] = mats[i];
+                    holeRenderer.materials = newMats;
                 }
             }
         }
@@ -76,24 +108,14 @@ namespace Case2_BlockHole.Scripts
         {
             if(targetColor == currentColor)
             {
+                _isFilled = true;
+
                 // Renkler eşleştiğinde (obje yuvaya oturduğunda) deliğin collider'ını kapatıyoruz
                 if (holeCollider != null) 
                     holeCollider.enabled = false;
                     
                 // Yuvaya obje oturduğu için Glow efektini iptal ediyoruz
-                if (_glowTween != null) _glowTween.Kill();
-                
-                // Ve eklediğimiz Glow materyalini listeden siliyoruz ki yuva tamamen normale dönsün
-                if (holeRenderer != null && _topGlowMaterial != null)
-                {
-                    var mats = holeRenderer.materials;
-                    if (mats.Length > 0 && mats[mats.Length - 1].shader.name == "Custom/TopFaceGlow")
-                    {
-                        var newMats = new Material[mats.Length - 1];
-                        for (int i = 0; i < newMats.Length; i++) newMats[i] = mats[i];
-                        holeRenderer.materials = newMats;
-                    }
-                }
+                StopGlow();
                     
                 // 1.5 saniye sonra (Blok çukura ulaşıp, parçalanma başladıktan 1 saniye sonra)
                 DOVirtual.DelayedCall(1.5f, () =>

@@ -50,7 +50,11 @@ namespace Case2_BlockHole.Scripts
                     Debug.Log(_draggedObject.name);
 
                     currentBlockController = hitObj.collider.attachedRigidbody.GetComponent<BlockController>();
-                    if (currentBlockController != null) currentBlockController.OnPickup();
+                    if (currentBlockController != null) 
+                    {
+                        currentBlockController.OnPickup();
+                        if (MHole.Instance != null) MHole.Instance.HighlightHole(currentBlockController.holeColor);
+                    }
                     
                     // 2. Tıklanan noktanın zemindeki karşılığını buluyoruz (offset hesaplamak için)
                     if (Physics.Raycast(ray, out RaycastHit hitGround, 100f, groundLayer))
@@ -103,6 +107,7 @@ namespace Case2_BlockHole.Scripts
                 _isDragging = false;
                 _draggedObject = null;
                 if (currentBlockController != null) currentBlockController.OnDrop();
+                if (MHole.Instance != null) MHole.Instance.StopAllGlows();
                 currentBlockController = null;
             }
         }
