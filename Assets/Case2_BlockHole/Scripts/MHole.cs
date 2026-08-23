@@ -7,7 +7,9 @@ namespace Case2_BlockHole.Scripts
     {
         public static MHole Instance { get; private set; }
         
-        private List<HoleController> _holes = new List<HoleController>();
+        [Header("Manual Hole Assignment")]
+        [Tooltip("Sahnedeki tüm delikleri buraya sürükleyip bırakabilirsiniz.")]
+        [SerializeField] private List<HoleController> _holes = new List<HoleController>();
 
         private void Awake()
         {
@@ -15,25 +17,21 @@ namespace Case2_BlockHole.Scripts
             else Destroy(gameObject);
         }
 
-        public void RegisterHole(HoleController hole)
-        {
-            if (!_holes.Contains(hole)) _holes.Add(hole);
-        }
-
-        public void UnregisterHole(HoleController hole)
-        {
-            if (_holes.Contains(hole)) _holes.Remove(hole);
-        }
-
         // Seçilen renge ait Hole'un parlamasını başlatır, diğerlerini kapatır
         public void HighlightHole(Hole.HoleColor color)
         {
+            Debug.Log($"[MHole] === Bloğun Rengi: {color} === {_holes.Count} adet delik taranıyor...");
             foreach (var hole in _holes)
             {
                 if (hole.currentColor == color)
+                {
+                    Debug.Log($"[MHole] EŞLEŞTİ: {hole.gameObject.name} (Renk: {hole.currentColor})");
                     hole.StartGlow();
+                }
                 else
+                {
                     hole.StopGlow();
+                }
             }
         }
 

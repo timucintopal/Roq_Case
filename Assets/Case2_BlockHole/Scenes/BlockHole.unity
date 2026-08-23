@@ -851,6 +851,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3864579125048126345, guid: 5dcd2f77261014bfb8c400da5faa99df, type: 3}
   m_PrefabInstance: {fileID: 123000110}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &130676394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 130676395}
+  m_Layer: 8
+  m_Name: BlockTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &130676395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130676394}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1911025615}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &134603123
 GameObject:
   m_ObjectHideFlags: 0
@@ -7022,6 +7053,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382909525}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1387766350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1298144089075564405, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
+  m_PrefabInstance: {fileID: 1911025614}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1397146086
 GameObject:
   m_ObjectHideFlags: 0
@@ -8275,6 +8311,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34cfae7a464bb41bbbae60a2d5104763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.MHole
+  _holes:
+  - {fileID: 566479546}
+  - {fileID: 701587503}
+  - {fileID: 1911025619}
 --- !u!1 &1789618557
 GameObject:
   m_ObjectHideFlags: 0
@@ -9077,24 +9117,106 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 573256676096403755, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1298144089075564405, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
       propertyPath: m_Name
       value: Hole_Hole-Block-Single
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298144089075564405, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368180121406543735, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699016299756335804, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6830066446457693727, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 95d88c768025747f7ae656aee8be6111, type: 2}
+    - target: {fileID: 7014531231151073020, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899681540679917830, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 169413761854119638, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 130676395}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1298144089075564405, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1911025619}
+    - targetCorrespondingSourceObject: {fileID: 1298144089075564405, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1911025618}
   m_SourcePrefab: {fileID: 100100000, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
 --- !u!4 &1911025615 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 169413761854119638, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
   m_PrefabInstance: {fileID: 1911025614}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1911025616 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6830066446457693727, guid: 1f2fd5fc698e84492a1825d1ff98ed2a, type: 3}
+  m_PrefabInstance: {fileID: 1911025614}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1911025618
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387766350}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1367232825233038017, guid: cce4ce9cc9c53ae49b6cba393a94030f, type: 3}
+--- !u!114 &1911025619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387766350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e464261d24c4bfda7461cf0556c15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.HoleController
+  targetPos: {fileID: 130676395}
+  holeCollider: {fileID: 1911025618}
+  holeRenderer: {fileID: 1911025616}
+  tiles: []
+  tileHiddenY: -2
+  tilePopDelay: 0.1
+  glowColorStart: {r: 1, g: 1, b: 1, a: 1}
+  glowColorEnd: {r: 1, g: 1, b: 1, a: 5}
+  glowPulseDuration: 1
+  currentColor: 2
 --- !u!1 &1934706702
 GameObject:
   m_ObjectHideFlags: 0

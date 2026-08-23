@@ -45,21 +45,28 @@ namespace Case2_BlockHole.Scripts
                     tile.localPosition = pos;
                 }
             }
-            
-            // MHole yöneticisine kendini kaydet
-            if (MHole.Instance != null) MHole.Instance.RegisterHole(this);
-        }
-
-        private void OnDestroy()
-        {
-            if (MHole.Instance != null) MHole.Instance.UnregisterHole(this);
         }
 
         public void StartGlow()
         {
             // Eğer zaten parlıyorsa veya yuva zaten doluysa tekrar başlatma
-            if (_isGlowing || _isFilled || holeRenderer == null) return;
+            if (_isGlowing)
+            {
+                Debug.Log($"[HoleController] {gameObject.name} zaten parlıyor, yeni istek reddedildi.");
+                return;
+            }
+            if (_isFilled)
+            {
+                Debug.Log($"[HoleController] {gameObject.name} yuvası zaten dolu, parlamayacak.");
+                return;
+            }
+            if (holeRenderer == null)
+            {
+                Debug.LogError($"[HoleController] {gameObject.name} objesinde 'Hole Renderer' (Mesh) ATANMAMIŞ! Parlama yapılamıyor!");
+                return;
+            }
             
+            Debug.Log($"[HoleController] {gameObject.name} (Renk: {currentColor}) parlamaya BAŞLADI!");
             _isGlowing = true;
 
             Shader topFaceShader = Shader.Find("Custom/TopFaceGlow");
