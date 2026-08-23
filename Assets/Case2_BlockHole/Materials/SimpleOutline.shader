@@ -2,7 +2,7 @@ Shader "Custom/SimpleOutline"
 {
     Properties
     {
-        _OutlineColor ("Outline Color", Color) = (1,1,1,1)
+        [HDR] _OutlineColor ("Outline Color", Color) = (1,1,1,1)
         _OutlineWidth ("Outline Width", Range(0.0, 10.0)) = 1.05
     }
     SubShader

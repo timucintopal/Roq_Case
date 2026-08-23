@@ -27,7 +27,8 @@ namespace Case2_BlockHole.Scripts
             _originalScale = transform.localScale;
             // Dinamik olarak Outline materyalini oluşturuyoruz
             _outlineMaterial = new Material(Shader.Find("Custom/SimpleOutline"));
-            _outlineMaterial.SetColor("_OutlineColor", Color.white);
+            // Glow yapması için rengi şiddetlendiriyoruz (HDR Color - PostProcessing Bloom varsa parlaklık saçar)
+            _outlineMaterial.SetColor("_OutlineColor", Color.white * 4f);
             _outlineMaterial.SetFloat("_OutlineWidth", 4f);
         }
 
