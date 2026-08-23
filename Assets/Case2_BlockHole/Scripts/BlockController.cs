@@ -118,13 +118,12 @@ namespace Case2_BlockHole.Scripts
                 Vector3 randomRotation = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
                 b.transform.DORotate(randomRotation, 0.5f, RotateMode.FastBeyond360).SetEase(Ease.OutCubic);
 
-                // Yukarı kalkarken fiziksel çarpışmaları (iç içe geçmeyi) tamamen önlemek ve şık bir etki için boyutu pürüzsüzce 0.6'ya düşür
-                b.transform.DOScale(Vector3.one * 0.6f, 0.5f).SetEase(Ease.OutCubic);
+                // Yukarı kalkarken fiziksel çarpışmaları tamamen önlemek ve şık bir etki için boyutu pürüzsüzce 0.5'e düşür
+                b.transform.DOScale(Vector3.one * 0.5f, 0.5f).SetEase(Ease.OutCubic);
 
                 // Yukarı tatlı kalkış
                 b.transform.DOMove(peakPos, 0.5f).SetEase(Ease.OutCubic).OnComplete(() =>
                 {
-                    Debug.Log("DOTween OnComplete tetiklendi: " + b.name);
                     // TEPE NOKTASINDA FİZİĞİ SERBEST BIRAK!
                     if (rb != null)
                     {
@@ -132,14 +131,23 @@ namespace Case2_BlockHole.Scripts
                         rb.useGravity = true;
                         rb.WakeUp(); // Fizik motorunu zorla uyandır (bazen kinematic objeler uyku modunda kalabilir)
                         
-                        // Yerçekimiyle düşerken dönmeye (takla atmaya) devam etmeleri için tork (dönüş ivmesi) veriyoruz
-                        rb.AddTorque(Random.insideUnitSphere * Random.Range(20f, 40f), ForceMode.Impulse);
+                        // Aşırı fırıldak gibi dönmesini engelleyen Unity C++ kısıtlamaları (Performanslı çözüm)
+                        rb.maxAngularVelocity = 5f; // Maksimum dönüş hızını sınırla
+                        rb.angularDamping = 0.5f;      // Havadayken yavaşça dönme hızını kessin
                         
-                        Debug.Log("Rigidbody serbest bırakıldı, isKinematic durumu: " + rb.isKinematic + " Obje: " + b.name);
+                        // Yerçekimiyle düşerken dönmeye (takla atmaya) devam etmeleri için tork (dönüş ivmesi) veriyoruz
+                        rb.AddTorque(Random.insideUnitSphere * Random.Range(10f, 20f), ForceMode.Impulse);
                     }
+                    
+                    // 0.5 boyutuna indikten sonra, düşüş boyunca kaybolma efekti. 
+                    // DİKKAT: Fiziksel (Rigidbody) bir objeyi tam olarak Vector3.zero'ya (0) küçültmek, 
+                    // PhysX motorunda hacmin sıfır olmasına ve "Infinite / NaN" hatalarına yol açar.
+                    // Bu yüzden 0.01'e kadar küçültüp sonra objeyi tamamen kapatıyoruz.
+                    b.transform.DOScale(Vector3.one * 0.01f, 1.5f).SetEase(Ease.InQuad).OnComplete(() => 
+                    {
+                        if (b != null) b.SetActive(false);
+                    });
                 });
-
-                // Test için küçülme ve kapanma özelliklerini ŞİMDİLİK KALDIRDIK.
             }
         }
         

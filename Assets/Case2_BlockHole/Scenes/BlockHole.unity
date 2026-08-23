@@ -1206,7 +1206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &210402889
 Transform:
   m_ObjectHideFlags: 0
@@ -1216,7 +1216,7 @@ Transform:
   m_GameObject: {fileID: 210402888}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.99999994, y: -9.44, z: 0.000704892}
+  m_LocalPosition: {x: -1, y: -10, z: 0.000704892}
   m_LocalScale: {x: 1, y: 0.04191044, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1390,6 +1390,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 348265900109020041, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.58458
+      objectReference: {fileID: 0}
+    - target: {fileID: 348265900109020041, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.58458
+      objectReference: {fileID: 0}
+    - target: {fileID: 348265900109020041, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.58458
+      objectReference: {fileID: 0}
+    - target: {fileID: 348265900109020041, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 348265900109020041, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.432
+      objectReference: {fileID: 0}
     - target: {fileID: 684279659033124828, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -1408,7 +1428,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3964717993779556317, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401503214637634809, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      propertyPath: ShapeModule.m_Rotation.y
+      value: 13.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401503214637634809, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 2.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401503214637634809, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.38431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401503214637634809, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.972549
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401503214637634809, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401503214637634809, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.99215686
       objectReference: {fileID: 0}
     - target: {fileID: 4918666422125016665, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
       propertyPath: m_LocalScale.y
@@ -1768,7 +1812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &320098208
 Transform:
   m_ObjectHideFlags: 0
@@ -1778,7 +1822,7 @@ Transform:
   m_GameObject: {fileID: 320098207}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000010430813, y: -9.44, z: -0.9992955}
+  m_LocalPosition: {x: -0.00000010430813, y: -10, z: -0.9992955}
   m_LocalScale: {x: 1, y: 0.04191044, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2217,6 +2261,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 201292549}
     m_Modifications:
+    - target: {fileID: 2344985858527759755, guid: 8c89c5e0df04f47418706ffd2333d59c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3673891081582624099, guid: 8c89c5e0df04f47418706ffd2333d59c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -2972,6 +3020,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.HoleController
   targetPos: {fileID: 1115346903}
   holeCollider: {fileID: 701587502}
+  tiles:
+  - {fileID: 1850256074}
+  - {fileID: 210402889}
+  - {fileID: 1934706703}
+  - {fileID: 320098208}
+  tileHiddenY: -10
+  tilePopDelay: 0.1
   currentColor: 0
 --- !u!1 &725922925 stripped
 GameObject:
@@ -7048,13 +7103,13 @@ Transform:
   m_GameObject: {fileID: 1603364904}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.01925, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1850256074}
-  - {fileID: 1934706703}
   - {fileID: 210402889}
+  - {fileID: 1934706703}
   - {fileID: 320098208}
   m_Father: {fileID: 246839756}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8220,7 +8275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1850256074
 Transform:
   m_ObjectHideFlags: 0
@@ -8230,7 +8285,7 @@ Transform:
   m_GameObject: {fileID: 1850256073}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: -9.44, z: 0.0007046759}
+  m_LocalPosition: {x: -2, y: -10, z: 0.0007046759}
   m_LocalScale: {x: 1, y: 0.04191044, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8561,7 +8616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1934706703
 Transform:
   m_ObjectHideFlags: 0
@@ -8571,7 +8626,7 @@ Transform:
   m_GameObject: {fileID: 1934706702}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000000067055225, y: -9.44, z: 0.0007046759}
+  m_LocalPosition: {x: 0.000000067055225, y: -10, z: 0.0007046759}
   m_LocalScale: {x: 1, y: 0.04191044, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9058,6 +9113,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.HoleController
   targetPos: {fileID: 1982228743}
   holeCollider: {fileID: 0}
+  tiles: []
+  tileHiddenY: -2
+  tilePopDelay: 0.1
   currentColor: 0
 --- !u!64 &1982228746
 MeshCollider:
