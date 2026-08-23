@@ -30,7 +30,7 @@ Shader "Custom/TopFaceGlow"
             struct v2f
             {
                 float4 pos : SV_POSITION;
-                float3 worldNormal : TEXCOORD0;
+                float upDot : TEXCOORD0;
             };
 
             float4 _GlowColor;
@@ -40,18 +40,18 @@ Shader "Custom/TopFaceGlow"
             {
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
-                o.worldNormal = UnityObjectToWorldNormal(v.normal);
+                
+                // Optimizasyon: Dot product hesaplamasını Fragment yerine Vertex shader'a taşıdık
+                float3 worldNormal = UnityObjectToWorldNormal(v.normal);
+                o.upDot = dot(normalize(worldNormal), float3(0, 1, 0));
+                
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float upDot = dot(normalize(i.worldNormal), float3(0, 1, 0));
-                
-                // Daha önce 0.5 olan eşiği, _NormalThreshold (0.95) yaptık.
-                // Bu sayede, yumuşatılmış (smooth) kenarlar veya eğimli iç duvarlar parlamayacak.
                 // SADECE ve SADECE tam anlamıyla dümdüz yukarı bakan yüzeyler parlayacak.
-                if (upDot >= _NormalThreshold)
+                if (i.upDot >= _NormalThreshold)
                 {
                     return _GlowColor;
                 }

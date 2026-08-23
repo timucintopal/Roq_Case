@@ -52,12 +52,23 @@ namespace Case2_BlockHole.Scripts
             
         }
 
-        private void Update()
+#if UNITY_EDITOR
+        private void OnValidate()
         {
-            // Inspector'dan sliderı kaydırdığınızda gerçek zamanlı görebilmeniz için
-            if (_isGlowing && _topGlowMaterial != null)
+            // Inspector'dan sliderı kaydırdığınızda gerçek zamanlı görebilmeniz için Update yerine OnValidate kullanıyoruz (Sadece editörde çalışır, 0 performans harcar)
+            if (Application.isPlaying && _isGlowing && _topGlowMaterial != null)
             {
                 _topGlowMaterial.SetFloat("_NormalThreshold", glowSurfaceAngle);
+            }
+        }
+#endif
+
+        private void OnDestroy()
+        {
+            // Hafıza sızıntısını (Memory Leak) önlemek için oluşturduğumuz materyali siliyoruz
+            if (_topGlowMaterial != null)
+            {
+                Destroy(_topGlowMaterial);
             }
         }
 

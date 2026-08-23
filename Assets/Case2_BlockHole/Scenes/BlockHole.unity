@@ -2989,7 +2989,7 @@ MonoBehaviour:
   tilePopDelay: 0.1
   glowColorStart: {r: 0, g: 2.9960785, b: 2.2435086, a: 1}
   glowColorEnd: {r: 0, g: 0.2830189, b: 0.21226417, a: 1}
-  glowPulseDuration: 0.5
+  glowPulseDuration: 0.75
   glowSurfaceAngle: 0.423
   currentColor: 1
 --- !u!64 &566479547
@@ -3350,7 +3350,7 @@ MonoBehaviour:
   tilePopDelay: 0.1
   glowColorStart: {r: 2.9960783, g: 0.94687384, b: 2.9366813, a: 1}
   glowColorEnd: {r: 0.8067981, g: 0.04186217, b: 0.77688426, a: 1}
-  glowPulseDuration: 0.5
+  glowPulseDuration: 0.75
   glowSurfaceAngle: 0.95
   currentColor: 0
 --- !u!23 &701587504 stripped
@@ -9329,7 +9329,7 @@ MonoBehaviour:
   tilePopDelay: 0.1
   glowColorStart: {r: 2.9960785, g: 1.9718332, b: 0.098927185, a: 1}
   glowColorEnd: {r: 0.47530702, g: 0.31093568, b: 0.0067260307, a: 1}
-  glowPulseDuration: 1
+  glowPulseDuration: 0.75
   glowSurfaceAngle: 0.95
   currentColor: 2
 --- !u!1 &1934706702

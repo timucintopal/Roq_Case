@@ -33,6 +33,15 @@ namespace Case2_BlockHole.Scripts
             _outlineMaterial.SetFloat("_OutlineWidth", 4f);
         }
 
+        private void OnDestroy()
+        {
+            // Hafıza sızıntısını (Memory Leak) önlemek için dinamik oluşturulan materyali temizliyoruz
+            if (_outlineMaterial != null)
+            {
+                Destroy(_outlineMaterial);
+            }
+        }
+
         public void OnPickup()
         {
             _scaleTween?.Kill();
