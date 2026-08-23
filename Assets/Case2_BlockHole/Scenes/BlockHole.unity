@@ -2369,6 +2369,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7392848885507574641, guid: 8c89c5e0df04f47418706ffd2333d59c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392848885507574641, guid: 8c89c5e0df04f47418706ffd2333d59c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: fdf31a0945ee642c5a94c8e31bc61a1e, type: 2}
@@ -2983,9 +2987,10 @@ MonoBehaviour:
   - {fileID: 501704694}
   tileHiddenY: -10
   tilePopDelay: 0.1
-  glowColorStart: {r: 0, g: 13.283019, b: 9.946525, a: 1}
-  glowColorEnd: {r: 0.0027589954, g: 0.5849056, b: 0.43867916, a: 1}
+  glowColorStart: {r: 0, g: 2.9960785, b: 2.2435086, a: 1}
+  glowColorEnd: {r: 0, g: 0.2830189, b: 0.21226417, a: 1}
   glowPulseDuration: 0.5
+  glowSurfaceAngle: 0.423
   currentColor: 1
 --- !u!64 &566479547
 MeshCollider:
@@ -3343,9 +3348,10 @@ MonoBehaviour:
   - {fileID: 320098208}
   tileHiddenY: -10
   tilePopDelay: 0.1
-  glowColorStart: {r: 2, g: 1.2705883, b: 1.9686275, a: 1}
+  glowColorStart: {r: 2.9960783, g: 0.94687384, b: 2.9366813, a: 1}
   glowColorEnd: {r: 0.8067981, g: 0.04186217, b: 0.77688426, a: 1}
   glowPulseDuration: 0.5
+  glowSurfaceAngle: 0.95
   currentColor: 0
 --- !u!23 &701587504 stripped
 MeshRenderer:
@@ -6217,6 +6223,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089731978}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1096537838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2943204707417077802, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
+  m_PrefabInstance: {fileID: 1296097187}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1115346903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5802457560725290850, guid: 70f47e82744094116b5bc3cefd113483, type: 3}
@@ -6553,6 +6564,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Block-Single
       objectReference: {fileID: 0}
+    - target: {fileID: 2943204707417077802, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561955950340182437, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825069665397620313, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6122660711799766496, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5
@@ -6593,16 +6616,107 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6885133374754187763, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486633890369094708, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598088042590637786, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2943204707417077802, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1296097193}
+    - targetCorrespondingSourceObject: {fileID: 2943204707417077802, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1296097192}
+    - targetCorrespondingSourceObject: {fileID: 2943204707417077802, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1296097191}
   m_SourcePrefab: {fileID: 100100000, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
 --- !u!4 &1296097188 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6122660711799766496, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
   m_PrefabInstance: {fileID: 1296097187}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1296097189 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2772340410769736312, guid: 7d128090a81004d9c9914ac2cea5691a, type: 3}
+  m_PrefabInstance: {fileID: 1296097187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1296097191
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096537838}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &1296097192
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096537838}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5718689122385736265, guid: 00dfcd32817cf624b8199a481609386c, type: 3}
+--- !u!114 &1296097193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096537838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8d7ac720364633b3ec1d671887790b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.BlockController
+  holeColor: 2
+  mainRenderer: {fileID: 1296097189}
+  mainCollider: {fileID: 1296097192}
+  blocks: []
 --- !u!1 &1334873298
 GameObject:
   m_ObjectHideFlags: 0
@@ -9213,9 +9327,10 @@ MonoBehaviour:
   tiles: []
   tileHiddenY: -2
   tilePopDelay: 0.1
-  glowColorStart: {r: 1, g: 1, b: 1, a: 1}
-  glowColorEnd: {r: 1, g: 1, b: 1, a: 5}
+  glowColorStart: {r: 2.9960785, g: 1.9718332, b: 0.098927185, a: 1}
+  glowColorEnd: {r: 0.47530702, g: 0.31093568, b: 0.0067260307, a: 1}
   glowPulseDuration: 1
+  glowSurfaceAngle: 0.95
   currentColor: 2
 --- !u!1 &1934706702
 GameObject:
@@ -9738,6 +9853,7 @@ MonoBehaviour:
   glowColorStart: {r: 1, g: 1, b: 1, a: 1}
   glowColorEnd: {r: 1, g: 1, b: 1, a: 5}
   glowPulseDuration: 1
+  glowSurfaceAngle: 0.95
   currentColor: 0
 --- !u!64 &1982228746
 MeshCollider:

@@ -22,6 +22,10 @@ namespace Case2_BlockHole.Scripts
         [SerializeField] private Color glowColorEnd = new Color(1f, 1f, 1f, 5f);   // Patlama anındaki renk ve ışık şiddeti
         [SerializeField] private float glowPulseDuration = 1.0f; // Bir nefes alış süresi
         
+        [Range(0f, 1f)]
+        [Tooltip("Parlamanın sadece hangi yüzeylerde çıkacağını belirler. 1'e yaklaştıkça sadece tam yukarı bakan düz yüzeyler parlar.")]
+        [SerializeField] private float glowSurfaceAngle = 0.95f;
+        
         public Hole.HoleColor currentColor;
 
         private Material _topGlowMaterial;
@@ -44,6 +48,16 @@ namespace Case2_BlockHole.Scripts
                     pos.y = tileHiddenY;
                     tile.localPosition = pos;
                 }
+            }
+            
+        }
+
+        private void Update()
+        {
+            // Inspector'dan sliderı kaydırdığınızda gerçek zamanlı görebilmeniz için
+            if (_isGlowing && _topGlowMaterial != null)
+            {
+                _topGlowMaterial.SetFloat("_NormalThreshold", glowSurfaceAngle);
             }
         }
 
@@ -76,6 +90,9 @@ namespace Case2_BlockHole.Scripts
                 
                 // Inspector'dan seçtiğimiz Başlangıç (Sönük) rengini atıyoruz
                 _topGlowMaterial.SetColor("_GlowColor", glowColorStart);
+                
+                // Inspector'dan seçtiğimiz yüzey açısı (Normal Threshold) hassasiyetini atıyoruz
+                _topGlowMaterial.SetFloat("_NormalThreshold", glowSurfaceAngle);
                 
                 // Mevcut materyallerin üzerine şeffaf bir ışık (Additive) katmanı olarak ekliyoruz
                 var mats = holeRenderer.materials;
