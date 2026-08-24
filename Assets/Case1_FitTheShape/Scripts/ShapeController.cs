@@ -41,6 +41,22 @@ namespace Case1_FitTheShape.Scripts
 
 
 
+        public bool IsMoving => _sequenceIsActive;
+
+        public bool HasAvailableMatch()
+        {
+            return MDrum.Instance.GetMatchingActiveSegment(shapeType) != null;
+        }
+
+        public void PlayHintAnimation()
+        {
+            if (_sequenceIsActive) return;
+            
+            transform.DOComplete(); // Çakışmaları önlemek için
+            transform.DOPunchRotation(new Vector3(0, 0, 15f), 0.5f, 6, 1);
+            transform.DOPunchScale(new Vector3(0.1f, -0.05f, 0.1f), 0.5f, 3, 1);
+        }
+
         bool _sequenceIsActive = false;
         
         IEnumerator MoveSequence()
