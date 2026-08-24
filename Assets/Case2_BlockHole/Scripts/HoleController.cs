@@ -32,6 +32,10 @@ namespace Case2_BlockHole.Scripts
         [Tooltip("Bu deliğin rengine ait görsel paket (ScriptableObject)")]
         [SerializeField] private BlockThemeData themeData;
         
+        [Header("Impact Settings")]
+        [Tooltip("Blok deliğe başarıyla oturduğunda kameranın sallanma şiddeti (Örn: 0.2). Sıfır yaparsanız sallanmaz.")]
+        [SerializeField] private float cameraShakeStrength = 0.2f;
+
         public Hole.HoleColor currentColor;
 
         private Material _topGlowMaterial;
@@ -195,6 +199,17 @@ namespace Case2_BlockHole.Scripts
             if(targetColor == currentColor)
             {
                 _isFilled = true;
+
+                // --- 1. ANA VURUŞ (IMPACT): Kamera Sarsıntısı ---
+                // Blok, bırakıldığı yerden yuvaya 0.4 saniyede uçuyor (BlockController MoveSequence).
+                // Sarsıntının tam blok yuvaya "ÇAT" diye oturduğunda olması için 0.4s gecikme ekliyoruz.
+                if (cameraShakeStrength > 0f && MCamera.Instance != null)
+                {
+                    DOVirtual.DelayedCall(0.4f, () => 
+                    {
+                        MCamera.Instance.ShakeCamera(cameraShakeStrength);
+                    });
+                }
 
                 // Renkler eşleştiğinde (obje yuvaya oturduğunda) deliğin collider'ını kapatıyoruz
                 if (holeCollider != null) 

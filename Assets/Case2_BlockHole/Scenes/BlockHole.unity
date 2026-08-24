@@ -3000,6 +3000,7 @@ MonoBehaviour:
   - {fileID: 806508234}
   particlePlayDelay: 0.2
   themeData: {fileID: 11400000, guid: 2a2f8d52c21564b6db3f6ff32acc0038, type: 2}
+  cameraShakeStrength: 0.2
   currentColor: 1
 --- !u!64 &566479547
 MeshCollider:
@@ -3399,6 +3400,7 @@ MonoBehaviour:
   - {fileID: 990440885}
   particlePlayDelay: 0.2
   themeData: {fileID: 11400000, guid: 2aa868df856a44677a10a4d0c1eeb854, type: 2}
+  cameraShakeStrength: 0.2
   currentColor: 0
 --- !u!23 &701587504 stripped
 MeshRenderer:
@@ -8493,6 +8495,7 @@ GameObject:
   - component: {fileID: 1734165573}
   - component: {fileID: 1734165572}
   - component: {fileID: 1734165571}
+  - component: {fileID: 1734165574}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8610,6 +8613,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
+--- !u!114 &1734165574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734165570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb52e0b4ec964f7caa495a956ee9a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.MCamera
 --- !u!54 &1739437432
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9786,6 +9801,7 @@ MonoBehaviour:
   dustParticles: []
   particlePlayDelay: 1
   themeData: {fileID: 11400000, guid: 7ff580f1d4a8545488a1d45a009ee6dd, type: 2}
+  cameraShakeStrength: 0.2
   currentColor: 2
 --- !u!1 &1934706702
 GameObject:
@@ -10310,6 +10326,7 @@ MonoBehaviour:
   dustParticles: []
   particlePlayDelay: 1
   themeData: {fileID: 0}
+  cameraShakeStrength: 0.2
   currentColor: 0
 --- !u!64 &1982228746
 MeshCollider:
