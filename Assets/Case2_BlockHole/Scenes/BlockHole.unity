@@ -10795,6 +10795,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2134316586}
+  - component: {fileID: 2134316587}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -10821,6 +10822,20 @@ Transform:
   - {fileID: 268001659}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2134316587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134316585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a21e96e541304a46938d3c092ab3d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.MBoard
+  punchStrength: 0.15
+  punchDuration: 0.15
 --- !u!1 &2134504806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4867473169621875926, guid: 6450c5b8876c84d43978727b161952ca, type: 3}

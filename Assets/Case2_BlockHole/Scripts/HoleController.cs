@@ -237,7 +237,12 @@ namespace Case2_BlockHole.Scripts
                             Transform tile = tiles[i]; // Lambda içinde değişken kaybolmasın diye yakalıyoruz
                             // Meksika dalgası (tık tık tık) efekti
                             tile.DOLocalMoveY(0f, 0.4f).SetEase(Ease.OutBack).SetDelay(i * tilePopDelay)
-                                .OnStart(() => tile.gameObject.SetActive(true));
+                                .OnStart(() => 
+                                {
+                                    tile.gameObject.SetActive(true);
+                                    // Küp fırladığı karede oyun tahtasını aşağıya esnet (Board Shake)
+                                    if (MBoard.Instance != null) MBoard.Instance.PunchBoard();
+                                });
                         }
                     }
                 });
