@@ -20,12 +20,21 @@ namespace Case2_BlockHole.Scripts
         [Tooltip("Sürüklenme hassasiyeti (yumuşaklığı)")]
         [SerializeField] private float moveSpeed = 25f;
 
+        [Header("Sway (Sallantı) Settings")]
+        [Tooltip("Harekete göre ne kadar eğileceği çarpanı")]
+        [SerializeField] private float swayMultiplier = 1.5f;
+        [Tooltip("Eğilme açısının çıkabileceği maksimum sınır (Derece)")]
+        [SerializeField] private float maxSwayAngle = 30f;
+        [Tooltip("Eğilme ve geri toparlanma yumuşaklığı")]
+        [SerializeField] private float swaySmoothness = 10f;
+
         [SerializeField] BlockController currentBlockController;
         private Camera _mainCamera;
         private Transform _draggedObject;
         private bool _isDragging;
         private Vector3 _offset;
         private Vector3 _initialDragPos;
+        private Vector3 _lastFramePos;
 
         private void Start()
         {
@@ -47,6 +56,7 @@ namespace Case2_BlockHole.Scripts
                 {
                     _draggedObject = hitObj.transform;
                     _initialDragPos = _draggedObject.position; // Tutulduğu ilk yeri kaydet
+                    _lastFramePos = _initialDragPos; // Hız ölçümü için ilk konumu al
                     _isDragging = true;
                     
                     Debug.Log(_draggedObject.name);
@@ -85,6 +95,20 @@ namespace Case2_BlockHole.Scripts
 
                     // Objeyi yumuşak bir şekilde yeni pozisyona taşıyoruz
                     _draggedObject.position = Vector3.Lerp(_draggedObject.position, targetPosition, Time.deltaTime * moveSpeed);
+                    
+                    // Procedural Sway (Hıza göre eğilme) Hesaplaması
+                    Vector3 velocity = (_draggedObject.position - _lastFramePos) / Time.deltaTime;
+                    _lastFramePos = _draggedObject.position; // Bir sonraki kare için konumu kaydet
+
+                    // Hızın eksenlerine göre hedef dönüş açısını belirle
+                    // İleri(+Z) giderken öne(+X) eğilsin, Sağa(+X) giderken sağa(-Z) eğilsin
+                    float targetRotX = Mathf.Clamp(velocity.z * swayMultiplier, -maxSwayAngle, maxSwayAngle);
+                    float targetRotZ = Mathf.Clamp(-velocity.x * swayMultiplier, -maxSwayAngle, maxSwayAngle);
+
+                    Quaternion targetRotation = Quaternion.Euler(targetRotX, 0, targetRotZ);
+                    
+                    // Yumuşak bir şekilde o açıya yaylandır
+                    _draggedObject.rotation = Quaternion.Lerp(_draggedObject.rotation, targetRotation, Time.deltaTime * swaySmoothness);
                 }
             }
 
@@ -114,6 +138,9 @@ namespace Case2_BlockHole.Scripts
                     {
                         _draggedObject.DOMove(_initialDragPos, 0.3f).SetEase(Ease.OutQuad);
                     }
+                    
+                    // Bırakıldığında (ister deliğe ister boşluğa), yamuk kaldıysa düz (0,0,0) konumuna geri dönsün
+                    _draggedObject.DORotate(Vector3.zero, 0.3f).SetEase(Ease.OutQuad);
                 }
 
                 _isDragging = false;
