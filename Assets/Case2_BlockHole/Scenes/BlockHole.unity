@@ -9244,7 +9244,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   yOffset: 1
+  dragForwardOffset: -1
   moveSpeed: 25
+  swayMultiplier: 1.5
+  maxSwayAngle: 30
+  swaySmoothness: 10
   currentBlockController: {fileID: 0}
 --- !u!4 &1828486787
 Transform:

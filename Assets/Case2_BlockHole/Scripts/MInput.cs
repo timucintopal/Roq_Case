@@ -17,6 +17,8 @@ namespace Case2_BlockHole.Scripts
         [Header("Drag Settings")]
         [Tooltip("Objenin oyun alanı üzerindeki yüksekliği")]
         [SerializeField] private float yOffset = 0.5f;
+        [Tooltip("Fat Finger Koruması: Parmağın objeyi kapatmaması için objenin Z ekseninde (ileri) ne kadar itileceği")]
+        [SerializeField] private float dragForwardOffset = 1.5f;
         [Tooltip("Sürüklenme hassasiyeti (yumuşaklığı)")]
         [SerializeField] private float moveSpeed = 25f;
 
@@ -32,7 +34,6 @@ namespace Case2_BlockHole.Scripts
         private Camera _mainCamera;
         private Transform _draggedObject;
         private bool _isDragging;
-        private Vector3 _offset;
         private Vector3 _initialDragPos;
         private Vector3 _lastFramePos;
 
@@ -68,17 +69,8 @@ namespace Case2_BlockHole.Scripts
                         if (MHole.Instance != null) MHole.Instance.HighlightHole(currentBlockController.holeColor);
                     }
                     
-                    // 2. Tıklanan noktanın zemindeki karşılığını buluyoruz (offset hesaplamak için)
-                    if (Physics.Raycast(ray, out RaycastHit hitGround, 100f, groundLayer))
-                    {
-                        // Sürüklerken objenin fareye aniden atlamaması için aradaki mesafeyi kaydediyoruz
-                        _offset = _draggedObject.position - hitGround.point;
-                        _offset.y = 0; // Sadece X ve Z'deki farkı koruyoruz
-                    }
-                    else
-                    {
-                        _offset = Vector3.zero;
-                    }
+                    // 1. ADIM: Eski "Tıklanan yerin farkını alma (offset)" kodunu TAMAMEN SİLDİK.
+                    // Artık obje serbest, tıkladığımız an doğrudan hedef pozisyona uçacak.
                 }
             }
 
@@ -87,13 +79,16 @@ namespace Case2_BlockHole.Scripts
                 Vector2 pointerPos = Pointer.current.position.ReadValue();
                 Ray ray = _mainCamera.ScreenPointToRay(pointerPos);
                 
-                // 3. İşaretçinin zemindeki yeni konumunu buluyoruz
+                // İşaretçinin zemindeki yeni konumunu buluyoruz
                 if (Physics.Raycast(ray, out RaycastHit hitGround, 100f, groundLayer))
                 {
-                    Vector3 targetPosition = hitGround.point + _offset;
+                    // 2. ADIM: Objenin X'i parmağa tam ortalanıyor. 
+                    // Y (Yükseklik) ve Z (İleri İtme) eksenlerine sabit ofsetler ekleniyor.
+                    Vector3 targetPosition = hitGround.point;
                     targetPosition.y = yOffset; // Yüksekliği sabitliyoruz
+                    targetPosition.z += dragForwardOffset; // Fat Finger: Parmağın objeyi kapatmaması için ileri itiyoruz
 
-                    // Objeyi yumuşak bir şekilde yeni pozisyona taşıyoruz
+                    // 3. ADIM (Lerp ile Uçuş): Obje aniden ışınlanmak yerine bu yeni targetPosition'a yumuşakça süzülür.
                     _draggedObject.position = Vector3.Lerp(_draggedObject.position, targetPosition, Time.deltaTime * moveSpeed);
                     
                     // Procedural Sway (Hıza göre eğilme) Hesaplaması
