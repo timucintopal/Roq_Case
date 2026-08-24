@@ -16,10 +16,6 @@ namespace Case2_BlockHole.Scripts
         [SerializeField] private float tilePopDelay = 0.1f; // Tile'ların çıkış hızı (Meksika dalgası gecikmesi)
         
         [Header("Glow Settings")]
-        [ColorUsage(true, true)] // Unity Inspector'da HDR (Işık patlaması) özelliğini açar
-        [SerializeField] private Color glowColorStart = new Color(1f, 1f, 1f, 1f); // Sönük halindeki renk ve ışık şiddeti
-        [ColorUsage(true, true)] 
-        [SerializeField] private Color glowColorEnd = new Color(1f, 1f, 1f, 5f);   // Patlama anındaki renk ve ışık şiddeti
         [SerializeField] private float glowPulseDuration = 1.0f; // Bir nefes alış süresi
         
         [Range(0f, 1f)]
@@ -29,10 +25,12 @@ namespace Case2_BlockHole.Scripts
         [Header("Particle Settings")]
         [Tooltip("Toz/Işık patlaması yapacak ana Particle sistemleri buraya ekleyin.")]
         [SerializeField] private List<ParticleSystem> dustParticles = new List<ParticleSystem>();
-        [Tooltip("Tozun 1. indexli child'ı (GlowFlash) için uygulanacak renk/şeffaflık geçişi.")]
-        [SerializeField] private Gradient particleGlowGradient;
         [Tooltip("Blok deliğe bırakıldıktan kaç saniye sonra patlasın? (Parçalanma 0.5. saniyede başlıyor, üzerine 0.5sn eklersek 1.0 yapar)")]
         [SerializeField] private float particlePlayDelay = 1.0f;
+
+        [Header("Theme Settings")]
+        [Tooltip("Bu deliğin rengine ait görsel paket (ScriptableObject)")]
+        [SerializeField] private BlockThemeData themeData;
         
         public Hole.HoleColor currentColor;
 
@@ -58,21 +56,45 @@ namespace Case2_BlockHole.Scripts
                 }
             }
             
-            // Particle sistemlerinin içindeki (1. indexli) Glow ışığına Gradient'i uygula
-            foreach (var mainParticle in dustParticles)
+            // Particle renk atamaları (Eğer themeData atanmışsa)
+            if (themeData != null)
             {
-                if (mainParticle != null && mainParticle.transform.childCount > 1)
+                foreach (var mainParticle in dustParticles)
                 {
-                    // 1. index'teki child objesini alıyoruz (DustDirtyPoofSoft -> [0] Cloud -> [1] GlowFlash)
-                    ParticleSystem glowParticle = mainParticle.transform.GetChild(1).GetComponent<ParticleSystem>();
-                    
-                    if (glowParticle != null)
+                    if (mainParticle != null)
                     {
-                        var colorModule = glowParticle.colorOverLifetime;
-                        colorModule.enabled = true;
-                        colorModule.color = new ParticleSystem.MinMaxGradient(particleGlowGradient);
+                        // 1. Ana tozun (DustDirtyPoofSoft) rengini rastgele iki renk arasına ayarla
+                        var mainModule = mainParticle.main;
+                        mainModule.startColor = new ParticleSystem.MinMaxGradient(themeData.dustColor1, themeData.dustColor2);
+
+                        if (mainParticle.transform.childCount > 0)
+                        {
+                            // 2. Cloud'un (0. index child) rengini rastgele iki renk arasına ayarla
+                            ParticleSystem cloudParticle = mainParticle.transform.GetChild(0).GetComponent<ParticleSystem>();
+                            if (cloudParticle != null)
+                            {
+                                var cloudMain = cloudParticle.main;
+                                cloudMain.startColor = new ParticleSystem.MinMaxGradient(themeData.cloudColor1, themeData.cloudColor2);
+                            }
+                        }
+
+                        if (mainParticle.transform.childCount > 1)
+                        {
+                            // 3. Glow ışığına (1. index child) Gradient uygula
+                            ParticleSystem glowParticle = mainParticle.transform.GetChild(1).GetComponent<ParticleSystem>();
+                            if (glowParticle != null)
+                            {
+                                var colorModule = glowParticle.colorOverLifetime;
+                                colorModule.enabled = true;
+                                colorModule.color = new ParticleSystem.MinMaxGradient(themeData.particleGlowGradient);
+                            }
+                        }
                     }
                 }
+            }
+            else
+            {
+                Debug.LogWarning($"[HoleController] {gameObject.name} için ThemeData atanmamış! Parçacık renkleri varsayılan kalacak.");
             }
             
         }
@@ -124,8 +146,12 @@ namespace Case2_BlockHole.Scripts
             {
                 if (_topGlowMaterial == null) _topGlowMaterial = new Material(topFaceShader);
                 
-                // Inspector'dan seçtiğimiz Başlangıç (Sönük) rengini atıyoruz
-                _topGlowMaterial.SetColor("_GlowColor", glowColorStart);
+                // Tema paketi (ThemeData) atanmışsa oradaki renkleri kullan
+                Color startCol = themeData != null ? themeData.glowColorStart : Color.white;
+                Color endCol = themeData != null ? themeData.glowColorEnd : Color.white * 5f;
+                
+                // Seçtiğimiz Başlangıç (Sönük) rengini atıyoruz
+                _topGlowMaterial.SetColor("_GlowColor", startCol);
                 
                 // Inspector'dan seçtiğimiz yüzey açısı (Normal Threshold) hassasiyetini atıyoruz
                 _topGlowMaterial.SetFloat("_NormalThreshold", glowSurfaceAngle);
@@ -138,7 +164,7 @@ namespace Case2_BlockHole.Scripts
                 holeRenderer.materials = newMats;
 
                 // Neon efekti
-                _glowTween = _topGlowMaterial.DOColor(glowColorEnd, "_GlowColor", glowPulseDuration)
+                _glowTween = _topGlowMaterial.DOColor(endCol, "_GlowColor", glowPulseDuration)
                     .SetEase(Ease.InOutQuad)
                     .SetLoops(-1, LoopType.Yoyo);
             }
