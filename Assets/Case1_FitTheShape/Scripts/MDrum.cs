@@ -26,6 +26,13 @@ namespace Case1_FitTheShape.Scripts
         [Tooltip("5x15 matris için buraya 5 adet eleman (sütun) ekleyip, her birine o sütunun 15 segmentini atayın.")]
         [SerializeField] private List<DrumColumn> columns = new List<DrumColumn>();
 
+        [Header("Particle Effects")]
+        [Tooltip("Tüm şekiller için ortak patlayacak tek bir Particle Prefab'ı.")]
+        [SerializeField] private ParticleSystem commonParticlePrefab;
+        
+        [Tooltip("Şekillerin tipine/sırasına göre (Yellow=0, Purple=1, Green=2...) atanacak 5 adet spawn noktası.")]
+        [SerializeField] private List<Transform> shapeSpawnPoints = new List<Transform>();
+
         [Header("Active State")]
         [Tooltip("O an kameraya dönük (oynanabilir) olan segmentleri tutan liste. Davul döndükçe bunu güncelleyin.")]
         public List<SegmentController> activeSegments = new List<SegmentController>();
@@ -140,6 +147,30 @@ namespace Case1_FitTheShape.Scripts
                 // 2. Dalga Gelişi (Kenardan merkeze yansıma)
                 seq.Insert(inwardStartTime + ((actualMaxDistance - dist) * waveSpreadSpeed), segment.transform.DOPunchScale(Vector3.one * inwardWaveIntensity, waveAnimDuration, 1, 1));
             }
+        }
+
+        public void PlayShapeParticle(ShapeType type, Transform fallbackTransform)
+        {
+            if (commonParticlePrefab == null) return;
+
+            // Enum indexini kullanarak listeye erişiyoruz (Yellow=0, Purple=1, Green=2, Blue=3, Red=4)
+            int index = (int)type;
+            Transform targetPoint = fallbackTransform;
+
+            // Eğer listede bu index'e karşılık gelen bir Transform atanmışsa onu kullan
+            if (shapeSpawnPoints != null && index >= 0 && index < shapeSpawnPoints.Count && shapeSpawnPoints[index] != null)
+            {
+                targetPoint = shapeSpawnPoints[index];
+            }
+
+            // Ortak prefab'ı belirlenen noktada spawn et
+            ParticleSystem instance = Instantiate(commonParticlePrefab, targetPoint.position, targetPoint.rotation);
+            
+            // Çalıştır
+            instance.Play();
+            
+            // Şişmemesi için 3 saniye sonra RAM'den temizle
+            Destroy(instance.gameObject, 3f);
         }
     }
 }

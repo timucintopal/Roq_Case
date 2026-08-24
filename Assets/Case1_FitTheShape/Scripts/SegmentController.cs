@@ -65,6 +65,8 @@ namespace Case1_FitTheShape.Scripts
             {
                 // Dalganın etki edeceği alan (reach) artık Inspector'dan MDrum üzerinden ayarlanıyor
                 drum.PlayWaveEffect(this);
+                // İlgili şeklin tipine göre MDrum'dan partikül patlatmasını iste
+                drum.PlayShapeParticle(shape.Type, transform);
             }
         }
     }
