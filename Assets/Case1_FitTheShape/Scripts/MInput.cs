@@ -30,6 +30,10 @@ namespace Case1_FitTheShape.Scripts
                     ShapeController shape = rb.GetComponent<ShapeController>();
                     if (shape != null)
                     {
+#if UNITY_IOS || UNITY_ANDROID
+                        // 1. Haptic Feedback (Titreşim) - Mobil cihazlarda dokunma hissi
+                        Handheld.Vibrate();
+#endif
                         shape.JumpToTarget();
                     }
                 }

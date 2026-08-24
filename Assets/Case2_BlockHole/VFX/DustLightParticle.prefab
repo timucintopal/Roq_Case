@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 19875214}
   - component: {fileID: 19923122}
   m_Layer: 0
-  m_Name: DustDirtyPoofSoft
+  m_Name: DustLightParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

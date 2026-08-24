@@ -32,9 +32,10 @@ namespace Case1_FitTheShape.Scripts
             }
             else
             {
-                // Eşleşme bulunamadı! Oyuncuya "hayır" diyen minik bir titreme (wobble) animasyonu oynat
-                transform.DOShakeRotation(0.3f, new Vector3(0, 0, 20f), 10, 90, false);
-                transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 1, 1);
+                // Eşleşme bulunamadı! Daha belirgin bir "hayır" titremesi ve jöle (wobble) tepkisi
+                transform.DOComplete(); // Varsa önceki animasyonu durdur
+                transform.DOShakeRotation(0.3f, new Vector3(0, 0, 30f), 15, 90, false);
+                transform.DOPunchScale(new Vector3(0.4f, -0.2f, 0.4f), 0.3f, 5, 1);
             }
         }
 
@@ -55,7 +56,11 @@ namespace Case1_FitTheShape.Scripts
             if (Mathf.Abs(ApproachTarget.position.x - transform.position.x) < 0.05f) dirX = 1f;
 
             // 1. Anticipation (Hazırlık) - Sıçramadan önce tatlı bir esneme/güç toplama
-            yield return transform.DOPunchScale(Vector3.one * 0.75f, 0.3f, 1, 1).WaitForCompletion();
+            // Squash & Stretch: Önce yassılaşıp güç topluyor
+            yield return transform.DOScale(new Vector3(1.4f, 0.6f, 1.4f), 0.12f).SetEase(Ease.OutQuad).WaitForCompletion();
+            // Havalanırken eski formuna (hatta hafif ince uzun forma) dönerek zıplıyor
+            transform.DOScale(new Vector3(0.9f, 1.2f, 0.9f), 0.15f).SetEase(Ease.OutBack)
+                     .OnComplete(() => transform.DOScale(Vector3.one, 0.1f));
 
             // 2. Havalanma ve Saplanma (İki Aşamalı Zıplama)
             Sequence airSeq = DOTween.Sequence();
