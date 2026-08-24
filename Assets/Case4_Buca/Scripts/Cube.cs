@@ -15,6 +15,7 @@ namespace Case4_Buca.Scripts
         [Space]
         [SerializeField] Gradient colorTransition;
         [SerializeField] float coloringDuration;
+        [SerializeField] float impactForce = 3f;
 
         [SerializeField] bool isHit = false;
 
@@ -63,6 +64,12 @@ namespace Case4_Buca.Scripts
                 isHit = true;
                 if (MCube.Instance != null) MCube.Instance.CubeHit();
                 
+                // Hafif ve yukarı doğru kalkan yumuşak bir darbe gücü uyguluyoruz
+                ContactPoint contact = other.GetContact(0);
+                Vector3 forceDirection = (transform.position - contact.point).normalized;
+                forceDirection.y += 0.2f; 
+                _rigidbody.AddForceAtPosition(forceDirection.normalized * impactForce, contact.point, ForceMode.Impulse);
+
                 _renderer.material.DOGradientColor(colorTransition, coloringDuration);
                 
                 // Çarpışmadan 1.5 saniye sonra başla, Drag ve Angular Drag değerlerini 2 saniye içinde 5'e kadar çıkart.
