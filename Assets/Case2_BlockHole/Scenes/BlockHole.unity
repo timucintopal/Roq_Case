@@ -3432,7 +3432,7 @@ MonoBehaviour:
   - {fileID: 990440885}
   particleGlowGradient:
     serializedVersion: 2
-    key0: {r: 0.5188679, g: 0.007342457, b: 0.3446121, a: 0.39607844}
+    key0: {r: 0.9150943, g: 0.25467247, b: 0.6917163, a: 0.5882353}
     key1: {r: 1, g: 0.28627452, b: 0.75686276, a: 0}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
