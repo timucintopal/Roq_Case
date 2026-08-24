@@ -11736,7 +11736,7 @@ MonoBehaviour:
     - {fileID: 1941402707}
     - {fileID: 248880433}
     - {fileID: 241167323}
-  commonParticlePrefab: {fileID: 19855088, guid: 20ac0e1fb858b47c18b793175024d452, type: 3}
+  commonParticlePrefab: {fileID: 19855088, guid: b9ec68648b754402d880f400ce7c2a45, type: 3}
   shapeSpawnPoints:
   - {fileID: 1981539899}
   - {fileID: 1178136725}
