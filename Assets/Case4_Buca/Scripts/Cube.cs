@@ -13,7 +13,7 @@ namespace Case4_Buca.Scripts
         [SerializeField] LayerMask triggerLayers;
 
         [Space]
-        [SerializeField] Color targetColor;
+        [SerializeField] Gradient colorTransition;
         [SerializeField] float coloringDuration;
 
         [SerializeField] bool isHit = false;
@@ -63,7 +63,7 @@ namespace Case4_Buca.Scripts
                 isHit = true;
                 if (MCube.Instance != null) MCube.Instance.CubeHit();
                 
-                _renderer.material.DOColor(targetColor, coloringDuration);
+                _renderer.material.DOGradientColor(colorTransition, coloringDuration);
                 
                 // Çarpışmadan 1.5 saniye sonra başla, Drag ve Angular Drag değerlerini 2 saniye içinde 5'e kadar çıkart.
                 DOVirtual.Float(_rigidbody.linearDamping, 5f, 1f, (value) => {
