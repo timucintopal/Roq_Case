@@ -1886,8 +1886,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fe25306828842bca10e1a21805dca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case4_Buca.Scripts.MCube
-  totalCubes: 0
-  hitCubes: 0
 --- !u!4 &1281947188
 Transform:
   m_ObjectHideFlags: 0
@@ -2197,6 +2195,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1681234586977497885, guid: 6740c5ac8afe948a4a167241cce7fbd2, type: 3}
   m_PrefabInstance: {fileID: 1825446742}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1893991472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1893991474}
+  - component: {fileID: 1893991473}
+  m_Layer: 0
+  m_Name: MInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1893991473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893991472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff122a24c1d324cd68313a70e62acfce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case4_Buca.Scripts.MInput
+--- !u!4 &1893991474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893991472}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -29.06476, y: 0.74797, z: -13.52432}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1903793534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3192,3 +3234,4 @@ SceneRoots:
   - {fileID: 1281947188}
   - {fileID: 1416903470}
   - {fileID: 1456720144}
+  - {fileID: 1893991474}

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using DG.Tweening;
 using Shapes;
 
@@ -80,10 +79,32 @@ public class BallSlingshot : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (Case4_Buca.Scripts.MInput.Instance != null)
+        {
+            Case4_Buca.Scripts.MInput.Instance.OnPointerDownEvent += HandlePointerDown;
+            Case4_Buca.Scripts.MInput.Instance.OnPointerDragEvent += HandlePointerDrag;
+            Case4_Buca.Scripts.MInput.Instance.OnPointerUpEvent += HandlePointerUp;
+        }
+        else
+        {
+            Debug.LogError("MInput.Instance bulunamadı! Inputlar çalışmayacak.");
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (Case4_Buca.Scripts.MInput.Instance != null)
+        {
+            Case4_Buca.Scripts.MInput.Instance.OnPointerDownEvent -= HandlePointerDown;
+            Case4_Buca.Scripts.MInput.Instance.OnPointerDragEvent -= HandlePointerDrag;
+            Case4_Buca.Scripts.MInput.Instance.OnPointerUpEvent -= HandlePointerUp;
+        }
+    }
+
     private void Update()
     {
-        if (Pointer.current == null) return;
-
         // --- Respawn & Idle Mantığı ---
         bool isMoving = rb.linearVelocity.sqrMagnitude > 0.05f;
         
@@ -110,170 +131,123 @@ public class BallSlingshot : MonoBehaviour
             idleTimer = 0f;
         }
         // -----------------------------
+    }
 
-        // 1. TIKLAMA BAŞLANGICI
-        if (Pointer.current.press.wasPressedThisFrame)
+    private void HandlePointerDown(Vector2 pointerPos)
+    {
+        Ray ray = mainCamera.ScreenPointToRay(pointerPos);
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            Vector2 pointerPos = Pointer.current.position.ReadValue();
-            Ray ray = mainCamera.ScreenPointToRay(pointerPos);
-
-            // Tıklanan yer bu obje mi diye raycast atıyoruz
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (hit.collider.gameObject == this.gameObject)
             {
-                if (hit.collider.gameObject == this.gameObject)
-                {
-                    // Eğer top hareket ediyorsa ve hareket halindeyken atışa izin yoksa iptal et
-                    if (!canShootWhileMoving && rb.linearVelocity.sqrMagnitude > 0.1f)
-                        return;
+                if (!canShootWhileMoving && rb.linearVelocity.sqrMagnitude > 0.1f)
+                    return;
 
-                    isDragging = true;
-                    dragStartPos = transform.position;
-                    // Topun merkezinden geçen, yukarıya (Y) bakan bir düzlem oluşturuyoruz
-                    dragPlane = new Plane(Vector3.up, dragStartPos);
+                isDragging = true;
+                dragStartPos = transform.position;
+                dragPlane = new Plane(Vector3.up, dragStartPos);
 
-                    // Çizgiyi anında göstermiyoruz, sürükleyip ölü alanı geçmesini bekliyoruz
-                    if (dragLine != null)
-                    {
-                        dragLine.enabled = false;
-                    }
-                    if (dragRingObj != null)
-                    {
-                        dragRingObj.transform.DOKill();
-                        dragRingObj.SetActive(true);
-                        dragRingObj.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack);
-                    }
-                }
-            }
-        }
-
-        // 2. SÜRÜKLEME DEVAM EDİYOR
-        if (Pointer.current.press.isPressed && isDragging)
-        {
-            Vector3 currentPointerPos = GetPointerPositionOnPlane();
-            
-            // Çekme vektörünü hesapla (topun merkezi -> farenin/parmağın pozisyonu)
-            Vector3 dragVector = currentPointerPos - dragStartPos;
-            
-            // Ölü alan kontrolü (Deadzone)
-            if (dragVector.magnitude < minDragDistance)
-            {
                 if (dragLine != null) dragLine.enabled = false;
-            }
-            else
-            {
-                if (dragLine != null) dragLine.enabled = true;
-
-                // Mesafeyi maxDragDistance ile sınırlandır
-                if (dragVector.magnitude > maxDragDistance)
-                {
-                    dragVector = dragVector.normalized * maxDragDistance;
-                }
-
-                Vector3 clampedPointerPos = dragStartPos + dragVector;
-
-                if (dragLine != null)
-                {
-                    UpdateLineRenderer(clampedPointerPos);
-                }
-            }
-        }
-
-        // 3. TIKLAMA BIRAKILDI
-        if (Pointer.current.press.wasReleasedThisFrame && isDragging)
-        {
-            isDragging = false;
-            
-            Vector3 currentPointerPos = GetPointerPositionOnPlane();
-            Vector3 dragVector = currentPointerPos - dragStartPos;
-
-            // Atışı sadece ölü alanı (minDragDistance) geçtiysek yap
-            if (dragVector.magnitude >= minDragDistance)
-            {
-                if (dragVector.magnitude > maxDragDistance)
-                {
-                    dragVector = dragVector.normalized * maxDragDistance;
-                }
-
-                // Olayları sırayla çalıştıracak Sequence
-                Sequence launchSeq = DOTween.Sequence();
-
-                // 1. Adım: Lastik Çarpma Animasyonu (Snap)
-                if (dragLine != null && dragLine.enabled)
-                {
-                    Vector3 endPos = dragLine.End;
-                    Vector3 startPos = dragLine.Start;
-                    
-                    launchSeq.Append(DOVirtual.Vector3(endPos, startPos, snapAnimationDuration, (val) => {
-                        if (dragLine != null) dragLine.End = val;
-                    }).SetEase(Ease.Linear));
-
-                    launchSeq.AppendCallback(() => {
-                        if (dragLine != null) dragLine.enabled = false;
-                    });
-                }
-                else
-                {
-                    launchSeq.AppendInterval(snapAnimationDuration);
-                }
-
-                // 2. Adım: Beyaz Halkanın Küçülüp Kaybolması
+                
                 if (dragRingObj != null)
                 {
-                    launchSeq.AppendCallback(() => dragRingObj.transform.DOKill());
-                    launchSeq.Append(dragRingObj.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack));
-                    launchSeq.AppendCallback(() => dragRingObj.SetActive(false));
-                }
-
-                // 3. Adım: Ekstra Gecikme (Varsa)
-                if (postSnapDelay > 0f)
-                {
-                    launchSeq.AppendInterval(postSnapDelay);
-                }
-
-                // 4. Adım: Gücü Uygula ve Diski Fırlat
-                launchSeq.AppendCallback(() => {
-                    Vector3 force = -dragVector * powerMultiplier;
-                    rb.AddForce(force, ForceMode.Impulse);
-                    
-                    isLaunched = true;
-                    hasHitCube = false;
-                    launchTime = Time.time;
-                });
-            }
-            else
-            {
-                // İPTAL DURUMU (Yetersiz çekme)
-                Sequence cancelSeq = DOTween.Sequence();
-
-                if (dragLine != null && dragLine.enabled)
-                {
-                    Vector3 endPos = dragLine.End;
-                    Vector3 startPos = dragLine.Start;
-                    
-                    cancelSeq.Append(DOVirtual.Vector3(endPos, startPos, snapAnimationDuration, (val) => {
-                        if (dragLine != null) dragLine.End = val;
-                    }).SetEase(Ease.Linear));
-
-                    cancelSeq.AppendCallback(() => {
-                        if (dragLine != null) dragLine.enabled = false;
-                    });
-                }
-
-                if (dragRingObj != null)
-                {
-                    cancelSeq.AppendCallback(() => dragRingObj.transform.DOKill());
-                    cancelSeq.Append(dragRingObj.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack));
-                    cancelSeq.AppendCallback(() => dragRingObj.SetActive(false));
+                    dragRingObj.transform.DOKill();
+                    dragRingObj.SetActive(true);
+                    dragRingObj.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack);
                 }
             }
         }
     }
 
-    private Vector3 GetPointerPositionOnPlane()
+    private void HandlePointerDrag(Vector2 pointerPos)
     {
-        Vector2 pointerPos = Pointer.current.position.ReadValue();
-        Ray ray = mainCamera.ScreenPointToRay(pointerPos);
+        if (!isDragging) return;
+
+        Vector3 currentPointerPos = GetPointerPositionOnPlane(pointerPos);
+        Vector3 dragVector = currentPointerPos - dragStartPos;
         
+        if (dragVector.magnitude < minDragDistance)
+        {
+            if (dragLine != null) dragLine.enabled = false;
+        }
+        else
+        {
+            if (dragLine != null) dragLine.enabled = true;
+            if (dragVector.magnitude > maxDragDistance)
+            {
+                dragVector = dragVector.normalized * maxDragDistance;
+            }
+            Vector3 clampedPointerPos = dragStartPos + dragVector;
+            if (dragLine != null) UpdateLineRenderer(clampedPointerPos);
+        }
+    }
+
+    private void HandlePointerUp(Vector2 pointerPos)
+    {
+        if (!isDragging) return;
+        isDragging = false;
+
+        Vector3 currentPointerPos = GetPointerPositionOnPlane(pointerPos);
+        Vector3 dragVector = currentPointerPos - dragStartPos;
+        
+        if (dragVector.magnitude > maxDragDistance)
+        {
+            dragVector = dragVector.normalized * maxDragDistance;
+        }
+
+        bool isShotValid = dragVector.magnitude >= minDragDistance;
+
+        Sequence animSeq = DOTween.Sequence();
+
+        // 1. Lastik Çarpma Animasyonu (Snap)
+        if (dragLine != null && dragLine.enabled)
+        {
+            Vector3 endPos = dragLine.End;
+            Vector3 startPos = dragLine.Start;
+            
+            animSeq.Append(DOVirtual.Vector3(endPos, startPos, snapAnimationDuration, (val) => {
+                if (dragLine != null) dragLine.End = val;
+            }).SetEase(Ease.Linear));
+
+            animSeq.AppendCallback(() => {
+                if (dragLine != null) dragLine.enabled = false;
+            });
+        }
+        else
+        {
+            animSeq.AppendInterval(snapAnimationDuration);
+        }
+
+        // 2. Beyaz Halkanın Küçülüp Kaybolması
+        if (dragRingObj != null)
+        {
+            animSeq.AppendCallback(() => dragRingObj.transform.DOKill());
+            animSeq.Append(dragRingObj.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack));
+            animSeq.AppendCallback(() => dragRingObj.SetActive(false));
+        }
+
+        // 3. Fırlatma (Sadece Geçerli Atışta)
+        if (isShotValid)
+        {
+            if (postSnapDelay > 0f)
+            {
+                animSeq.AppendInterval(postSnapDelay);
+            }
+
+            animSeq.AppendCallback(() => {
+                Vector3 force = -dragVector * powerMultiplier;
+                rb.AddForce(force, ForceMode.Impulse);
+                
+                isLaunched = true;
+                hasHitCube = false;
+                launchTime = Time.time;
+            });
+        }
+    }
+
+    private Vector3 GetPointerPositionOnPlane(Vector2 pointerPos)
+    {
+        Ray ray = mainCamera.ScreenPointToRay(pointerPos);
         if (dragPlane.Raycast(ray, out float enter))
         {
             return ray.GetPoint(enter);
@@ -285,22 +259,19 @@ public class BallSlingshot : MonoBehaviour
     {
         if (dragLine == null) return;
         
-        // Fare/parmak yönünü hesapla
         Vector3 dragDirection = (currentPointerPos - dragStartPos);
-        dragDirection.y = 0; // Sadece X ve Z ekseninde (yatayda) dönüş istiyoruz
+        dragDirection.y = 0; 
         
-        // Merkezden farenin olduğu yöne doğru 'yarıçap' kadar git
         Vector3 dynamicStartPos = dragStartPos;
         if (dragDirection.sqrMagnitude > 0.001f)
         {
             dynamicStartPos += dragDirection.normalized * lineStartRadius;
         }
-        dynamicStartPos.y += lineHeightOffset; // Yerden kaldır
+        dynamicStartPos.y += lineHeightOffset;
 
         Vector3 dynamicEndPos = currentPointerPos;
-        dynamicEndPos.y += lineHeightOffset; // Yerden kaldır
+        dynamicEndPos.y += lineHeightOffset;
 
-        // Shapes.Line lokal pozisyon kullanır, bu yüzden dünya pozisyonlarını objenin lokaline çeviriyoruz
         Vector3 localStart = dragLine.transform.InverseTransformPoint(dynamicStartPos);
         Vector3 localEnd = dragLine.transform.InverseTransformPoint(dynamicEndPos);
 
@@ -316,11 +287,9 @@ public class BallSlingshot : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Attached Rigidbody üzerinden kontrol ediyoruz (script genelde rb ile aynı yerdedir)
         if (collision.rigidbody != null)
         {
-            Case4_Buca.Scripts.Cube hitCube = collision.rigidbody.GetComponent<Case4_Buca.Scripts.Cube>();
-            
+            Cube hitCube = collision.rigidbody.GetComponent<Cube>();
             if (hitCube != null)
             {
                 if (!hasHitCube) 
@@ -337,7 +306,6 @@ public class BallSlingshot : MonoBehaviour
         if (mDiskRef != null)
         {
             Debug.Log("Respawn tetiklendi! Disk MDisk'in konumuna ışınlanıyor.");
-            // Fizik motorunun çakışmasını önlemek için pozisyon atamasından önce fiziği uyutabiliriz
             rb.Sleep(); 
             transform.position = mDiskRef.transform.position;
             rb.linearVelocity = Vector3.zero;

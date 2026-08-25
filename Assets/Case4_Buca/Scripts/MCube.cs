@@ -1,48 +1,18 @@
-using System;
 using UnityEngine;
 
-namespace Case4_Buca.Scripts
+public class MCube : MonoBehaviour
 {
-    public class MCube : MonoBehaviour
+    public static MCube Instance { get; private set; }
+
+    private void Awake()
     {
-        public static MCube Instance { get; private set; }
-
-        public Action OnAllCubesHit; // Tüm küpler vurulduğunda tetiklenecek olay (Event)
-
-        [Header("Cube Tracking")]
-        public int totalCubes = 0;
-        public int hitCubes = 0;
-
-        private void Awake()
+        if (Instance == null)
         {
-            // Singleton pattern
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            Instance = this;
         }
-
-        // Oyun başlarken küplerin kendini buraya kaydetmesi için
-        public void RegisterCube()
+        else
         {
-            totalCubes++;
-        }
-
-        // Bir küp vurulduğunda bu fonksiyon çağırılır
-        public void CubeHit()
-        {
-            hitCubes++;
-
-            // Eğer vurulan küp sayısı toplam sayıya ulaştıysa (veya geçtiyse)
-            if (hitCubes >= totalCubes && totalCubes > 0)
-            {
-                // Sinyali yay! (Abonelere haber ver)
-                OnAllCubesHit?.Invoke();
-            }
+            Destroy(gameObject);
         }
     }
 }
