@@ -5,6 +5,8 @@ namespace Case1_FitTheShape.Scripts
 {
     public class SegmentController : MonoBehaviour
     {
+        public Vector2Int GridPos { get; set; } // MDrum tarafından atanacak matematiksel grid koordinatı
+
         [SerializeField] private Shape shape;
         [SerializeField] private Transform hole;
         [SerializeField] private Transform approachPoint;
@@ -12,8 +14,8 @@ namespace Case1_FitTheShape.Scripts
         [ContextMenu("FillHole")]
         public void SetHole()
         {
-            hole = transform.GetChild(0);
-            approachPoint = transform.GetChild(9);
+            if (transform.childCount > 0) hole = transform.GetChild(0);
+            if (transform.childCount > 9) approachPoint = transform.GetChild(9);
         }
 
         public Transform GetHole()
@@ -21,17 +23,10 @@ namespace Case1_FitTheShape.Scripts
             return hole;
         }
 
-        // Objelerin yuvaya girmeden hemen önce havada hizalanacağı nokta (9. Child)
+        // Objelerin yuvaya girmeden hemen önce havada hizalanacağı nokta
         public Transform GetApproachPoint()
         {
-            // Eğer Inspector'dan atandıysa onu kullan
-            if (approachPoint != null) return approachPoint;
-            
-            // Atanmadıysa ama 9. child varsa onu kullan
-            if (transform.childCount > 9) return transform.GetChild(9);
-
-            // Hiçbiri yoksa hata vermesin diye deliğin kendisini döndür
-            return hole; 
+            return approachPoint != null ? approachPoint : hole; 
         }
 
         public bool IsFilled { get; private set; } = false;
@@ -59,15 +54,9 @@ namespace Case1_FitTheShape.Scripts
 
         public void OnShapeLanded()
         {
-            // MDrum'ı bul ve meksika dalgasını başlat
-            MDrum drum = GetComponentInParent<MDrum>();
-            if (drum != null)
-            {
-                // Dalganın etki edeceği alan (reach) artık Inspector'dan MDrum üzerinden ayarlanıyor
-                drum.PlayWaveEffect(this);
-                // İlgili şeklin tipine göre MDrum'dan partikül patlatmasını iste
-                drum.PlayShapeParticle(shape.Type, transform);
-            }
+            // Bağımlılık kalktı: Yuvaya oturduğumuzu global event ile duyuruyoruz.
+            // Dinleyen kim varsa (MDrum) gerekli dalga ve partikül efektlerini oynatır.
+            GameEvents.OnSegmentFilled?.Invoke(this, shape.Type);
         }
     }
 }

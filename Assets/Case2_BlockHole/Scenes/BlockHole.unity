@@ -2994,6 +2994,8 @@ MonoBehaviour:
   - {fileID: 1811224300}
   - {fileID: 806508234}
   particlePlayDelay: 0.2
+  mexicanWaveDelay: 1.5
+  blockFlyDuration: 0.4
   themeData: {fileID: 11400000, guid: 2a2f8d52c21564b6db3f6ff32acc0038, type: 2}
   cameraShakeStrength: 0.2
   currentColor: 1
@@ -3463,6 +3465,8 @@ MonoBehaviour:
   - {fileID: 1310419500}
   - {fileID: 990440885}
   particlePlayDelay: 0.2
+  mexicanWaveDelay: 1.5
+  blockFlyDuration: 0.4
   themeData: {fileID: 11400000, guid: 2aa868df856a44677a10a4d0c1eeb854, type: 2}
   cameraShakeStrength: 0.2
   currentColor: 0
@@ -12142,6 +12146,8 @@ MonoBehaviour:
   holeLayer:
     serializedVersion: 2
     m_Bits: 256
+  raycastDistance: 100
+  dropReturnDuration: 0.3
   yOffset: 1
   dragForwardOffset: -1
   moveSpeed: 25
@@ -12738,6 +12744,8 @@ MonoBehaviour:
   dustParticles:
   - {fileID: 1821985618}
   particlePlayDelay: 0.2
+  mexicanWaveDelay: 1.5
+  blockFlyDuration: 0.4
   themeData: {fileID: 11400000, guid: 7ff580f1d4a8545488a1d45a009ee6dd, type: 2}
   cameraShakeStrength: 0.2
   currentColor: 2

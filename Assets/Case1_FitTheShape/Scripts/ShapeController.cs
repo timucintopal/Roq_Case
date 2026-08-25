@@ -19,8 +19,8 @@ namespace Case1_FitTheShape.Scripts
         {
             if (_sequenceIsActive) return;
 
-            // MDrum'daki aktif segmentler arasından şekil tipine uygun, bize EN YAKIN (kendi hizamızdaki) boş hedefi ara
-            SegmentController match = MDrum.Instance.GetMatchingActiveSegment(shapeType);
+            // Bağımlılık tersine çevrildi: Global bir Event üzerinden uygun hedefi istiyoruz
+            SegmentController match = GameEvents.RequestMatchingSegment?.Invoke(shapeType);
             
             
             if (match != null)
@@ -45,7 +45,7 @@ namespace Case1_FitTheShape.Scripts
 
         public bool HasAvailableMatch()
         {
-            return MDrum.Instance.GetMatchingActiveSegment(shapeType) != null;
+            return GameEvents.RequestMatchingSegment?.Invoke(shapeType) != null;
         }
 
         public void PlayHintAnimation()
@@ -62,14 +62,6 @@ namespace Case1_FitTheShape.Scripts
         IEnumerator MoveSequence()
         {
             _sequenceIsActive = true;
-            
-            // yield return transform.DOPunchScale(Vector3.one * 0.75f, .45f, 1, 1).WaitForCompletion();
-            // yield return transform.DOLocalMoveY(2, .2f).SetDelay(.1f).SetEase(Ease.OutBack).SetRelative().WaitForCompletion();
-            // yield return transform.DOJump(jumpTarget.position, 1,1,.25f).SetEase(Ease.InOutSine).WaitForCompletion();
-
-            // Gideceği yönü belirliyoruz (X eksenine göre)
-            float dirX = Mathf.Sign(ApproachTarget.position.x - transform.position.x);
-            if (Mathf.Abs(ApproachTarget.position.x - transform.position.x) < 0.05f) dirX = 1f;
 
             // 1. Anticipation (Hazırlık) - Sıçramadan önce tatlı bir esneme/güç toplama
             // Squash & Stretch: Önce yassılaşıp güç topluyor

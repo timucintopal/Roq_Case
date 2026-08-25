@@ -21,6 +21,10 @@ namespace Case2_BlockHole.Scripts
 
         private Vector3 _originalScale;
         private Tween _scaleTween;
+        // Olay Güdümlü (Event-Driven) Mimari için tanımlamalar
+        public static event System.Action<Hole.HoleColor> OnAnyBlockPickedUp;
+        public static event System.Action OnAnyBlockDropped;
+
         private Material _outlineMaterial;
 
         private void Start()
@@ -59,6 +63,9 @@ namespace Case2_BlockHole.Scripts
                 newMats[mats.Length] = _outlineMaterial;
                 mainRenderer.materials = newMats;
             }
+            
+            // Olayı fırlat (Dinleyen yöneticiler -örneğin MHole- bu bloğun rengini alıp parlayacak)
+            OnAnyBlockPickedUp?.Invoke(holeColor);
         }
 
         public void OnDrop()
@@ -66,6 +73,9 @@ namespace Case2_BlockHole.Scripts
             _scaleTween?.Kill();
             // Orijinal boyutuna tatlı bir şekilde geri dönsün
             transform.DOScale(_originalScale, 0.2f).SetEase(Ease.OutBack);
+            
+            // Olayı fırlat (Dinleyen yöneticiler -örneğin MHole- tüm parlamaları kapatacak)
+            OnAnyBlockDropped?.Invoke();
 
             if (mainRenderer != null)
             {

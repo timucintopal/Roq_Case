@@ -13,8 +13,22 @@ namespace Case2_BlockHole.Scripts
 
         private void Awake()
         {
-            if (Instance == null) Instance = this;
-            else Destroy(gameObject);
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(gameObject);
+        }
+
+        private void OnEnable()
+        {
+            BlockController.OnAnyBlockPickedUp += HighlightHole;
+            BlockController.OnAnyBlockDropped += StopAllGlows;
+        }
+
+        private void OnDisable()
+        {
+            BlockController.OnAnyBlockPickedUp -= HighlightHole;
+            BlockController.OnAnyBlockDropped -= StopAllGlows;
         }
 
         // Seçilen renge ait Hole'un parlamasını başlatır, diğerlerini kapatır

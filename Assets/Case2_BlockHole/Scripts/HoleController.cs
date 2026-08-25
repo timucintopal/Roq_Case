@@ -27,6 +27,10 @@ namespace Case2_BlockHole.Scripts
         [SerializeField] private List<ParticleSystem> dustParticles = new List<ParticleSystem>();
         [Tooltip("Blok deliğe bırakıldıktan kaç saniye sonra patlasın? (Parçalanma 0.5. saniyede başlıyor, üzerine 0.5sn eklersek 1.0 yapar)")]
         [SerializeField] private float particlePlayDelay = 1.0f;
+        [Tooltip("Küplerin arka arkaya tık-tık fırlaması için bekleme süresi")]
+        [SerializeField] private float mexicanWaveDelay = 1.5f;
+        [Tooltip("Sarsıntının tam blok yuvaya oturduğunda olması için gecikme (uçuş süresi)")]
+        [SerializeField] private float blockFlyDuration = 0.4f;
 
         [Header("Theme Settings")]
         [Tooltip("Bu deliğin rengine ait görsel paket (ScriptableObject)")]
@@ -194,22 +198,12 @@ namespace Case2_BlockHole.Scripts
             }
         }
 
-        public Transform Compare(Hole.HoleColor targetColor)
+        // SRP: Bu metot sadece mantık kontrolü yapar.
+        public Transform TryInsertBlock(Hole.HoleColor targetColor)
         {
-            if(targetColor == currentColor)
+            if (targetColor == currentColor)
             {
                 _isFilled = true;
-
-                // --- 1. ANA VURUŞ (IMPACT): Kamera Sarsıntısı ---
-                // Blok, bırakıldığı yerden yuvaya 0.4 saniyede uçuyor (BlockController MoveSequence).
-                // Sarsıntının tam blok yuvaya "ÇAT" diye oturduğunda olması için 0.4s gecikme ekliyoruz.
-                if (cameraShakeStrength > 0f && MCamera.Instance != null)
-                {
-                    DOVirtual.DelayedCall(0.4f, () => 
-                    {
-                        MCamera.Instance.ShakeCamera(cameraShakeStrength);
-                    });
-                }
 
                 // Renkler eşleştiğinde (obje yuvaya oturduğunda) deliğin collider'ını kapatıyoruz
                 if (holeCollider != null) 
@@ -218,38 +212,52 @@ namespace Case2_BlockHole.Scripts
                 // Yuvaya obje oturduğu için Glow efektini iptal ediyoruz
                 StopGlow();
                 
-                // Parçacıkları belirlenen gecikmeyle patlat
-                DOVirtual.DelayedCall(particlePlayDelay, () =>
-                {
-                    foreach (var ps in dustParticles)
-                    {
-                        if (ps != null) ps.Play(true); // true parametresi içindeki alt particle'ların (GlowFlash) da patlamasını sağlar
-                    }
-                });
-                    
-                // 1.5 saniye sonra (Blok çukura ulaşıp, parçalanma başladıktan 1 saniye sonra)
-                DOVirtual.DelayedCall(1.5f, () =>
-                {
-                    for (int i = 0; i < tiles.Count; i++)
-                    {
-                        if (tiles[i] != null)
-                        {
-                            Transform tile = tiles[i]; // Lambda içinde değişken kaybolmasın diye yakalıyoruz
-                            // Meksika dalgası (tık tık tık) efekti
-                            tile.DOLocalMoveY(0f, 0.4f).SetEase(Ease.OutBack).SetDelay(i * tilePopDelay)
-                                .OnStart(() => 
-                                {
-                                    tile.gameObject.SetActive(true);
-                                    // Küp fırladığı karede oyun tahtasını aşağıya esnet (Board Shake)
-                                    if (MBoard.Instance != null) MBoard.Instance.PunchBoard();
-                                });
-                        }
-                    }
-                });
+                // Görsel ve hissel (Juice) efektleri tamamen ayrı bir metoda devrediyoruz.
+                TriggerSuccessFeedback();
                     
                 return targetPos;
             }
             return null;
+        }
+
+        // SRP: Bu metot sadece görsel efektleri ve hissiyatı yönetir.
+        private void TriggerSuccessFeedback()
+        {
+            // --- 1. ANA VURUŞ (IMPACT): Kamera Sarsıntısı ---
+            if (cameraShakeStrength > 0f && MCamera.Instance != null)
+            {
+                DOVirtual.DelayedCall(blockFlyDuration, () => 
+                {
+                    MCamera.Instance.ShakeCamera(cameraShakeStrength);
+                });
+            }
+            
+            // --- 2. TOZ BULUTLARI (PARTICLES) ---
+            DOVirtual.DelayedCall(particlePlayDelay, () =>
+            {
+                foreach (var ps in dustParticles)
+                {
+                    if (ps != null) ps.Play(true);
+                }
+            });
+                
+            // --- 3. MEKSİKA DALGASI VE TAHTA SARSINTISI ---
+            DOVirtual.DelayedCall(mexicanWaveDelay, () =>
+            {
+                for (int i = 0; i < tiles.Count; i++)
+                {
+                    if (tiles[i] != null)
+                    {
+                        Transform tile = tiles[i];
+                        tile.DOLocalMoveY(0f, 0.4f).SetEase(Ease.OutBack).SetDelay(i * tilePopDelay)
+                            .OnStart(() => 
+                            {
+                                tile.gameObject.SetActive(true);
+                                if (MBoard.Instance != null) MBoard.Instance.PunchBoard();
+                            });
+                    }
+                }
+            });
         }
     }
 }

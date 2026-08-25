@@ -13,6 +13,10 @@ namespace Case2_BlockHole.Scripts
         [SerializeField] private LayerMask groundLayer;
         [Tooltip("Bırakıldığında deliği algılamak için kullanılacak layer")]
         [SerializeField] private LayerMask holeLayer;
+        [Tooltip("Zemin algılama (Raycast) maksimum mesafesi")]
+        [SerializeField] private float raycastDistance = 100f;
+        [Tooltip("Yanlış yere bırakıldığında geri dönme animasyonunun süresi")]
+        [SerializeField] private float dropReturnDuration = 0.3f;
 
         [Header("Drag Settings")]
         [Tooltip("Objenin oyun alanı üzerindeki yüksekliği")]
@@ -53,7 +57,7 @@ namespace Case2_BlockHole.Scripts
                 Ray ray = _mainCamera.ScreenPointToRay(pointerPos);
                 
                 // 1. Önce sürüklenebilir bir objeye tıklayıp tıklamadığımızı kontrol ediyoruz
-                if (Physics.Raycast(ray, out RaycastHit hitObj, 100f, draggableLayer))
+                if (Physics.Raycast(ray, out RaycastHit hitObj, raycastDistance, draggableLayer))
                 {
                     _draggedObject = hitObj.transform;
                     _initialDragPos = _draggedObject.position; // Tutulduğu ilk yeri kaydet
@@ -65,8 +69,7 @@ namespace Case2_BlockHole.Scripts
                     currentBlockController = hitObj.collider.attachedRigidbody.GetComponent<BlockController>();
                     if (currentBlockController != null) 
                     {
-                        currentBlockController.OnPickup();
-                        if (MHole.Instance != null) MHole.Instance.HighlightHole(currentBlockController.holeColor);
+                        currentBlockController.OnPickup(); // Eventleri kendi içinde fırlatacak
                     }
                     
                     // 1. ADIM: Eski "Tıklanan yerin farkını alma (offset)" kodunu TAMAMEN SİLDİK.
@@ -80,7 +83,7 @@ namespace Case2_BlockHole.Scripts
                 Ray ray = _mainCamera.ScreenPointToRay(pointerPos);
                 
                 // İşaretçinin zemindeki yeni konumunu buluyoruz
-                if (Physics.Raycast(ray, out RaycastHit hitGround, 100f, groundLayer))
+                if (Physics.Raycast(ray, out RaycastHit hitGround, raycastDistance, groundLayer))
                 {
                     // 2. ADIM: Objenin X'i parmağa tam ortalanıyor. 
                     // Y (Yükseklik) ve Z (İleri İtme) eksenlerine sabit ofsetler ekleniyor.
@@ -119,7 +122,7 @@ namespace Case2_BlockHole.Scripts
                         var targetHole = holeHit.transform.GetComponent<HoleController>();
                         if (targetHole != null)
                         {
-                            var targetTransform = targetHole.Compare(currentBlockController.holeColor);
+                            var targetTransform = targetHole.TryInsertBlock(currentBlockController.holeColor);
                             if (targetTransform != null)
                             {
                                 currentBlockController.MoveToHole(targetTransform);
@@ -131,18 +134,21 @@ namespace Case2_BlockHole.Scripts
                     // Eğer boşluğa veya yanlış deliğe bırakıldıysa, ilk aldığı yere geri dönsün
                     if (!isSuccess)
                     {
-                        _draggedObject.DOMove(_initialDragPos, 0.3f).SetEase(Ease.OutQuad);
+                        _draggedObject.DOMove(_initialDragPos, dropReturnDuration).SetEase(Ease.OutQuad);
                     }
                     
                     // Bırakıldığında (ister deliğe ister boşluğa), yamuk kaldıysa düz (0,0,0) konumuna geri dönsün
-                    _draggedObject.DORotate(Vector3.zero, 0.3f).SetEase(Ease.OutQuad);
+                    _draggedObject.DORotate(Vector3.zero, dropReturnDuration).SetEase(Ease.OutQuad);
                 }
 
                 _isDragging = false;
                 _draggedObject = null;
-                if (currentBlockController != null) currentBlockController.OnDrop();
-                if (MHole.Instance != null) MHole.Instance.StopAllGlows();
-                currentBlockController = null;
+                
+                if (currentBlockController != null) 
+                {
+                    currentBlockController.OnDrop(); // Eventleri kendi fırlatacak, MHole burayı ilgilendirmiyor
+                    currentBlockController = null;
+                }
             }
         }
     }

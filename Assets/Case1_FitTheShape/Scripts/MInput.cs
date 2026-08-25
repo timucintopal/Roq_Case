@@ -14,7 +14,9 @@ namespace Case1_FitTheShape.Scripts
             // Pointer (Fare veya Dokunmatik) algılayıcısı var mı ve bu karede basıldı mı?
             if (Pointer.current != null && Pointer.current.press.wasPressedThisFrame)
             {
-                Debug.Log("Pressed Input");
+                // Global event'i tetikle (Böylece MShapes gibi diğer sistemler de haberdar olur)
+                GameEvents.OnPlayerInteract?.Invoke();
+
                 // Yeni sisteme göre ekran pozisyonunu al (Mouse Position yerine)
                 Vector2 screenPosition = Pointer.current.position.ReadValue();
                 Ray ray = Camera.main.ScreenPointToRay(screenPosition);
@@ -23,17 +25,12 @@ namespace Case1_FitTheShape.Scripts
                 // Işını fırlat (Maksimum 100 birim uzağa, SADECE shapeLayer maskesine sahip objelere çarpar)
                 if (Physics.Raycast(ray, out hit, 1000f, shapeLayer))
                 {
-                    Debug.Log("Pressed Input " + hit.collider.name);
                     // Çarptığı objede ShapeController scripti var mı diye kontrol et
                     var rb = hit.collider.attachedRigidbody;
                     if (rb == null) return;
                     ShapeController shape = rb.GetComponent<ShapeController>();
                     if (shape != null)
                     {
-#if UNITY_IOS || UNITY_ANDROID
-                        // 1. Haptic Feedback (Titreşim) - Mobil cihazlarda dokunma hissi
-                        Handheld.Vibrate();
-#endif
                         shape.JumpToTarget();
                     }
                 }

@@ -21,7 +21,6 @@ namespace Case1_FitTheShape.Scripts
 
     public class MDrum : MonoBehaviour
     {
-        public static MDrum Instance { get; private set; }
 
         [Tooltip("5x15 matris için buraya 5 adet eleman (sütun) ekleyip, her birine o sütunun 15 segmentini atayın.")]
         [SerializeField] private List<DrumColumn> columns = new List<DrumColumn>();
@@ -58,8 +57,35 @@ namespace Case1_FitTheShape.Scripts
 
         private void Awake()
         {
-            if (Instance == null) Instance = this;
-            else Destroy(gameObject);
+            // O(1) hızında Grid Matematiği için segmentlere X,Y koordinatlarını ata
+            for (int x = 0; x < columns.Count; x++)
+            {
+                for (int y = 0; y < columns[x].rowSegments.Count; y++)
+                {
+                    if (columns[x].rowSegments[y] != null)
+                    {
+                        columns[x].rowSegments[y].GridPos = new Vector2Int(x, y);
+                    }
+                }
+            }
+        }
+
+        private void OnEnable()
+        {
+            GameEvents.RequestMatchingSegment += GetMatchingActiveSegment;
+            GameEvents.OnSegmentFilled += HandleSegmentFilled;
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.RequestMatchingSegment -= GetMatchingActiveSegment;
+            GameEvents.OnSegmentFilled -= HandleSegmentFilled;
+        }
+
+        private void HandleSegmentFilled(SegmentController segment, ShapeType type)
+        {
+            PlayWaveEffect(segment);
+            PlayShapeParticle(type, segment.transform);
         }
 
         // Aktif segmentler arasından tipi eşleşen, içi boş olan ve fırlatılan objeye YATAYDA (X ekseninde) EN YAKIN hedefi döndürür
@@ -80,34 +106,21 @@ namespace Case1_FitTheShape.Scripts
         // Grid (2D) ve Silindir (Wrap) matematiği ile kusursuz MANHATTAN (Elmas) mesafe hesaplama
         private int CalculateGridDistance(SegmentController center, SegmentController target)
         {
-            int cX = -1, cY = -1;
-            int tX = -1, tY = -1;
+            if (center == null || target == null) return 999;
 
-            // Her iki objenin de (Center ve Target) Sütun (X) ve Satır (Y) koordinatlarını buluyoruz
-            for (int i = 0; i < columns.Count; i++)
-            {
-                int cIndex = columns[i].rowSegments.IndexOf(center);
-                if (cIndex != -1) { cX = i; cY = cIndex; }
-
-                int tIndex = columns[i].rowSegments.IndexOf(target);
-                if (tIndex != -1) { tX = i; tY = tIndex; }
-            }
-
-            // Objelerden biri listelerde yoksa (atanmamışsa) çok uzak say
-            if (cX == -1 || tX == -1) return 999; 
-
-            int numCols = columns.Count;
             // İlk kolonun eleman sayısını silindirin çevresi (satır sayısı) kabul ediyoruz
             int numRows = columns[0].rowSegments.Count; 
 
-            // X ekseninde normal mesafe (Sütunlar arası)
-            int diffX = Mathf.Abs(cX - tX);
+            // Önceden atanmış X koordinatlarına göre normal mesafe (Sütunlar arası)
+            int diffX = Mathf.Abs(center.GridPos.x - target.GridPos.x);
             
-            // Y ekseninde silindir etrafında döndüğü için "başa sarma (wrap-around)" mesafesi
-            // Örneğin 0. satır ile 14. satır birbirine komşudur.
-            int diffY = Mathf.Min(Mathf.Abs(cY - tY), numRows - Mathf.Abs(cY - tY));
+            // Önceden atanmış Y koordinatlarına göre silindir "başa sarma (wrap-around)" mesafesi
+            int diffY = Mathf.Min(
+                Mathf.Abs(center.GridPos.y - target.GridPos.y), 
+                numRows - Mathf.Abs(center.GridPos.y - target.GridPos.y)
+            );
 
-            // Manhattan Distance (Pisagor/Yuvarlak yerine Grid/Elmas adımlaması)
+            // Manhattan Distance
             return diffX + diffY;
         }
 

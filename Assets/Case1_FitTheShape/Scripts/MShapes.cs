@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Case1_FitTheShape.Scripts
 {
@@ -14,15 +13,23 @@ namespace Case1_FitTheShape.Scripts
 
         private float _idleTimer = 0f;
 
+        private void OnEnable()
+        {
+            GameEvents.OnPlayerInteract += ResetTimer;
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.OnPlayerInteract -= ResetTimer;
+        }
+
+        private void ResetTimer()
+        {
+            _idleTimer = 0f;
+        }
+
         void Update()
         {
-            // Eğer oyuncu ekrana dokunursa (veya fareye tıklarsa) sayacı sıfırla
-            if (Pointer.current != null && Pointer.current.press.wasPressedThisFrame)
-            {
-                _idleTimer = 0f;
-                return;
-            }
-
             _idleTimer += Time.deltaTime;
 
             if (_idleTimer >= hintDelay)

@@ -1,23 +1,12 @@
-using System.Threading;
-using UnityEngine;
-
-public class Hole : MonoBehaviour
+namespace Case2_BlockHole.Scripts
 {
-    public enum HoleColor
+    public class Hole
     {
-        Pink,
-        Green,
-        Orange
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public enum HoleColor
+        {
+            Pink,
+            Green,
+            Orange
+        }
     }
 }
