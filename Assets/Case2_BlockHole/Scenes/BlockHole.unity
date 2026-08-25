@@ -10350,6 +10350,7 @@ GameObject:
   - component: {fileID: 1734165572}
   - component: {fileID: 1734165571}
   - component: {fileID: 1734165574}
+  - component: {fileID: 1734165575}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10479,6 +10480,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb52e0b4ec964f7caa495a956ee9a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Case2_BlockHole.Scripts.MCamera
+--- !u!81 &1734165575
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734165570}
+  m_Enabled: 1
 --- !u!54 &1739437432
 Rigidbody:
   m_ObjectHideFlags: 0

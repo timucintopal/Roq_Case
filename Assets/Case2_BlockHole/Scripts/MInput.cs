@@ -40,6 +40,8 @@ namespace Case2_BlockHole.Scripts
         private bool _isDragging;
         private Vector3 _initialDragPos;
         private Vector3 _lastFramePos;
+        private Vector3 _currentDragPosition; // Fizik motoru senkronizasyon hatasını önlemek için içerde tutuyoruz
+        private Quaternion _currentSwayRotation;
 
         private void Start()
         {
@@ -79,6 +81,10 @@ namespace Case2_BlockHole.Scripts
                         instantPos.y = yOffset;
                         instantPos.z += dragForwardOffset; // İleri ofseti buradan da hesapla
                         
+                        _currentDragPosition = instantPos;
+                        _currentSwayRotation = _draggedObject.rotation;
+                        _lastFramePos = instantPos; // Titremeyi önlemek için ilk karedeki pozisyonu güncelle
+                        
                         if (currentBlockController != null && currentBlockController.Rb != null)
                         {
                             currentBlockController.Rb.MovePosition(instantPos);
@@ -106,28 +112,30 @@ namespace Case2_BlockHole.Scripts
                     targetPosition.z += dragForwardOffset; // Fat Finger: Parmağın objeyi kapatmaması için ileri itiyoruz
 
                     // 3. ADIM (Lerp ile Uçuş): Obje aniden ışınlanmak yerine bu yeni targetPosition'a yumuşakça süzülür.
-                    Vector3 newPos = Vector3.Lerp(_draggedObject.position, targetPosition, Time.deltaTime * moveSpeed);
+                    _currentDragPosition = Vector3.Lerp(_currentDragPosition, targetPosition, Time.deltaTime * moveSpeed);
                     
                     // Procedural Sway (Hıza göre eğilme) Hesaplaması
-                    Vector3 velocity = (_draggedObject.position - _lastFramePos) / Time.deltaTime;
-                    _lastFramePos = _draggedObject.position; // Bir sonraki kare için konumu kaydet
+                    Vector3 velocity = (_currentDragPosition - _lastFramePos) / Time.deltaTime;
+                    _lastFramePos = _currentDragPosition; // Bir sonraki kare için konumu kaydet
 
                     // Hızın eksenlerine göre hedef dönüş açısını belirle
                     float targetRotX = Mathf.Clamp(velocity.z * swayMultiplier, -maxSwayAngle, maxSwayAngle);
                     float targetRotZ = Mathf.Clamp(-velocity.x * swayMultiplier, -maxSwayAngle, maxSwayAngle);
                     Quaternion targetRotation = Quaternion.Euler(targetRotX, 0, targetRotZ);
-                    Quaternion newRot = Quaternion.Lerp(_draggedObject.rotation, targetRotation, Time.deltaTime * swaySmoothness);
+                    
+                    // Rotasyonu da Transform'dan okumadan hesaplıyoruz ki fizik motoru gecikmesinden etkilenmesin
+                    _currentSwayRotation = Quaternion.Lerp(_currentSwayRotation, targetRotation, Time.deltaTime * swaySmoothness);
                     
                     // Fiziksel objeleri (Rigidbody) Transform.position ile taşımak kasmaya sebep olur. MovePosition kullanıyoruz.
                     if (currentBlockController != null && currentBlockController.Rb != null)
                     {
-                        currentBlockController.Rb.MovePosition(newPos);
-                        currentBlockController.Rb.MoveRotation(newRot);
+                        currentBlockController.Rb.MovePosition(_currentDragPosition);
+                        currentBlockController.Rb.MoveRotation(_currentSwayRotation);
                     }
                     else
                     {
-                        _draggedObject.position = newPos;
-                        _draggedObject.rotation = newRot;
+                        _draggedObject.position = _currentDragPosition;
+                        _draggedObject.rotation = _currentSwayRotation;
                     }
                 }
             }
