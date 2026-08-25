@@ -39,6 +39,10 @@ namespace Case2_BlockHole.Scripts
         [Header("Impact Settings")]
         [Tooltip("Blok deliğe başarıyla oturduğunda çalınacak tok vuruş sesi")]
         [SerializeField] private AudioClip successSound;
+        
+        [Tooltip("Fayanslar (Tiles) teker teker yukarı çıktığında çalınacak ses (İsteğe bağlı)")]
+        [SerializeField] private AudioClip tilePopSound;
+
         [Tooltip("Blok deliğe başarıyla oturduğunda kameranın sallanma şiddeti (Örn: 0.2). Sıfır yaparsanız sallanmaz.")]
         [SerializeField] private float cameraShakeStrength = 0.2f;
 
@@ -258,11 +262,20 @@ namespace Case2_BlockHole.Scripts
                     if (tiles[i] != null)
                     {
                         Transform tile = tiles[i];
+                        float pitchOffset = 1f + (i * 0.05f); // Her bir fayansta ses biraz daha incelsin (Tatmin edici bir merdiven efekti)
+                            
                         tile.DOLocalMoveY(0f, 0.4f).SetEase(Ease.OutBack).SetDelay(i * tilePopDelay)
                             .OnStart(() => 
                             {
                                 tile.gameObject.SetActive(true);
                                 if (MBoard.Instance != null) MBoard.Instance.PunchBoard();
+                            })
+                            .OnComplete(() =>
+                            {
+                                if (MAudio.Instance != null && tilePopSound != null)
+                                {
+                                    MAudio.Instance.PlaySoundWithPitch(tilePopSound, pitchOffset, 0.4f);
+                                }
                             });
                     }
                 }

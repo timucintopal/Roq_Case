@@ -3140,6 +3140,7 @@ MonoBehaviour:
   blockFlyDuration: 0.4
   themeData: {fileID: 11400000, guid: 2a2f8d52c21564b6db3f6ff32acc0038, type: 2}
   successSound: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  tilePopSound: {fileID: 8300000, guid: eaf56609f1a1d4c10ab467e14ba08025, type: 3}
   cameraShakeStrength: 0.2
   currentColor: 1
 --- !u!64 &566479547
@@ -3612,6 +3613,7 @@ MonoBehaviour:
   blockFlyDuration: 0.4
   themeData: {fileID: 11400000, guid: 2aa868df856a44677a10a4d0c1eeb854, type: 2}
   successSound: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  tilePopSound: {fileID: 8300000, guid: eaf56609f1a1d4c10ab467e14ba08025, type: 3}
   cameraShakeStrength: 0.2
   currentColor: 0
 --- !u!23 &701587504 stripped
@@ -12902,6 +12904,7 @@ MonoBehaviour:
   blockFlyDuration: 0.4
   themeData: {fileID: 11400000, guid: 7ff580f1d4a8545488a1d45a009ee6dd, type: 2}
   successSound: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  tilePopSound: {fileID: 8300000, guid: eaf56609f1a1d4c10ab467e14ba08025, type: 3}
   cameraShakeStrength: 0.2
   currentColor: 2
 --- !u!1 &1934706702

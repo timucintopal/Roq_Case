@@ -26,6 +26,15 @@ namespace Case2_BlockHole.Scripts
         {
             if (clip == null || _audioSource == null) return;
             
+            _audioSource.pitch = 1f;
+            _audioSource.PlayOneShot(clip, volume);
+        }
+
+        public void PlaySoundWithPitch(AudioClip clip, float pitch, float volume = 1f)
+        {
+            if (clip == null || _audioSource == null) return;
+            
+            _audioSource.pitch = pitch;
             _audioSource.PlayOneShot(clip, volume);
         }
     }
