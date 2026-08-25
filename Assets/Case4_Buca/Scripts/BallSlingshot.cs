@@ -28,6 +28,10 @@ public class BallSlingshot : MonoBehaviour
     [Range(0f, 1f)]
     public float lineEndWidthMultiplier = 0.2f;
 
+    [Header("Visual Effects")]
+    [Tooltip("Sürükleme sırasında diskin etrafında çıkacak olan beyaz halka objesi.")]
+    public GameObject dragRingObj;
+
     [Header("Respawn Settings")]
     [Tooltip("Disk durduktan kaç saniye sonra respawn olsun?")]
     public float respawnIdleTime = 1f;
@@ -64,6 +68,12 @@ public class BallSlingshot : MonoBehaviour
         {
             lineRenderer.enabled = false;
             lineRenderer.positionCount = 2;
+        }
+
+        if (dragRingObj != null)
+        {
+            dragRingObj.transform.localPosition = new Vector3(0, lineHeightOffset, 0);
+            dragRingObj.SetActive(false);
         }
     }
 
@@ -123,6 +133,10 @@ public class BallSlingshot : MonoBehaviour
                     {
                         lineRenderer.enabled = false;
                     }
+                    if (dragRingObj != null)
+                    {
+                        dragRingObj.SetActive(true);
+                    }
                 }
             }
         }
@@ -167,6 +181,10 @@ public class BallSlingshot : MonoBehaviour
             if (lineRenderer != null)
             {
                 lineRenderer.enabled = false;
+            }
+            if (dragRingObj != null)
+            {
+                dragRingObj.SetActive(false);
             }
 
             Vector3 currentPointerPos = GetPointerPositionOnPlane();
@@ -266,6 +284,9 @@ public class BallSlingshot : MonoBehaviour
             
             TrailRenderer tr = GetComponentInChildren<TrailRenderer>();
             if (tr != null) tr.Clear();
+            
+            if (dragRingObj != null) dragRingObj.SetActive(false);
+            
             rb.WakeUp();
         }
         else

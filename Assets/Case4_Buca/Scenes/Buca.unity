@@ -604,6 +604,7 @@ MonoBehaviour:
   lineMaxWidth: 0.5
   lineMinWidth: 0.1
   lineEndWidthMultiplier: 0.2
+  dragRingObj: {fileID: 0}
   respawnIdleTime: 1
 --- !u!1001 &276043132
 PrefabInstance:
@@ -2364,10 +2365,11 @@ MonoBehaviour:
   canShootWhileMoving: 0
   lineRenderer: {fileID: 2101040939}
   lineStartRadius: 0.5
-  lineHeightOffset: 0.5
+  lineHeightOffset: 0.8
   lineMaxWidth: 0.5
   lineMinWidth: 0.25
   lineEndWidthMultiplier: 0.2
+  dragRingObj: {fileID: 0}
   respawnIdleTime: 2
 --- !u!64 &2082906079
 MeshCollider:
