@@ -173,12 +173,9 @@ public class BallSlingshot : MonoBehaviour
         else
         {
             if (dragLine != null) dragLine.enabled = true;
-            if (dragVector.magnitude > maxDragDistance)
-            {
-                dragVector = dragVector.normalized * maxDragDistance;
-            }
+            dragVector = Vector3.ClampMagnitude(dragVector, maxDragDistance);
             Vector3 clampedPointerPos = dragStartPos + dragVector;
-            if (dragLine != null) UpdateLineRenderer(clampedPointerPos);
+            if (dragLine != null) UpdateLine(clampedPointerPos);
         }
     }
 
@@ -190,10 +187,7 @@ public class BallSlingshot : MonoBehaviour
         Vector3 currentPointerPos = GetPointerPositionOnPlane(pointerPos);
         Vector3 dragVector = currentPointerPos - dragStartPos;
         
-        if (dragVector.magnitude > maxDragDistance)
-        {
-            dragVector = dragVector.normalized * maxDragDistance;
-        }
+        dragVector = Vector3.ClampMagnitude(dragVector, maxDragDistance);
 
         bool isShotValid = dragVector.magnitude >= minDragDistance;
 
@@ -255,7 +249,7 @@ public class BallSlingshot : MonoBehaviour
         return dragStartPos;
     }
 
-    private void UpdateLineRenderer(Vector3 currentPointerPos)
+    private void UpdateLine(Vector3 currentPointerPos)
     {
         if (dragLine == null) return;
         
@@ -294,7 +288,7 @@ public class BallSlingshot : MonoBehaviour
             {
                 if (!hasHitCube) 
                 {
-                    Debug.Log("Disk bir Kübe ÇARPTI! hasHitCube = true oldu.");
+                    // Debug.Log("Disk bir Kübe ÇARPTI! hasHitCube = true oldu.");
                     hasHitCube = true;
                 }
             }

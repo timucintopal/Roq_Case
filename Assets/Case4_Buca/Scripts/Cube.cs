@@ -24,13 +24,6 @@ public class Cube : MonoBehaviour
 
     [SerializeField] bool isHit = false;
 
-    // Unity Editor'de componenti eklediğinizde veya Reset dediğinizde referansları otomatik çeker.
-    private void Reset()
-    {
-        _renderer = GetComponent<Renderer>();
-        _rigidbody = GetComponent<Rigidbody>();
-    }
-
     private void OnCollisionEnter(Collision other)
     {
         if (isHit) return;
@@ -70,16 +63,14 @@ public class Cube : MonoBehaviour
                 {
                     holeParticle.transform.SetParent(null);
                     
+                    float targetY = particleYOffset;
                     if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out RaycastHit hit, 10f, surfaceLayers))
                     {
-                        holeParticle.transform.position = new Vector3(transform.position.x, hit.point.y + particleYOffset, transform.position.z);
-                        holeParticle.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                        targetY += hit.point.y;
                     }
-                    else
-                    {
-                        holeParticle.transform.position = new Vector3(transform.position.x, particleYOffset, transform.position.z);
-                        holeParticle.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                    }
+                    
+                    holeParticle.transform.position = new Vector3(transform.position.x, targetY, transform.position.z);
+                    holeParticle.transform.rotation = Quaternion.identity;
                     
                     holeParticle.gameObject.SetActive(true);
                     holeParticle.Play();
