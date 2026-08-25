@@ -23,6 +23,9 @@ namespace Case4_Buca.Scripts
         [Tooltip("Partikülün zeminden ne kadar yukarıda olacağı.")]
         [SerializeField] float particleYOffset = 0.1f;
 
+        [Header("Audio")]
+        [SerializeField] private AudioClip hitSound;
+
         [SerializeField] bool isHit = false;
 
         private void OnCollisionEnter(Collision other)
@@ -32,6 +35,11 @@ namespace Case4_Buca.Scripts
             if ((triggerLayers.value & (1 << other.gameObject.layer)) > 0)
             {
                 isHit = true;
+
+                if (hitSound != null && Case4_Buca.Scripts.MAudio.Instance != null)
+                {
+                    Case4_Buca.Scripts.MAudio.Instance.PlaySFX(hitSound, transform.position);
+                }
             
                 // Hafif ve yukarı doğru kalkan yumuşak bir darbe gücü uyguluyoruz
                 ContactPoint contact = other.GetContact(0);

@@ -1846,6 +1846,52 @@ CapsuleCollider:
   m_Height: 7.09
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1804927710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1804927712}
+  - component: {fileID: 1804927711}
+  m_Layer: 0
+  m_Name: MAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1804927711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804927710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1323a56a2d13b42c68c996a830a979e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Case4_Buca.Scripts.MAudio
+  poolSize: 10
+  pitchRandomRange: {x: 0.9, y: 1.1}
+--- !u!4 &1804927712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804927710}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.61242, y: 0, z: 25.99942}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1825446742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2313,6 +2359,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1416903470}
     m_Modifications:
     - target: {fileID: 604898186762019256, guid: 6740c5ac8afe948a4a167241cce7fbd2, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 29be2f833d98a4b7383283ebca6d035f, type: 3}
+    - target: {fileID: 604898186762019256, guid: 6740c5ac8afe948a4a167241cce7fbd2, type: 3}
       propertyPath: coloringDuration
       value: 1.5
       objectReference: {fileID: 0}
@@ -2379,3 +2429,4 @@ SceneRoots:
   - {fileID: 1893991474}
   - {fileID: 1008487004}
   - {fileID: 1281947188}
+  - {fileID: 1804927712}

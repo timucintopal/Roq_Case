@@ -228,6 +228,8 @@ MonoBehaviour:
   surfaceLayers:
     serializedVersion: 2
     m_Bits: 49152
+  particleYOffset: 0.1
+  hitSound: {fileID: 8300000, guid: 29be2f833d98a4b7383283ebca6d035f, type: 3}
   isHit: 0
 --- !u!1001 &4993511062073737141
 PrefabInstance:
