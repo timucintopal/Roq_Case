@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
+using Shapes;
 
 [RequireComponent(typeof(Rigidbody))]
 public class BallSlingshot : MonoBehaviour
@@ -14,8 +16,8 @@ public class BallSlingshot : MonoBehaviour
     [Tooltip("Top hareket halindeyken tekrar atış yapılabilir mi?")]
     public bool canShootWhileMoving = false;
 
-    [Header("Line Renderer Settings")]
-    public LineRenderer lineRenderer;
+    [Header("Line Settings")]
+    public Shapes.Line dragLine;
     [Tooltip("Çizginin merkezden olan uzaklığı (Yarıçap). Çizgi diskin etrafında döner.")]
     public float lineStartRadius = 0.5f;
     [Tooltip("Çizgilerin Y eksenindeki yüksekliği (Yere değmemesi için).")]
@@ -24,13 +26,14 @@ public class BallSlingshot : MonoBehaviour
     public float lineMaxWidth = 0.5f;
     [Tooltip("Çizginin en ince hali (uzun çekildiğinde).")]
     public float lineMinWidth = 0.1f;
-    [Tooltip("Çizginin bitiş noktasına doğru ne kadar inceldiği (0 = iğne gibi sivri, 1 = başlangıçla aynı kalınlık).")]
-    [Range(0f, 1f)]
-    public float lineEndWidthMultiplier = 0.2f;
 
     [Header("Visual Effects")]
     [Tooltip("Sürükleme sırasında diskin etrafında çıkacak olan beyaz halka objesi.")]
     public GameObject dragRingObj;
+    [Tooltip("Atış yapıldıktan sonra lastiğin çarpma animasyon süresi (Aynı zamanda fırlatma gecikmesi).")]
+    public float snapAnimationDuration = 0.1f;
+    [Tooltip("Lastik diske çarptıktan sonra fırlatmadan önce beklenecek ekstra süre.")]
+    public float postSnapDelay = 0.05f;
 
     [Header("Respawn Settings")]
     [Tooltip("Disk durduktan kaç saniye sonra respawn olsun?")]
@@ -64,15 +67,15 @@ public class BallSlingshot : MonoBehaviour
             }
         }
         
-        if (lineRenderer != null)
+        if (dragLine != null)
         {
-            lineRenderer.enabled = false;
-            lineRenderer.positionCount = 2;
+            dragLine.enabled = false;
         }
 
         if (dragRingObj != null)
         {
             dragRingObj.transform.localPosition = new Vector3(0, lineHeightOffset, 0);
+            dragRingObj.transform.localScale = Vector3.zero;
             dragRingObj.SetActive(false);
         }
     }
@@ -129,13 +132,15 @@ public class BallSlingshot : MonoBehaviour
                     dragPlane = new Plane(Vector3.up, dragStartPos);
 
                     // Çizgiyi anında göstermiyoruz, sürükleyip ölü alanı geçmesini bekliyoruz
-                    if (lineRenderer != null)
+                    if (dragLine != null)
                     {
-                        lineRenderer.enabled = false;
+                        dragLine.enabled = false;
                     }
                     if (dragRingObj != null)
                     {
+                        dragRingObj.transform.DOKill();
                         dragRingObj.SetActive(true);
+                        dragRingObj.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack);
                     }
                 }
             }
@@ -152,11 +157,11 @@ public class BallSlingshot : MonoBehaviour
             // Ölü alan kontrolü (Deadzone)
             if (dragVector.magnitude < minDragDistance)
             {
-                if (lineRenderer != null) lineRenderer.enabled = false;
+                if (dragLine != null) dragLine.enabled = false;
             }
             else
             {
-                if (lineRenderer != null) lineRenderer.enabled = true;
+                if (dragLine != null) dragLine.enabled = true;
 
                 // Mesafeyi maxDragDistance ile sınırlandır
                 if (dragVector.magnitude > maxDragDistance)
@@ -166,7 +171,7 @@ public class BallSlingshot : MonoBehaviour
 
                 Vector3 clampedPointerPos = dragStartPos + dragVector;
 
-                if (lineRenderer != null)
+                if (dragLine != null)
                 {
                     UpdateLineRenderer(clampedPointerPos);
                 }
@@ -177,16 +182,7 @@ public class BallSlingshot : MonoBehaviour
         if (Pointer.current.press.wasReleasedThisFrame && isDragging)
         {
             isDragging = false;
-
-            if (lineRenderer != null)
-            {
-                lineRenderer.enabled = false;
-            }
-            if (dragRingObj != null)
-            {
-                dragRingObj.SetActive(false);
-            }
-
+            
             Vector3 currentPointerPos = GetPointerPositionOnPlane();
             Vector3 dragVector = currentPointerPos - dragStartPos;
 
@@ -198,13 +194,77 @@ public class BallSlingshot : MonoBehaviour
                     dragVector = dragVector.normalized * maxDragDistance;
                 }
 
-                // Çekilen yönün tersine güç uyguluyoruz
-                Vector3 force = -dragVector * powerMultiplier;
-                rb.AddForce(force, ForceMode.Impulse);
-                
-                isLaunched = true;
-                hasHitCube = false;
-                launchTime = Time.time;
+                // Olayları sırayla çalıştıracak Sequence
+                Sequence launchSeq = DOTween.Sequence();
+
+                // 1. Adım: Lastik Çarpma Animasyonu (Snap)
+                if (dragLine != null && dragLine.enabled)
+                {
+                    Vector3 endPos = dragLine.End;
+                    Vector3 startPos = dragLine.Start;
+                    
+                    launchSeq.Append(DOVirtual.Vector3(endPos, startPos, snapAnimationDuration, (val) => {
+                        if (dragLine != null) dragLine.End = val;
+                    }).SetEase(Ease.Linear));
+
+                    launchSeq.AppendCallback(() => {
+                        if (dragLine != null) dragLine.enabled = false;
+                    });
+                }
+                else
+                {
+                    launchSeq.AppendInterval(snapAnimationDuration);
+                }
+
+                // 2. Adım: Beyaz Halkanın Küçülüp Kaybolması
+                if (dragRingObj != null)
+                {
+                    launchSeq.AppendCallback(() => dragRingObj.transform.DOKill());
+                    launchSeq.Append(dragRingObj.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack));
+                    launchSeq.AppendCallback(() => dragRingObj.SetActive(false));
+                }
+
+                // 3. Adım: Ekstra Gecikme (Varsa)
+                if (postSnapDelay > 0f)
+                {
+                    launchSeq.AppendInterval(postSnapDelay);
+                }
+
+                // 4. Adım: Gücü Uygula ve Diski Fırlat
+                launchSeq.AppendCallback(() => {
+                    Vector3 force = -dragVector * powerMultiplier;
+                    rb.AddForce(force, ForceMode.Impulse);
+                    
+                    isLaunched = true;
+                    hasHitCube = false;
+                    launchTime = Time.time;
+                });
+            }
+            else
+            {
+                // İPTAL DURUMU (Yetersiz çekme)
+                Sequence cancelSeq = DOTween.Sequence();
+
+                if (dragLine != null && dragLine.enabled)
+                {
+                    Vector3 endPos = dragLine.End;
+                    Vector3 startPos = dragLine.Start;
+                    
+                    cancelSeq.Append(DOVirtual.Vector3(endPos, startPos, snapAnimationDuration, (val) => {
+                        if (dragLine != null) dragLine.End = val;
+                    }).SetEase(Ease.Linear));
+
+                    cancelSeq.AppendCallback(() => {
+                        if (dragLine != null) dragLine.enabled = false;
+                    });
+                }
+
+                if (dragRingObj != null)
+                {
+                    cancelSeq.AppendCallback(() => dragRingObj.transform.DOKill());
+                    cancelSeq.Append(dragRingObj.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack));
+                    cancelSeq.AppendCallback(() => dragRingObj.SetActive(false));
+                }
             }
         }
     }
@@ -223,6 +283,8 @@ public class BallSlingshot : MonoBehaviour
 
     private void UpdateLineRenderer(Vector3 currentPointerPos)
     {
+        if (dragLine == null) return;
+        
         // Fare/parmak yönünü hesapla
         Vector3 dragDirection = (currentPointerPos - dragStartPos);
         dragDirection.y = 0; // Sadece X ve Z ekseninde (yatayda) dönüş istiyoruz
@@ -238,15 +300,18 @@ public class BallSlingshot : MonoBehaviour
         Vector3 dynamicEndPos = currentPointerPos;
         dynamicEndPos.y += lineHeightOffset; // Yerden kaldır
 
-        lineRenderer.SetPosition(0, dynamicStartPos);
-        lineRenderer.SetPosition(1, dynamicEndPos);
+        // Shapes.Line lokal pozisyon kullanır, bu yüzden dünya pozisyonlarını objenin lokaline çeviriyoruz
+        Vector3 localStart = dragLine.transform.InverseTransformPoint(dynamicStartPos);
+        Vector3 localEnd = dragLine.transform.InverseTransformPoint(dynamicEndPos);
+
+        dragLine.Start = localStart;
+        dragLine.End = localEnd;
 
         float currentDistance = Vector3.Distance(dragStartPos, currentPointerPos);
         float distanceRatio = Mathf.Clamp01(currentDistance / maxDragDistance);
         
         float currentWidth = Mathf.Lerp(lineMaxWidth, lineMinWidth, distanceRatio);
-        lineRenderer.startWidth = currentWidth;
-        lineRenderer.endWidth = currentWidth * lineEndWidthMultiplier;
+        dragLine.Thickness = currentWidth;
     }
 
     private void OnCollisionEnter(Collision collision)

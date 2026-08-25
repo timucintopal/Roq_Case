@@ -839,7 +839,7 @@ PlayerSettings:
     PS5: DOTWEEN
     QNX: DOTWEEN
     Server: 
-    Standalone: DOTWEEN
+    Standalone: DOTWEEN;SHAPES_URP
     VisionOS: DOTWEEN
     WebGL: DOTWEEN
     Windows Store Apps: DOTWEEN
