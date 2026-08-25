@@ -27,11 +27,31 @@ namespace Case2_BlockHole.Scripts
 
         private Material _outlineMaterial;
         private Rigidbody _rb;
+        public Rigidbody Rb => _rb; // MInput'un performanslı taşıması için dışarı açtık
+        private bool _wasKinematic; // Orijinal fizik durumunu hafızada tut
+
+        private List<Rigidbody> _blockRbs = new List<Rigidbody>();
 
         private void Start()
         {
             _rb = GetComponent<Rigidbody>();
+            if (_rb != null) _wasKinematic = _rb.isKinematic;
             _originalScale = transform.localScale;
+            
+            // Patlama anındaki kasmayı (lag) önlemek için Rigidbody'leri baştan önbelleğe (Cache) alıyoruz
+            foreach (var block in blocks)
+            {
+                if (block != null)
+                {
+                    Rigidbody childRb = block.GetComponent<Rigidbody>();
+                    if (childRb == null) childRb = block.GetComponentInChildren<Rigidbody>();
+                    _blockRbs.Add(childRb);
+                }
+                else
+                {
+                    _blockRbs.Add(null);
+                }
+            }
             // Dinamik olarak Outline materyalini oluşturuyoruz
             _outlineMaterial = new Material(Shader.Find("Custom/SimpleOutline"));
             // Glow yapması için rengi şiddetlendiriyoruz (HDR Color - PostProcessing Bloom varsa parlaklık saçar)
@@ -74,7 +94,10 @@ namespace Case2_BlockHole.Scripts
 
         public void OnDrop()
         {
-            if (_rb != null) _rb.isKinematic = false; // Yere bırakıldığında fiziği geri aç
+            // Yere bırakıldığında fiziği hemen geri AÇMIYORUZ!
+            // Eğer yuvaya oturduysa veya ilk yerine dönüyorsa DOMove çalışıyor. 
+            // DOTween çalışırken fizikler (isKinematic=false) açık kalırsa, obje yerdeki diğer 
+            // collider'lara çarpıp uzaya fırlar (Uçma Bug'ı).
 
             _scaleTween?.Kill();
             // Orijinal boyutuna tatlı bir şekilde geri dönsün
@@ -96,6 +119,11 @@ namespace Case2_BlockHole.Scripts
             }
         }
 
+        public void RestorePhysics()
+        {
+            if (_rb != null) _rb.isKinematic = _wasKinematic;
+        }
+
         IEnumerator MoveSequence(Transform target )
         {
             yield return transform.DOMove(target.position, .4f).SetEase(Ease.OutBack).WaitForCompletion();
@@ -107,15 +135,16 @@ namespace Case2_BlockHole.Scripts
                 
             Vector3 center = transform.position;
 
-            foreach(var block in blocks)
+            for (int i = 0; i < blocks.Count; i++)
             {
-                GameObject b = block; // Güvenli değişken kopyalama (Lambda içinde kaybolmaması için)
+                GameObject b = blocks[i];
+                if (b == null) continue;
+                
                 b.SetActive(true);
                 b.transform.localScale = Vector3.one; // Obje havuzlaması (pooling) varsa önceki küçülmeden dolayı 0 kalmasın
 
-                // 1. Rigidbody'i güvenli şekilde buluyoruz
-                Rigidbody rb = b.GetComponent<Rigidbody>();
-                if (rb == null) rb = b.GetComponentInChildren<Rigidbody>();
+                // Önceden bulduğumuz (Cachelenmiş) Rigidbody'yi kullanıyoruz. KASMA SIFIRA İNDİ!
+                Rigidbody rb = _blockRbs[i];
 
                 if (rb != null)
                 {

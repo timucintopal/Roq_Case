@@ -72,8 +72,22 @@ namespace Case2_BlockHole.Scripts
                         currentBlockController.OnPickup(); // Eventleri kendi içinde fırlatacak
                     }
                     
-                    // 1. ADIM: Eski "Tıklanan yerin farkını alma (offset)" kodunu TAMAMEN SİLDİK.
-                    // Artık obje serbest, tıkladığımız an doğrudan hedef pozisyona uçacak.
+                    // Obje tutulduğu an (Lerp gecikmesi olmadan) direkt farenin merkezine (Pivot'a) şak diye oturt!
+                    if (Physics.Raycast(ray, out RaycastHit hitGround, raycastDistance, groundLayer))
+                    {
+                        Vector3 instantPos = hitGround.point;
+                        instantPos.y = yOffset;
+                        instantPos.z += dragForwardOffset; // İleri ofseti buradan da hesapla
+                        
+                        if (currentBlockController != null && currentBlockController.Rb != null)
+                        {
+                            currentBlockController.Rb.MovePosition(instantPos);
+                        }
+                        else
+                        {
+                            _draggedObject.position = instantPos;
+                        }
+                    }
                 }
             }
 
@@ -92,21 +106,29 @@ namespace Case2_BlockHole.Scripts
                     targetPosition.z += dragForwardOffset; // Fat Finger: Parmağın objeyi kapatmaması için ileri itiyoruz
 
                     // 3. ADIM (Lerp ile Uçuş): Obje aniden ışınlanmak yerine bu yeni targetPosition'a yumuşakça süzülür.
-                    _draggedObject.position = Vector3.Lerp(_draggedObject.position, targetPosition, Time.deltaTime * moveSpeed);
+                    Vector3 newPos = Vector3.Lerp(_draggedObject.position, targetPosition, Time.deltaTime * moveSpeed);
                     
                     // Procedural Sway (Hıza göre eğilme) Hesaplaması
                     Vector3 velocity = (_draggedObject.position - _lastFramePos) / Time.deltaTime;
                     _lastFramePos = _draggedObject.position; // Bir sonraki kare için konumu kaydet
 
                     // Hızın eksenlerine göre hedef dönüş açısını belirle
-                    // İleri(+Z) giderken öne(+X) eğilsin, Sağa(+X) giderken sağa(-Z) eğilsin
                     float targetRotX = Mathf.Clamp(velocity.z * swayMultiplier, -maxSwayAngle, maxSwayAngle);
                     float targetRotZ = Mathf.Clamp(-velocity.x * swayMultiplier, -maxSwayAngle, maxSwayAngle);
-
                     Quaternion targetRotation = Quaternion.Euler(targetRotX, 0, targetRotZ);
+                    Quaternion newRot = Quaternion.Lerp(_draggedObject.rotation, targetRotation, Time.deltaTime * swaySmoothness);
                     
-                    // Yumuşak bir şekilde o açıya yaylandır
-                    _draggedObject.rotation = Quaternion.Lerp(_draggedObject.rotation, targetRotation, Time.deltaTime * swaySmoothness);
+                    // Fiziksel objeleri (Rigidbody) Transform.position ile taşımak kasmaya sebep olur. MovePosition kullanıyoruz.
+                    if (currentBlockController != null && currentBlockController.Rb != null)
+                    {
+                        currentBlockController.Rb.MovePosition(newPos);
+                        currentBlockController.Rb.MoveRotation(newRot);
+                    }
+                    else
+                    {
+                        _draggedObject.position = newPos;
+                        _draggedObject.rotation = newRot;
+                    }
                 }
             }
 
@@ -134,7 +156,17 @@ namespace Case2_BlockHole.Scripts
                     // Eğer boşluğa veya yanlış deliğe bırakıldıysa, ilk aldığı yere geri dönsün
                     if (!isSuccess)
                     {
-                        _draggedObject.DOMove(_initialDragPos, dropReturnDuration).SetEase(Ease.OutQuad);
+                        var returnedBlock = currentBlockController; // Lambda için saklıyoruz
+                        _draggedObject.DOMove(_initialDragPos, dropReturnDuration).SetEase(Ease.OutQuad)
+                            .OnComplete(() => 
+                            {
+                                if (returnedBlock != null) returnedBlock.RestorePhysics();
+                            });
+                    }
+                    else
+                    {
+                        // Başarılı girişse objenin fiziği kalıcı olarak kapalı kalsın (uzaya uçmasın)
+                        currentBlockController.Rb.isKinematic = true;
                     }
                     
                     // Bırakıldığında (ister deliğe ister boşluğa), yamuk kaldıysa düz (0,0,0) konumuna geri dönsün

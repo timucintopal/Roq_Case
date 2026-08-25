@@ -12294,8 +12294,8 @@ MonoBehaviour:
   raycastDistance: 1000
   dropReturnDuration: 0.3
   yOffset: 1
-  dragForwardOffset: -1
-  moveSpeed: 25
+  dragForwardOffset: -2
+  moveSpeed: 40
   swayMultiplier: 1.5
   maxSwayAngle: 30
   swaySmoothness: 10
