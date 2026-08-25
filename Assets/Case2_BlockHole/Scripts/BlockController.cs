@@ -26,9 +26,11 @@ namespace Case2_BlockHole.Scripts
         public static event System.Action OnAnyBlockDropped;
 
         private Material _outlineMaterial;
+        private Rigidbody _rb;
 
         private void Start()
         {
+            _rb = GetComponent<Rigidbody>();
             _originalScale = transform.localScale;
             // Dinamik olarak Outline materyalini oluşturuyoruz
             _outlineMaterial = new Material(Shader.Find("Custom/SimpleOutline"));
@@ -48,6 +50,8 @@ namespace Case2_BlockHole.Scripts
 
         public void OnPickup()
         {
+            if (_rb != null) _rb.isKinematic = true; // Fizik motoruyla savaşmasını engelle (Kasma/Lag sorununu çözer)
+
             _scaleTween?.Kill();
             // Sadece ilk tutulduğunda bir kere büyüyüp hafifçe küçülecek (tatlı bir pop efekti)
             _scaleTween = transform.DOScale(_originalScale * 1.15f, 0.15f)
@@ -70,6 +74,8 @@ namespace Case2_BlockHole.Scripts
 
         public void OnDrop()
         {
+            if (_rb != null) _rb.isKinematic = false; // Yere bırakıldığında fiziği geri aç
+
             _scaleTween?.Kill();
             // Orijinal boyutuna tatlı bir şekilde geri dönsün
             transform.DOScale(_originalScale, 0.2f).SetEase(Ease.OutBack);

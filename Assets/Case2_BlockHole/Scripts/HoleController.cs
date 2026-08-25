@@ -37,6 +37,8 @@ namespace Case2_BlockHole.Scripts
         [SerializeField] private BlockThemeData themeData;
         
         [Header("Impact Settings")]
+        [Tooltip("Blok deliğe başarıyla oturduğunda çalınacak tok vuruş sesi")]
+        [SerializeField] private AudioClip successSound;
         [Tooltip("Blok deliğe başarıyla oturduğunda kameranın sallanma şiddeti (Örn: 0.2). Sıfır yaparsanız sallanmaz.")]
         [SerializeField] private float cameraShakeStrength = 0.2f;
 
@@ -223,14 +225,21 @@ namespace Case2_BlockHole.Scripts
         // SRP: Bu metot sadece görsel efektleri ve hissiyatı yönetir.
         private void TriggerSuccessFeedback()
         {
-            // --- 1. ANA VURUŞ (IMPACT): Kamera Sarsıntısı ---
-            if (cameraShakeStrength > 0f && MCamera.Instance != null)
+            // --- 1. ANA VURUŞ (IMPACT): Kamera Sarsıntısı ve Ses ---
+            DOVirtual.DelayedCall(blockFlyDuration, () => 
             {
-                DOVirtual.DelayedCall(blockFlyDuration, () => 
+                // Kamera Sarsıntısı
+                if (cameraShakeStrength > 0f && MCamera.Instance != null)
                 {
                     MCamera.Instance.ShakeCamera(cameraShakeStrength);
-                });
-            }
+                }
+                
+                // Ses Efekti (ÇAT!)
+                if (successSound != null && MAudio.Instance != null)
+                {
+                    MAudio.Instance.PlaySound(successSound);
+                }
+            });
             
             // --- 2. TOZ BULUTLARI (PARTICLES) ---
             DOVirtual.DelayedCall(particlePlayDelay, () =>
