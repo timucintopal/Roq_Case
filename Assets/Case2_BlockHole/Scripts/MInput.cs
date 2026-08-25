@@ -66,7 +66,6 @@ namespace Case2_BlockHole.Scripts
                     _lastFramePos = _initialDragPos; // Hız ölçümü için ilk konumu al
                     _isDragging = true;
                     
-                    Debug.Log(_draggedObject.name);
 
                     currentBlockController = hitObj.collider.attachedRigidbody.GetComponent<BlockController>();
                     if (currentBlockController != null) 

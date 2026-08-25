@@ -34,12 +34,10 @@ namespace Case2_BlockHole.Scripts
         // Seçilen renge ait Hole'un parlamasını başlatır, diğerlerini kapatır
         public void HighlightHole(Hole.HoleColor color)
         {
-            Debug.Log($"[MHole] === Bloğun Rengi: {color} === {_holes.Count} adet delik taranıyor...");
             foreach (var hole in _holes)
             {
                 if (hole.currentColor == color)
                 {
-                    Debug.Log($"[MHole] EŞLEŞTİ: {hole.gameObject.name} (Renk: {hole.currentColor})");
                     hole.StartGlow();
                 }
                 else

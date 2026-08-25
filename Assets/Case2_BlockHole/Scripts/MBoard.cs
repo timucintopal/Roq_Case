@@ -33,13 +33,8 @@ namespace Case2_BlockHole.Scripts
         {
             if (punchStrength <= 0f) return;
 
-            // Önceki punch henüz bitmediyse iptal edip tahtayı düzeltiyoruz ki 
-            // üst üste binip pozisyonun kaymasına (offset) yol açmasın.
-            if (_punchTween != null && _punchTween.IsActive())
-            {
-                _punchTween.Kill();
-                transform.position = _originalPos;
-            }
+            // Eğer halihazırda esniyorsa, tekrar tekrar vurup görseli bozmasını (stutter/kasma hissini) engelle
+            if (_punchTween != null && _punchTween.IsActive()) return;
 
             // Aşağı doğru (-Y ekseninde) tok bir esneme vuruyoruz
             _punchTween = transform.DOPunchPosition(Vector3.down * punchStrength, punchDuration, 1, 0f)

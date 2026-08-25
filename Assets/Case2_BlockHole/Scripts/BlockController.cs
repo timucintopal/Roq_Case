@@ -80,12 +80,11 @@ namespace Case2_BlockHole.Scripts
 
             if (mainRenderer != null)
             {
-                // Mevcut materyallerin sonuna outline materyalini ekliyoruz
-                var mats = mainRenderer.materials;
+                var mats = mainRenderer.sharedMaterials;
                 var newMats = new Material[mats.Length + 1];
                 for (int i = 0; i < mats.Length; i++) newMats[i] = mats[i];
                 newMats[mats.Length] = _outlineMaterial;
-                mainRenderer.materials = newMats;
+                mainRenderer.sharedMaterials = newMats;
             }
             
             // Olayı fırlat (Dinleyen yöneticiler -örneğin MHole- bu bloğun rengini alıp parlayacak)
@@ -108,13 +107,12 @@ namespace Case2_BlockHole.Scripts
 
             if (mainRenderer != null)
             {
-                // Outline materyalini listeden çıkarıyoruz
-                var mats = mainRenderer.materials;
+                var mats = mainRenderer.sharedMaterials;
                 if (mats.Length > 0 && mats[mats.Length - 1].shader.name == "Custom/SimpleOutline")
                 {
                     var newMats = new Material[mats.Length - 1];
                     for (int i = 0; i < newMats.Length; i++) newMats[i] = mats[i];
-                    mainRenderer.materials = newMats;
+                    mainRenderer.sharedMaterials = newMats;
                 }
             }
         }

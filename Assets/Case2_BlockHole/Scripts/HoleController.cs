@@ -134,21 +134,17 @@ namespace Case2_BlockHole.Scripts
             // Eğer zaten parlıyorsa veya yuva zaten doluysa tekrar başlatma
             if (_isGlowing)
             {
-                Debug.Log($"[HoleController] {gameObject.name} zaten parlıyor, yeni istek reddedildi.");
                 return;
             }
             if (_isFilled)
             {
-                Debug.Log($"[HoleController] {gameObject.name} yuvası zaten dolu, parlamayacak.");
                 return;
             }
             if (holeRenderer == null)
             {
-                Debug.LogError($"[HoleController] {gameObject.name} objesinde 'Hole Renderer' (Mesh) ATANMAMIŞ! Parlama yapılamıyor!");
                 return;
             }
             
-            Debug.Log($"[HoleController] {gameObject.name} (Renk: {currentColor}) parlamaya BAŞLADI!");
             _isGlowing = true;
 
             Shader topFaceShader = Shader.Find("Custom/TopFaceGlow");
@@ -166,12 +162,12 @@ namespace Case2_BlockHole.Scripts
                 // Inspector'dan seçtiğimiz yüzey açısı (Normal Threshold) hassasiyetini atıyoruz
                 _topGlowMaterial.SetFloat("_NormalThreshold", glowSurfaceAngle);
                 
-                // Mevcut materyallerin üzerine şeffaf bir ışık (Additive) katmanı olarak ekliyoruz
-                var mats = holeRenderer.materials;
+                // 2. Klonlanan materyali listenin sonuna ekliyoruz (Ana materyallerin üstüne biner)
+                var mats = holeRenderer.sharedMaterials;
                 var newMats = new Material[mats.Length + 1];
                 for (int i = 0; i < mats.Length; i++) newMats[i] = mats[i];
                 newMats[mats.Length] = _topGlowMaterial;
-                holeRenderer.materials = newMats;
+                holeRenderer.sharedMaterials = newMats;
 
                 // Neon efekti
                 _glowTween = _topGlowMaterial.DOColor(endCol, "_GlowColor", glowPulseDuration)
@@ -190,13 +186,17 @@ namespace Case2_BlockHole.Scripts
             // Ve eklediğimiz Glow materyalini listeden siliyoruz ki yuva tamamen normale dönsün
             if (holeRenderer != null && _topGlowMaterial != null)
             {
-                var mats = holeRenderer.materials;
+                var mats = holeRenderer.sharedMaterials;
                 if (mats.Length > 0 && mats[mats.Length - 1].shader.name == "Custom/TopFaceGlow")
                 {
                     var newMats = new Material[mats.Length - 1];
                     for (int i = 0; i < newMats.Length; i++) newMats[i] = mats[i];
-                    holeRenderer.materials = newMats;
+                    holeRenderer.sharedMaterials = newMats;
                 }
+                
+                // Bellek sızıntısını önlemek için oluşturulan klon materyali yok ediyoruz
+                Destroy(_topGlowMaterial);
+                _topGlowMaterial = null;
             }
         }
 
