@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 339643459}
   - component: {fileID: 339643458}
   - component: {fileID: 339643457}
+  - component: {fileID: 339643460}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -441,6 +442,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &339643460
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339643456}
+  m_Enabled: 1
 --- !u!1 &367521626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,6 +1605,7 @@ MonoBehaviour:
   tipEffectTransform: {fileID: 1660409236}
   impactParticlePrefab: {fileID: 19855088, guid: aed7281e0c7014b128bbbec59f5895f1, type: 3}
   impactTarget: {fileID: 1844715188}
+  stickSound: {fileID: 8300000, guid: 29be2f833d98a4b7383283ebca6d035f, type: 3}
   maxPeelAmount: 0.8
   fixedPeelDirection: {x: -1, y: 0}
   peelDuration: 0.5
@@ -1940,6 +1950,7 @@ MonoBehaviour:
   tipEffectTransform: {fileID: 2125523174}
   impactParticlePrefab: {fileID: 19855088, guid: aed7281e0c7014b128bbbec59f5895f1, type: 3}
   impactTarget: {fileID: 243912357}
+  stickSound: {fileID: 8300000, guid: 29be2f833d98a4b7383283ebca6d035f, type: 3}
   maxPeelAmount: 0.8
   fixedPeelDirection: {x: -1, y: 0}
   peelDuration: 0.5
@@ -2373,6 +2384,7 @@ MonoBehaviour:
   tipEffectTransform: {fileID: 1993537929}
   impactParticlePrefab: {fileID: 19855088, guid: aed7281e0c7014b128bbbec59f5895f1, type: 3}
   impactTarget: {fileID: 826615006}
+  stickSound: {fileID: 8300000, guid: 29be2f833d98a4b7383283ebca6d035f, type: 3}
   maxPeelAmount: 0.8
   fixedPeelDirection: {x: -1, y: 0}
   peelDuration: 0.5

@@ -17,6 +17,10 @@ namespace Case3_Stickerdom.Scripts
         [Tooltip("Impact efektinin yaratılacağı nokta (Boş bırakılırsa kıvrılan uç noktası kullanılır)")]
         public Transform impactTarget;
 
+        [Header("Audio")]
+        [Tooltip("Sticker hedefe tam yapıştığında çalınacak ses (İsteğe bağlı)")]
+        public AudioClip stickSound;
+
         [Header("Settings")]
         public float maxPeelAmount = 0.776f;
         [Tooltip("Soyulma/Kıvrılma yönünü belirler. (-1, 1) sol üste doğru, (1, 1) sağ üste doğru vs.")]
@@ -183,6 +187,11 @@ namespace Case3_Stickerdom.Scripts
             if (Camera.main != null)
             {
                 Camera.main.transform.DOShakePosition(0.15f, strength: 0.1f, vibrato: 10, randomness: 90f, snapping: false, fadeOut: true);
+                
+                if (stickSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(stickSound, Camera.main.transform.position);
+                }
             }
             
             HideShadow(stickDuration);
