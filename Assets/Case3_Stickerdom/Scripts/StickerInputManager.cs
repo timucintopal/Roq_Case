@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace Case3_Stickerdom.Scripts
 {
-    public class MInput : MonoBehaviour
+    public class StickerInputManager : MonoBehaviour
     {
         private Camera _mainCam;
 

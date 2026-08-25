@@ -9,9 +9,9 @@ namespace Case3_Stickerdom.Scripts
         
         void Start()
         {
-            if (MSticker.Instance != null)
+            if (StickerSlotManager.Instance != null)
             {
-                MSticker.Instance.RegisterSlot(this);
+                StickerSlotManager.Instance.RegisterSlot(this);
             }
         }
     }

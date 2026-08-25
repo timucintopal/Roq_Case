@@ -10,9 +10,9 @@ namespace Case3_Stickerdom.Scripts
         PoliceCar
     }
     
-    public class MSticker : MonoBehaviour
+    public class StickerSlotManager : MonoBehaviour
     {
-        public static MSticker Instance;
+        public static StickerSlotManager Instance;
         private List<StickerSlot> allSlots = new List<StickerSlot>();
 
         void Awake()
