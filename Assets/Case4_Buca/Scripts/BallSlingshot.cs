@@ -16,8 +16,10 @@ public class BallSlingshot : MonoBehaviour
 
     [Header("Line Renderer Settings")]
     public LineRenderer lineRenderer;
-    public float lineStartYOffset = 0.5f;
-    public float lineEndYOffset = 0.5f;
+    [Tooltip("Çizginin merkezden olan uzaklığı (Yarıçap). Çizgi diskin etrafında döner.")]
+    public float lineStartRadius = 0.5f;
+    [Tooltip("Çizgilerin Y eksenindeki yüksekliği (Yere değmemesi için).")]
+    public float lineHeightOffset = 0.5f;
     [Tooltip("Çizginin en kalın hali (kısa çekildiğinde).")]
     public float lineMaxWidth = 0.5f;
     [Tooltip("Çizginin en ince hali (uzun çekildiğinde).")]
@@ -26,16 +28,37 @@ public class BallSlingshot : MonoBehaviour
     [Range(0f, 1f)]
     public float lineEndWidthMultiplier = 0.2f;
 
+    [Header("Respawn Settings")]
+    [Tooltip("Disk durduktan kaç saniye sonra respawn olsun?")]
+    public float respawnIdleTime = 1f;
+
     private Rigidbody rb;
     private bool isDragging = false;
     private Vector3 dragStartPos;
     private Plane dragPlane;
     private Camera mainCamera;
+    
+    private bool hasHitCube = false;
+    private bool isLaunched = false;
+    private float idleTimer = 0f;
+    private float launchTime = 0f;
+    private MDisk mDiskRef;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
+        
+        mDiskRef = FindObjectOfType<MDisk>();
+        if (mDiskRef == null)
+        {
+            Debug.LogWarning("MDisk scripti sahnede bulunamadı! 'MDisk' adlı objeyi isimden arıyorum...");
+            GameObject mDiskObj = GameObject.Find("MDisk");
+            if (mDiskObj != null)
+            {
+                mDiskRef = mDiskObj.AddComponent<MDisk>();
+            }
+        }
         
         if (lineRenderer != null)
         {
@@ -47,6 +70,33 @@ public class BallSlingshot : MonoBehaviour
     private void Update()
     {
         if (Pointer.current == null) return;
+
+        // --- Respawn & Idle Mantığı ---
+        bool isMoving = rb.linearVelocity.sqrMagnitude > 0.05f;
+        
+        // Fırlatıldıktan sonra en az 0.5 saniye geçmesini bekleyelim ki fizik motoru hızı tam işlesin
+        if (!isMoving && !isDragging && isLaunched && (Time.time - launchTime > 0.5f))
+        {
+            if (!hasHitCube)
+            {
+                // Hiçbir küpe değmeden durduysa anında respawn
+                RespawnAtMDisk();
+            }
+            else
+            {
+                // Küpe değdi ve durdu, etkileşim yoksa sayacı başlat
+                idleTimer += Time.deltaTime;
+                if (idleTimer >= respawnIdleTime)
+                {
+                    RespawnAtMDisk();
+                }
+            }
+        }
+        else if (isMoving || isDragging)
+        {
+            idleTimer = 0f;
+        }
+        // -----------------------------
 
         // 1. TIKLAMA BAŞLANGICI
         if (Pointer.current.press.wasPressedThisFrame)
@@ -133,6 +183,10 @@ public class BallSlingshot : MonoBehaviour
                 // Çekilen yönün tersine güç uyguluyoruz
                 Vector3 force = -dragVector * powerMultiplier;
                 rb.AddForce(force, ForceMode.Impulse);
+                
+                isLaunched = true;
+                hasHitCube = false;
+                launchTime = Time.time;
             }
         }
     }
@@ -151,11 +205,23 @@ public class BallSlingshot : MonoBehaviour
 
     private void UpdateLineRenderer(Vector3 currentPointerPos)
     {
-        Vector3 startOffset = new Vector3(0, lineStartYOffset, 0);
-        Vector3 endOffset = new Vector3(0, lineEndYOffset, 0);
+        // Fare/parmak yönünü hesapla
+        Vector3 dragDirection = (currentPointerPos - dragStartPos);
+        dragDirection.y = 0; // Sadece X ve Z ekseninde (yatayda) dönüş istiyoruz
         
-        lineRenderer.SetPosition(0, dragStartPos + startOffset);
-        lineRenderer.SetPosition(1, currentPointerPos + endOffset);
+        // Merkezden farenin olduğu yöne doğru 'yarıçap' kadar git
+        Vector3 dynamicStartPos = dragStartPos;
+        if (dragDirection.sqrMagnitude > 0.001f)
+        {
+            dynamicStartPos += dragDirection.normalized * lineStartRadius;
+        }
+        dynamicStartPos.y += lineHeightOffset; // Yerden kaldır
+
+        Vector3 dynamicEndPos = currentPointerPos;
+        dynamicEndPos.y += lineHeightOffset; // Yerden kaldır
+
+        lineRenderer.SetPosition(0, dynamicStartPos);
+        lineRenderer.SetPosition(1, dynamicEndPos);
 
         float currentDistance = Vector3.Distance(dragStartPos, currentPointerPos);
         float distanceRatio = Mathf.Clamp01(currentDistance / maxDragDistance);
@@ -163,5 +229,48 @@ public class BallSlingshot : MonoBehaviour
         float currentWidth = Mathf.Lerp(lineMaxWidth, lineMinWidth, distanceRatio);
         lineRenderer.startWidth = currentWidth;
         lineRenderer.endWidth = currentWidth * lineEndWidthMultiplier;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Attached Rigidbody üzerinden kontrol ediyoruz (script genelde rb ile aynı yerdedir)
+        if (collision.rigidbody != null)
+        {
+            Case4_Buca.Scripts.Cube hitCube = collision.rigidbody.GetComponent<Case4_Buca.Scripts.Cube>();
+            
+            if (hitCube != null)
+            {
+                if (!hasHitCube) 
+                {
+                    Debug.Log("Disk bir Kübe ÇARPTI! hasHitCube = true oldu.");
+                    hasHitCube = true;
+                }
+            }
+        }
+    }
+
+    private void RespawnAtMDisk()
+    {
+        if (mDiskRef != null)
+        {
+            Debug.Log("Respawn tetiklendi! Disk MDisk'in konumuna ışınlanıyor.");
+            // Fizik motorunun çakışmasını önlemek için pozisyon atamasından önce fiziği uyutabiliriz
+            rb.Sleep(); 
+            transform.position = mDiskRef.transform.position;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            
+            hasHitCube = false;
+            isLaunched = false;
+            idleTimer = 0f;
+            
+            TrailRenderer tr = GetComponentInChildren<TrailRenderer>();
+            if (tr != null) tr.Clear();
+            rb.WakeUp();
+        }
+        else
+        {
+            Debug.LogError("Respawn tetiklendi fakat MDisk referansı NULL! Sahnede MDisk scriptine sahip bir obje yok.");
+        }
     }
 }

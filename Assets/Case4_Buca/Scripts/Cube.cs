@@ -16,6 +16,7 @@ namespace Case4_Buca.Scripts
         [SerializeField] Gradient colorTransition;
         [SerializeField] float coloringDuration;
         [SerializeField] float impactForce = 3f;
+        [SerializeField] float angularForce = 1.5f;
 
         [SerializeField] bool isHit = false;
 
@@ -69,6 +70,10 @@ namespace Case4_Buca.Scripts
                 Vector3 forceDirection = (transform.position - contact.point).normalized;
                 forceDirection.y += 0.2f; 
                 _rigidbody.AddForceAtPosition(forceDirection.normalized * impactForce, contact.point, ForceMode.Impulse);
+
+                // Geriye doğru doğal devrilme için tork (devrilme ekseni) hesaplama
+                Vector3 tipAxis = Vector3.Cross(Vector3.up, forceDirection.normalized);
+                _rigidbody.AddTorque(tipAxis * angularForce, ForceMode.Impulse);
 
                 _renderer.material.DOGradientColor(colorTransition, coloringDuration);
                 
